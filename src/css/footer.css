@@ -1,0 +1,11 @@
+.footer {
+  background-color: var(--primary-color);
+  padding-top: 40px;
+}
+@media screen and (min-width: 768px) {
+  .footer {
+    padding-top: 64px;
+  }
+}
+@media screen and (min-width: 1440px) {
+}
