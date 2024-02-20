@@ -1,5 +1,6 @@
 .footer {
   background-color: var(--primary-color);
+  color: var(--white-color);
   padding-top: 40px;
 }
 @media screen and (min-width: 768px) {
@@ -8,4 +9,49 @@
   }
 }
 @media screen and (min-width: 1440px) {
+}
+
+.footer-title {
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.16em;
+  letter-spacing: -2%;
+}
+@media screen and (min-width: 768px) {
+  .footer-title {
+    font-size: 56px;
+    line-height: 1.07em;
+  }
+}
+
+.footer-title-span {
+  font-style: italic;
+}
+
+.footer-form-title {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+@media screen and (min-width: 768px) {
+  .footer-form-title {
+    font-size: 18px;
+  }
+}
+
+.footer-form {
+  max-width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .footer-form {
+    width: 352px;
+  }
+}
+
+.footer-input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.footer-button {
+  width: 100%;
 }
