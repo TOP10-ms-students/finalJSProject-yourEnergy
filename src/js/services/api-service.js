@@ -6,7 +6,6 @@ export const fetchData = async (path, method, body) => {
   return fetch(path, init)
     .then(response => response.json())
     .catch(err => {
-      console.error(err.message);
       throw err;
     });
 };
@@ -41,7 +40,7 @@ export const fetchApi = {
     return await fetchData(url);
   },
 
-  async editSubscription(subscriptionBody) {
+  async addSubscription(subscriptionBody) {
     const method = 'POST';
     const url = `${BASE_URL}/subscription`;
     const body = JSON.stringify(subscriptionBody);
