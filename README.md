@@ -1,3 +1,7 @@
+# Template
+
+![Division of template](./assets/template.jpg)
+
 # Vanilla App Template
 
 Цей проект було створено за допомогою Vite. Для знайомства та налаштування
