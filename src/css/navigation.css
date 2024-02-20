@@ -13,6 +13,7 @@
   font-size: 2rem;
   line-height: 1.5rem;
   letter-spacing: -0.56px;
+  font-weight: 400;
 }
 
 .main-section-head p {
@@ -33,6 +34,14 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.main-section-head .form-control {
+  width: 100%;
+}
+
+.main-section-head .input {
+  width: 100%;
 }
 
 .main-section-head .filter-block {
