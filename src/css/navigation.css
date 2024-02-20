@@ -1,0 +1,68 @@
+.main-section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  justify-content: space-between;
+
+  padding: 20px 20px;
+}
+
+.main-section-head h2 {
+  color: var(--black-text-color);
+  font-size: 2rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.56px;
+}
+
+.main-section-head p {
+  color: var(--title-secondary-color);
+  font-size: 20px;
+  line-height: 1.43rem;
+  letter-spacing: -0.4px;
+}
+
+.main-section-head .head-navigation {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.main-section-head .gallary-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main-section-head .filter-block {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.filter-block .filter-item {
+  color: var(--title-secondary-color);
+  line-height: 1.43rem;
+  border: 0px;
+  background: transparent;
+}
+
+.filter-block .filter-item.active {
+  color: var(--black-text-color);
+}
+
+.filter-block .filter-item.active::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: var(--black-text-color);
+  margin-top: 4px;
+}
+
+.filter-block .filter-item:hover,
+.filter-block .filter-item:focus {
+  color: var(--black-text-color);
+}
