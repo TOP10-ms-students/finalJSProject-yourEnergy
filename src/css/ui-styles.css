@@ -20,6 +20,8 @@
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
   border-radius: 30px;
+  background-color: var(--white-color);
+  background-color: #fff;
 }
 
 .input::placeholder {
@@ -34,7 +36,7 @@
 }
 
 .input-email::placeholder {
-  color: var(--primary-color);
+  color: var(--text-secondary-color);
 }
 
 @media (min-width: 768px) {
