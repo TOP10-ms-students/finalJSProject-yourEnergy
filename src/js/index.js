@@ -1,3 +1,3 @@
-import * as gallery from './gallery-service';
+import * as gallery from './services/gallery-service';
 
 gallery.testTemplate();
