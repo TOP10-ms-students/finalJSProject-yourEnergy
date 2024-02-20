@@ -25,3 +25,13 @@
 
   color: #242424;
 }
+
+body {
+  display: flex;
+  height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+}
