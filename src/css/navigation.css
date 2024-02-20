@@ -1,11 +1,30 @@
 .main-section-head {
+  padding: 20px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .main-section-head {
+    padding: 32px 0;
+  }
+}
+
+.main-section-head .container {
   display: flex;
   flex-direction: column;
   gap: 40px;
-
   justify-content: space-between;
+}
 
-  padding: 20px 20px;
+@media screen and (min-width: 768px) {
+  .main-section-head .container {
+    gap: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .main-section-head .container {
+    flex-direction: row;
+  }
 }
 
 .main-section-head h2 {
@@ -16,11 +35,27 @@
   font-weight: 400;
 }
 
+@media screen and (min-width: 768px) {
+  .main-section-head h2 {
+    font-size: 3.14rem;
+    line-height: 1.09rem;
+    letter-spacing: -0.88px;
+  }
+}
+
 .main-section-head p {
   color: var(--title-secondary-color);
-  font-size: 20px;
+  font-size: 1.43rem;
   line-height: 1.43rem;
   letter-spacing: -0.4px;
+}
+
+@media screen and (min-width: 768px) {
+  .main-section-head p {
+    font-size: 1.71rem;
+    line-height: 1.33rem;
+    letter-spacing: -0.48px;
+  }
 }
 
 .main-section-head .head-navigation {
@@ -28,16 +63,39 @@
   flex-direction: row;
   gap: 8px;
   align-items: center;
+  width: 100%;
 }
 
 .main-section-head .gallary-nav {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .main-section-head .gallary-nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .main-section-head .gallary-nav {
+    gap: 30px;
+    justify-content: flex-end;
+  }
 }
 
 .main-section-head .form-control {
   width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .main-section-head .form-control {
+    width: 273px;
+  }
 }
 
 .main-section-head .input {
@@ -56,6 +114,13 @@
   line-height: 1.43rem;
   border: 0px;
   background: transparent;
+}
+
+@media screen and (min-width: 768px) {
+  .filter-block .filter-item {
+    font-size: 1.14rem;
+    line-height: 1.5rem;
+  }
 }
 
 .filter-block .filter-item.active {
