@@ -1,0 +1,176 @@
+/* UI styles */
+.form-control {
+  position: relative;
+  width: fit-content;
+}
+
+.button-icon {
+  background-color: transparent;
+  border: none;
+}
+
+/* Inputs */
+.input {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 30px;
+}
+
+.input::placeholder {
+  color: var(--primary-color);
+}
+
+.input-email {
+  height: 42px;
+  color: var(--text-secondary-color);
+  border: 1px solid var(--white-color);
+  background-color: var(--primary-color);
+}
+
+.input-email::placeholder {
+  color: var(--primary-color);
+}
+
+@media (min-width: 768px) {
+  .input {
+    height: 48px;
+    font-size: 16px;
+  }
+}
+
+.control-buttons {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  transform: translateY(-50%);
+}
+.button-icon {
+  padding: 0;
+  height: 18px;
+  width: 18px;
+  color: var(--primary-color);
+}
+.button-icon svg {
+  fill: none;
+}
+.button-icon-clear {
+  /* display: none; */
+  padding: 0;
+  height: 18px;
+  width: 18px;
+  color: var(--primary-color);
+}
+
+/* Scroll to top button */
+.scroll-top {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  color: var(--white-color);
+  background-color:  var(--primary-color);
+  border-radius: 100%;
+  transition: all .3s ease;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.scroll-top:hover,
+.scroll-top:focus {
+  color: var(--primary-color);
+  background-color: var(--white-color);
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+.scroll-top:not(.active) {
+  /* visibility: hidden;
+  opacity: 0;
+  pointer-events: none; */
+}
+
+.scroll-top .icon-arrow {
+  /* fill: currentColor; */
+  transition: fill .3s ease;
+}
+
+/* Buttons */
+.button {
+  padding: 0 24px;
+  height: 42px;
+  font-size: 14px;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  border: 1px solid var(--white-color);
+  border-radius: 30px;
+  transition: all .3s ease;
+}
+
+.button:hover,
+.button:focus {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  background-color: var(--white-color);
+}
+
+.button-white {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  background-color: var(--white-color);
+}
+
+.button-white:hover,
+.button-white:focus {
+  color: var(--white-color);
+  border-color: var(--white-color);
+  background-color: var(--primary-color);
+}
+
+.button-with-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+}
+
+@media (min-width: 768px ) {
+  .button {
+    font-size: 16px;
+    height: 48px;
+  }
+}
+
+/* Header Menu toggle bar */
+.toggle-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 50px;
+  width: fit-content;
+  background-color: var(--primary-color);
+  border-radius: 60px;
+}
+
+.toggle-bar .active {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  background-color: var(--white-color);
+}
