@@ -7,6 +7,9 @@
 @import '../../node_modules/modern-normalize/modern-normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz@0,9..40;1,9..40&display=swap');
 
+@import './reset.css';
+@import './variables.css';
+@import './base.css';
 @import './header.css';
 @import './hero.css';
 @import './sidebar.css';
@@ -16,24 +19,3 @@
 @import './exercise.css';
 @import './exercise-popup.css';
 
-
-:root {
-  font-family: "DM Sans", sans-serif;
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: 400;
-
-  color: #242424;
-}
-
-body {
-  display: flex;
-  height: 100vh;
-  width: 100%;
-  flex-direction: column;
-}
-
-main {
-  display: flex;
-  flex-direction: row;
-}

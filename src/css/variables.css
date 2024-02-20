@@ -1,0 +1,15 @@
+:root {
+  --primary-color: #242424;
+  --white-color: #F4F4F4;
+  --black-text-color: #242424;
+  --text-secondary-color: rgba(244, 244, 244, 0.6);
+  --title-color: rgba(244, 244, 244, 0.4);
+  --rating-color: rgba(244, 244, 244, 0.2);
+  --title-secondary-color: rgba(36, 36, 36, 0.4);
+  --button-disabled-color: rgba(36, 36, 36, 0.6);
+  --frame-color: rgba(36, 36, 36, 0.1);
+  --modal-backdrop: rgba(4, 4, 4, 0.4);
+  --white-bg-color: #fff;
+
+  --primary-font-family: 'DM Sans', Helvetica, Arial, sans-serif;
+}
