@@ -56,6 +56,6 @@ const subscriptionBody = {
   email: 'test02@gmail.com',
 };
 fetchApi
-  .editSubscription(subscriptionBody)
+  .addSubscription(subscriptionBody)
   .then(resp => console.log(resp))
   .catch(err => console.log(err));
