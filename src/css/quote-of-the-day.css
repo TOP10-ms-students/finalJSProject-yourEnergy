@@ -1,9 +1,9 @@
 .quote-of-the-day {
   width: 444px;
   height: 242px;
-  background: #242424;
+  background: var(--primary-color);
   border-radius: 20px;
-  color: #f4f4f4;
+  color: var(--white-color);
 }
 
 .quote-container {
@@ -17,6 +17,6 @@
   font-size: 16px;
 }
 .quote-content {
-  color: #a1a1a1;
+  color: var(--text-secondary-color);
   margin: 10px 0;
 }

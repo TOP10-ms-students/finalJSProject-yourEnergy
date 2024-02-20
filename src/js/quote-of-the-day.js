@@ -1,5 +1,4 @@
 import { fetchApi } from './services/api-service';
-import { showIziToast } from './services/iziToast';
 
 const quote = {
   content: document.querySelector('.js-quote-content'),
