@@ -29,9 +29,11 @@
     }
 }
 
+
 .main-logo {
     width: 132px;
     height: 24px;
+    flex-shrink: 0;
 }
 
 /* UI component Header Menu 'toggle-bar' */
