@@ -44,12 +44,14 @@ svg {
   margin-left: auto;
   margin-right: auto;
 }
+
 @media screen and (max-width: 375px) {
   .container {
     padding-left: 12px;
     padding-right: 12px;
   }
 }
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
@@ -57,8 +59,18 @@ svg {
     padding-right: 32px;
   }
 }
+
 @media screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
   }
 }
+
+/* 
+ul {
+  list-style-type: none;
+}
+
+ul li a {
+  text-decoration: none;
+} */
