@@ -104,3 +104,38 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* FAV-CARD */
+
+.ex-fav-item {
+  list-style: none;
+
+  background-color: var(--white-bg-color);
+  border-radius: 15px;
+
+  padding: 16px;
+  width: 335px;
+  height: 141px;
+}
+
+@media (min-width: 768px) {
+  .ex-fav-item {
+    width: 344px;
+  }
+}
+@media (min-width: 1440px) {
+  .ex-fav-item {
+    width: 405px;
+  }
+}
+
+.ex-item-trash-icon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ex-item-header-right-row-fav {
+  display: flex;
+  gap: 8px;
+}
