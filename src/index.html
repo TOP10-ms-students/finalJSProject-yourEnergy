@@ -1,41 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YourEnergy</title>
+    <link rel="stylesheet" href="./css/styles.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YourEnergy</title>
-  <link rel="stylesheet" href="./css/styles.css" />
-
-  <template id="exercise-group">
-    <load src="partials/templates/exercise-group.html" />
-  </template>
-  <template id="exercise">
-    <load src="partials/templates/exercise.html" />
-  </template>
-</head>
-
-<body>
-  <load src="partials/header.html" />
-  <load src="partials/hero.html" />
-  <load src="partials/navigation.html" />
-
-  <main>
-    <load src="partials/sidebar.html" />
-    <div id="gallery" class="gallery">
-      <div class="content"></div>
-      <load src="partials/components/pagination.html" />
-    </div>
-  </main>
-
+    <template id="exercise-group">
+      <load src="partials/templates/exercise-group.html" />
+    </template>
+    <template id="exercise">
+      <load src="partials/templates/exercise.html" />
+    </template>
+  </head>
   <body>
     <load src="partials/header.html" />
     <load src="partials/hero.html" />
     <load src="partials/navigation.html" />
+
+    <main>
+      <load src="partials/sidebar.html" />
+      <load src="partials/quote-of-the-day.html" />
+      <div id="gallery" class="gallery">
+        <div class="content"></div>
+        <load src="partials/components/pagination.html" />
+      </div>
+    </main>
+
     <load src="partials/footer.html" />
 
     <script type="module" src="./js/index.js"></script>
   </body>
-
 </html>
