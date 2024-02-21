@@ -72,8 +72,9 @@
 
     </template>
     <script type="module" crossorigin src="/finalJSProject-yourEnergy/pr-preview/pr-18/commonHelpers2.js"></script>
-    <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/pr-preview/pr-18/assets/styles-1ffc3639.js">
-    <link rel="stylesheet" href="/finalJSProject-yourEnergy/pr-preview/pr-18/assets/styles-d85c1b1c.css">
+    <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/pr-preview/pr-18/assets/styles-458a2b1d.js">
+    <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/pr-preview/pr-18/assets/vendor-14123e35.js">
+    <link rel="stylesheet" href="/finalJSProject-yourEnergy/pr-preview/pr-18/assets/styles-3d4228ef.css">
   </head>
   <body>
     <header class="header">header</header>
@@ -106,10 +107,18 @@
       <div class="hero-img"></div>
       <div class="hashtag-block">
         <ul class="hashtag-block-list">
-          <li class="hashtag-block-item"><p>#Sport</p></li>
-          <li class="hashtag-block-item"><p>#Healthy</p></li>
-          <li class="hashtag-block-item"><p>#Woekout</p></li>
-          <li class="hashtag-block-item"><p>#Diet</p></li>
+          <li class="hashtag-block-item">
+            <p class="hashtag-block-item-text">#Sport</p>
+          </li>
+          <li class="hashtag-block-item">
+            <p class="hashtag-block-item-text">#Healthy</p>
+          </li>
+          <li class="hashtag-block-item">
+            <p class="hashtag-block-item-text">#Woekout</p>
+          </li>
+          <li class="hashtag-block-item">
+            <p class="hashtag-block-item-text">#Diet</p>
+          </li>
         </ul>
       </div>
     </div>
@@ -215,16 +224,15 @@
           <p class="footer-form-title">
             Subscribe and learn about new exercises!
           </p>
-          <form class="footer-form">
-            <input
-              class="input input-email footer-input"
-              type="email"
-              placeholder="Email"
-            />
-            <button class="button button-white footer-button" type="submit">
-              Send
-            </button>
-          </form>
+
+          <form id="subscribe-form" class="subscribe-form">
+  <!-- Email input -->
+<div class="form-control">
+  <input class="input input-email" type="email" name="email" placeholder="Email" pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" required>
+</div>
+  <button class="button button-white">Send</button>
+</form>
+
         </div>
       </div>
     </div>
