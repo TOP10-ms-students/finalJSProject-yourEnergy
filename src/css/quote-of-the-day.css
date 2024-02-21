@@ -1,0 +1,22 @@
+.quote-of-the-day {
+  width: 444px;
+  height: 242px;
+  background: var(--primary-color);
+  border-radius: 20px;
+  color: var(--white-color);
+}
+
+.quote-container {
+  padding: 40px;
+}
+
+.quote-title {
+  font-size: 24px;
+}
+.quote-author {
+  font-size: 16px;
+}
+.quote-content {
+  color: var(--text-secondary-color);
+  margin: 10px 0;
+}
