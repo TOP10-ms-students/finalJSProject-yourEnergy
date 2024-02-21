@@ -1,0 +1,106 @@
+.ex-item {
+  list-style: none;
+
+  background-color: var(--white-bg-color);
+  border-radius: 15px;
+
+  padding: 16px;
+  width: 335px;
+  height: 141px;
+}
+
+@media (min-width: 768px) {
+  .ex-item {
+    width: 344px;
+  }
+}
+@media (min-width: 1440px) {
+  .ex-item {
+    width: 442px;
+  }
+}
+
+.ex-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.ex-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ex-item-header-right-row {
+  display: flex;
+  gap: 16px;
+}
+.ex-item-workout {
+  font-size: 12px;
+  padding: 5px 8px;
+  border-radius: 15px;
+  border: 1px solid var(--primary-color);
+}
+.ex-item-rating {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+.ex-item-rating-text {
+  font-size: 12px;
+}
+
+.ex-item-start {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+
+  cursor: pointer;
+}
+.ex-item-start-text {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  .ex-item-start-text {
+    font-size: 16px;
+  }
+}
+.ex-item-start-icon {
+  width: 13px;
+  height: 13px;
+}
+
+.ex-item-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ex-item-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.ex-item-title-ex {
+  font-size: 20px;
+}
+@media (min-width: 768px) {
+  .ex-item-title-ex {
+    font-size: 24px;
+  }
+}
+.ex-item-footer {
+  display: flex;
+
+  gap: 16px;
+  font-size: 12px;
+}
+
+.ex-item-gray-text {
+  color: var(--title-secondary-color);
+}
+.ex-item-calories,
+.ex-item-bodypart,
+.ex-item-target {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
