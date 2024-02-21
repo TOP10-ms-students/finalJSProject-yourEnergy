@@ -51,7 +51,7 @@ fetchApi
   .then(resp => console.log(resp))
   .catch(err => console.log(err));
 
-// getExercisesQuote
+// addSubscription
 const subscriptionBody = {
   email: 'test02@gmail.com',
 };
