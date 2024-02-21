@@ -1,13 +1,29 @@
 .quote-of-the-day {
+  display: flex;
+  gap: 20px;
   width: 444px;
-  height: 242px;
+  height: 100%;
+  padding: 20px;
   background: var(--primary-color);
   border-radius: 20px;
   color: var(--white-color);
 }
+@media screen and (min-width: 768px) {
+  .quote-of-the-day {
+    padding: 40px;
+    gap: 16px;
+  }
+}
 
 .quote-container {
-  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-title-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
 }
 
 .quote-title {
@@ -18,5 +34,12 @@
 }
 .quote-content {
   color: var(--text-secondary-color);
-  margin: 10px 0;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .quote-commas {
+    width: 24px;
+    height: 24px;
+  }
 }
