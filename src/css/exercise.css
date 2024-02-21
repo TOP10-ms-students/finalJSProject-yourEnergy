@@ -97,3 +97,10 @@
 .ex-item-gray-text {
   color: var(--title-secondary-color);
 }
+.ex-item-calories,
+.ex-item-bodypart,
+.ex-item-target {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
