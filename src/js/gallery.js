@@ -1,7 +1,9 @@
 import { fetchApi } from './services/api-service';
+import { showIziToast } from './services/iziToast';
 
 const gallery = document.querySelector('.js-gallery');
-const galleryFilter = document.querySelectorAll('.filter-item');
+const galleryFilterBlock = document.querySelector('.js-filter-block');
+const galleryFilter = document.querySelectorAll('.js-filter');
 
 const filter = galleryFilter[0].textContent.trim();
 const filterParams = {
@@ -14,28 +16,33 @@ getExercisesGallery(filterParams);
 function getExercisesGallery(params) {
   fetchApi
     .getExercisesFilter(params)
-    .then(resp => {
-      gallery.innerHTML = '';
-      const galleryMarkup = resp.results.map(
-        ({ name, filter, imgURL }) =>
-          `<li class="gallery-item">
-            <img src="${imgURL}" alt="${name}" class="card-image">
-            <p>${name}</p>
-            <span>${filter}</span>
-           </li>`
-      );
-      gallery.innerHTML = galleryMarkup.join('');
-    })
-    .catch(err => console.error(err));
+    .then(resp => renderGalleryMarkup(resp.results))
+    .catch(err => showIziToast('An error occurred while loading data'));
 }
 
-galleryFilter.forEach(filterButton => {
-  filterButton.addEventListener('click', () => {
-    galleryFilter.forEach(button => {
-      button.classList.remove('active');
-    });
-    filterButton.classList.add('active');
-    const filterValue = filterButton.textContent.trim();
-    getExercisesGallery({ ...filterParams, filter: filterValue });
+function renderGalleryMarkup(data) {
+  gallery.innerHTML = '';
+  const galleryMarkup = data.map(
+    ({ name, filter, imgURL }) =>
+      `<li class="gallery-item">
+        <img src="${imgURL}" alt="${name}" class="card-image">
+        <p>${name}</p>
+        <span>${filter}</span>
+       </li>`
+  );
+  gallery.innerHTML = galleryMarkup.join('');
+}
+
+galleryFilterBlock.addEventListener('click', handlerClick);
+
+function handlerClick(evt) {
+  if (evt.target === evt.currentTarget) return;
+  galleryFilter.forEach(button => {
+    button.classList.remove('active');
   });
-});
+  if (evt.target.classList.contains('js-filter')) {
+    const filterValue = evt.target.dataset.filter;
+    evt.target.classList.add('active');
+    getExercisesGallery({ ...filterParams, filter: filterValue });
+  }
+}
