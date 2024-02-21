@@ -36,22 +36,8 @@
     flex-shrink: 0;
 }
 
-/* UI component Header Menu 'toggle-bar' */
-.toggle-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 50px;
-    width: fit-content;
-    background-color: var(--primary-color);
-    border-radius: 60px;
-}
-
-.toggle-bar .active {
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-    background-color: var(--white-bg-color);
-}
+/* UI component Header Menu 'toggle-bar'
+comes from /src/css/ui-styles.css */
 
 .socials {
     font-style: normal;
