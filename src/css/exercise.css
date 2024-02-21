@@ -1,4 +1,6 @@
 .ex-item {
+  list-style: none;
+
   background-color: var(--white-color);
   border-radius: 15px;
 
