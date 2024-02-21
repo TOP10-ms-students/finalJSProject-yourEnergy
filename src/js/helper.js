@@ -1,3 +1,5 @@
+import iziToast from 'izitoast';
+
 // iziToast settings
 iziToast.settings({
   timeout: 3000,
