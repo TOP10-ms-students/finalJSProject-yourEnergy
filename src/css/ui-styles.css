@@ -134,7 +134,7 @@
 
 .button-white {
   color: var(--primary-color);
-  border-color: var(--primary-color);
+  border: none;
   background-color: var(--white-color);
 }
 
