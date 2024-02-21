@@ -2,23 +2,79 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/finalJSProject-yourEnergy/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/finalJSProject-yourEnergy/pr-preview/pr-17/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YourEnergy</title>
     
 
     <template id="exercise-group">
-      <p>default text</p>
+      <li
+  class="card-item"
+  style="
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('img/1.png');
+  "
+>
+  <div class="card-text">
+    <div class="card-text-title">Abductor</div>
+    <div class="card-text-subtitle">Muscles</div>
+  </div>
+</li>
 
     </template>
     <template id="exercise">
-      
+      <li class="ex-item">
+  <div class="ex-item-wrapper">
+    <div class="ex-item-header">
+      <div class="ex-item-header-right-row">
+        <div class="ex-item-workout">WORKOUT</div>
+        <div class="ex-item-rating">
+          <div class="ex-item-rating-text">4.0</div>
+          <div class="ex-item-rating-icon">
+            <svg class="icon" width="14" height="14">
+              <use href="/img/icons/icons.svg#icon-star"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="ex-item-start">
+        <div class="ex-item-start-text">Start</div>
+        <div class="ex-item-start-icon">
+          <svg width="13" height="13" viewBox="0 0 13 13">
+            <image xlink:href="/img/icons/arrow.svg" width="13" height="13" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="ex-item-body">
+      <div class="ex-item-title">
+        <div class="ex-item-title-icon">
+          <svg class="icon" width="24" height="24">
+            <use href="/img/icons/icons.svg#icon-run-black"></use>
+          </svg>
+        </div>
+        <div class="ex-item-title-ex">Air bike</div>
+      </div>
+      <div class="ex-item-footer">
+        <div class="ex-item-calories">
+          <span class="ex-item-gray-text">Burned calories: </span>312 / 3 min
+        </div>
+        <div class="ex-item-bodypart">
+          <span class="ex-item-gray-text">Body part: </span>Waist
+        </div>
+        <div class="ex-item-target">
+          <span class="ex-item-gray-text">Target: </span>Abs
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
+
     </template>
-    <script type="module" crossorigin src="/finalJSProject-yourEnergy/commonHelpers2.js"></script>
-    <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/assets/styles-b4c0b08e.js">
-    <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/assets/vendor-ad859c2f.js">
-    <link rel="stylesheet" href="/finalJSProject-yourEnergy/assets/styles-317d4cc7.css">
-    <link rel="stylesheet" href="/finalJSProject-yourEnergy/assets/vendor-e5212ee8.css">
+    <script type="module" crossorigin src="/finalJSProject-yourEnergy/pr-preview/pr-17/commonHelpers2.js"></script>
+    <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/pr-preview/pr-17/assets/styles-409ee82c.js">
+    <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/pr-preview/pr-17/assets/vendor-14123e35.js">
+    <link rel="stylesheet" href="/finalJSProject-yourEnergy/pr-preview/pr-17/assets/styles-a52150b6.css">
   </head>
   <body>
     <header class="header">header</header>
@@ -128,7 +184,7 @@
           <form id="subscribe-form" class="subscribe-form">
   <!-- Email input -->
 <div class="form-control">
-  <input class="input input-email" type="email" name="email" placeholder="Email">
+  <input class="input input-email" type="email" name="email" placeholder="Email" pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" required>
 </div>
   <button class="button button-white">Send</button>
 </form>
