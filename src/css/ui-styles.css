@@ -1,12 +1,17 @@
 /* UI styles */
 .form-control {
   position: relative;
-  width: fit-content;
 }
 
 .button-icon {
   background-color: transparent;
   border: none;
+}
+
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* Inputs */
@@ -30,6 +35,7 @@
 
 .input-email {
   height: 42px;
+  width: 100%;
   color: var(--text-secondary-color);
   border: 1px solid var(--white-color);
   background-color: var(--primary-color);
@@ -134,7 +140,7 @@
 
 .button-white {
   color: var(--primary-color);
-  border: none;
+  border: 1px solid transparent;
   background-color: var(--white-color);
 }
 
