@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/finalJSProject-yourEnergy/pr-preview/pr-13/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YourEnergy</title>
+    
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/finalJSProject-yourEnergy/pr-preview/pr-13/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YourEnergy</title>
-  
-
-  <template id="exercise-group">
-    <li
+    <template id="exercise-group">
+      <li
   class="card-item"
   style="
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -22,9 +21,9 @@
   </div>
 </li>
 
-  </template>
-  <template id="exercise">
-    <li class="ex-item">
+    </template>
+    <template id="exercise">
+      <li class="ex-item">
   <div class="ex-item-wrapper">
     <div class="ex-item-header">
       <div class="ex-item-header-right-row">
@@ -71,121 +70,12 @@
   </div>
 </li>
 
-  </template>
-  <script type="module" crossorigin src="/finalJSProject-yourEnergy/pr-preview/pr-13/commonHelpers2.js"></script>
-  <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/pr-preview/pr-13/assets/styles-5806c189.js">
-  <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/pr-preview/pr-13/assets/vendor-14123e35.js">
-  <link rel="stylesheet" href="/finalJSProject-yourEnergy/pr-preview/pr-13/assets/styles-5225308e.css">
-</head>
-
-<body>
-  <!-- Header -->
-<header class="header">
-    <div class="container header-wrapper">
-        <a class="logo js-logo" href="" aria-label="your energy logo" target="_blank">
-            <svg class="main-logo">
-                <use href="../img/main-logo.svg#main-logo"></use>
-            </svg>
-        </a>
-
-        <!-- UI component Header Menu 'toggle-bar' -->
-        <!-- ENOENT: no such file or directory, open '/home/runner/work/finalJSProject-yourEnergy/finalJSProject-yourEnergy/src/partials/header-toggle-bar.html' -->
-        <div class="toggle-bar">
-            <button class="button active">Home</button>
-            <button class="button">Favorites</button>
-        </div>
-
-        <div class="socials">
-            <ul class="social-icons-ul list">
-                <li class="social-icon-li">
-                    <a class="social-icon-link" href="https://www.facebook.com/goITclub/"
-                        aria-label="Go to our facebook page" target="_blank">
-                        <svg class="social-icon" width="40" height="40">
-                            <use href="../img/icons.svg#icon-facebook"></use>
-                        </svg>
-                    </a>
-                </li>
-                <li class="social-icon-li">
-                    <a class="social-icon-link" href="https://www.instagram.com/goitclub/"
-                        aria-label="Go to our instagram page" target="_blank">
-                        <svg class="social-icon" width="40" height="40">
-                            <use href="../img/icons.svg#icon-instagram"></use>
-                        </svg>
-                    </a>
-                </li>
-                <li class="social-icon-li">
-                    <a class="social-icon-link" href="https://www.youtube.com/c/GoIT"
-                        aria-label="Go to our youtube page" target="_blank">
-                        <svg class="social-icon" width="40" height="40">
-                            <use href="../img/icons.svg#icon-youtube"></use>
-                        </svg>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</header>
-  hero
-
-  <section class="main-section-head">
-  <div class="container">
-    <div class="head-navigation">
-      <h2 class="js-header">Excercises /</h2>
-      <p class="js-second-header">Waist</p>
-    </div>
-    <div class="gallary-nav">
-      <!-- Search input -->
-<div class="form-control">
-  <input class="input" type="text" name="search" placeholder="Search">
-  <div class="control-buttons">
-    <button class="button-icon button-icon-clear">
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12.75 5.25L5.25 12.75M5.25 5.25L12.75 12.75" stroke="#242424" stroke-width="1.5"
-          stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    </button>
-    <button class="button-icon button-icon">
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M8.25 14.25C11.5637 14.25 14.25 11.5637 14.25 8.25C14.25 4.93629 11.5637 2.25 8.25 2.25C4.93629 2.25 2.25 4.93629 2.25 8.25C2.25 11.5637 4.93629 14.25 8.25 14.25Z"
-          stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M15.7498 15.75L12.4873 12.4875" stroke="#242424" stroke-width="1.5" stroke-linecap="round"
-          stroke-linejoin="round" />
-      </svg>
-    </button>
-  </div>
-</div>
-      <ul class="filter-block">
-        <li>
-          <button class="filter-item active js-filter" data-filter="Muscles">
-            Muscles
-          </button>
-        </li>
-        <li>
-          <button class="filter-item js-filter" data-filter="Body parts">
-            Body parts
-          </button>
-        </li>
-        <li>
-          <button class="filter-item js-filter" data-filter="Equipment">
-            Equipment
-          </button>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-
-  <main>
-    sidebar
-
-    <div id="gallery" class="gallery">
-      <div class="content"></div>
-      
-    </div>
-  </main>
-
+    </template>
+    <script type="module" crossorigin src="/finalJSProject-yourEnergy/pr-preview/pr-13/commonHelpers2.js"></script>
+    <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/pr-preview/pr-13/assets/styles-5806c189.js">
+    <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/pr-preview/pr-13/assets/vendor-14123e35.js">
+    <link rel="stylesheet" href="/finalJSProject-yourEnergy/pr-preview/pr-13/assets/styles-5225308e.css">
+  </head>
   <body>
     <!-- Header -->
 <header class="header">
@@ -284,6 +174,16 @@
   </div>
 </section>
 
+
+    <main>
+      sidebar
+
+      <div id="gallery" class="gallery">
+        <div class="content"></div>
+        
+      </div>
+    </main>
+
     <footer class="footer">
   <div class="container">
     <div class="footer-wrapper">
@@ -333,5 +233,4 @@
 
     
   </body>
-
 </html>
