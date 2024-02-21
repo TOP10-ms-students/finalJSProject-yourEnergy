@@ -92,7 +92,7 @@
   color: var(--white-color);
   background-color: var(--primary-color);
   border-radius: 100%;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
   z-index: 10;
 }
@@ -116,7 +116,7 @@
 
 .scroll-top .icon-arrow {
   /* fill: currentColor; */
-  transition: fill .3s ease;
+  transition: fill 0.3s ease;
 }
 
 /* Buttons */
@@ -182,4 +182,58 @@
   color: var(--primary-color);
   border-color: var(--primary-color);
   background-color: var(--white-color);
+}
+
+/* Socials links list */
+.social-icons-ul {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.social-icon-li {
+  width: 44px;
+  height: 44px;
+
+  opacity: 0.8;
+}
+@media (max-width: 767px) {
+  .footer .social-icon-li {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.footer .social-icon-link {
+  border: 1px solid var(--title-color);
+}
+
+.social-icon-link {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid var(--frame-color);
+  cursor: pointer;
+
+  transition: var(--tran-fast);
+}
+
+.social-icon-link svg,
+.social-icon-link svg {
+  fill: currentColor;
+}
+
+.social-icon-link:hover,
+.social-icon-link:focus {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: 1px solid transparent;
+}
+
+.footer .social-icon-link:hover,
+.footer .social-icon-link:focus {
+  background-color: var(--white-color);
+  color: var(--primary-color);
 }
