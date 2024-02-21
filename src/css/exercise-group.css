@@ -1,0 +1,52 @@
+.card-item {
+  list-style: none;
+
+  position: relative;
+  width: 335px;
+  height: 225px;
+
+  background-size: cover;
+  background-position: center;
+  color: var(--white-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  border-radius: 12px;
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.card-text-title {
+  font-size: 20px;
+}
+
+.card-text-subtitle {
+  opacity: 0.4;
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .card-item {
+    width: 225px;
+    height: 225px;
+  }
+
+  .card-text-title {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .card-item {
+    width: 290px;
+    height: 242px;
+  }
+}
