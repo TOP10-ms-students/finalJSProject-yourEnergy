@@ -15,6 +15,16 @@
   }
 }
 
+.quote-icon-wrap {
+  width: 35px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--rating-color);
+  border-radius: 50%;
+}
+
 .quote-container {
   display: flex;
   flex-direction: column;
