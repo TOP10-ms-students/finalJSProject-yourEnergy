@@ -1,0 +1,250 @@
+/* Reset styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: #242424;
+  margin: 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+svg {
+  width: 40px;
+  height: 40px;
+}
+
+/* Hero-styles */
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: #f4f4f4;
+  background-color: var(--main-bg-cl);
+  font-style: normal;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.text {
+  color: #242424;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+/* .section {
+  width: 1440px;
+} */
+/* .container {
+  padding: 0 32px;
+  max-width: 1376px;
+} */
+/* .hero-container {
+  margin-top: 96px;
+  margin-bottom: 64px;
+} */
+/* .hero-text-block {
+  display: flex;
+} */
+/* .icon-sun {
+  position: absolute;
+} */
+/* .hero-right-side {
+  width: 640px;
+} */
+/* .hero-text-block-title {
+  font-size: 74px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 74px;
+  letter-spacing: -2%;
+  text-align: left;
+  width: 640px;
+} */
+/* .hero-text-block-phrase {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -2%;
+  text-align: left;
+  width: 528px;
+} */
+
+/* .hashtag-block-list {
+  display: flex;
+  width: 179px;
+} */
+/* .hashtag-block-item {
+  text-align: center;
+  padding: 4px 16px;
+  border: 1px solid #242424;
+  border-radius: 30px;
+} */
+
+/* .hero-left-side {
+}
+
+/* .hero-img {
+  width: 1376px;
+  height: 350px;
+  background-color: #a1adb9;
+  background-image: url("../img/hero-img/hero-main.jpg");
+  border-radius: 16px;
+  background-position: 0px -153px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 60px;
+} */
+
+/* Media mobile */
+@media screen and (min-width: 0px) and (max-width: 1440px) {
+  .hero-right-side {
+    display: none;
+  }
+  .container {
+    padding: 0 20px;
+  }
+  .hero-container {
+    margin-top: 80px;
+    margin-bottom: 40px;
+    max-width: 335px;
+  }
+
+  .hero-text-block {
+    display: flex;
+    position: relative;
+  }
+
+  .hero-text-block-title {
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 44px;
+    letter-spacing: -2%;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  .icon-sun-svg {
+    background-image: url('../img/sun.svg');
+    position: absolute;
+    top: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero-text-block-part {
+    font-style: italic;
+  }
+  .hero-text-block-phrase {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -2%;
+    text-align: left;
+    max-width: 335px;
+    margin-bottom: 20px;
+  }
+
+  .hero-img {
+    display: block;
+    background-color: #bac0cc;
+    background-image: url('../img/hero-img/hero-main-mob.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: cover;
+    border-radius: 30px;
+    height: 460px;
+    margin-bottom: 20px;
+  }
+
+  .hashtag-block-list {
+    display: flex;
+    justify-content: space-between;
+  }
+  .hashtag-block-item {
+    text-align: center;
+    padding: 4px 12px;
+    border: 1px solid #242424;
+    border-radius: 30px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+  }
+}
+
+@media screen and (min-width: 376px) and (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  .hero-container {
+    margin-top: 100px;
+    margin-bottom: 64px;
+    max-width: 704px;
+  }
+
+  .hero-text-block-title {
+    max-width: 634px;
+    font-size: 74px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 74px;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  .icon-sun-svg {
+    top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+  }
+}
