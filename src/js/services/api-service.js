@@ -3,11 +3,10 @@ const BASE_URL = 'https://your-energy.b.goit.study/api';
 export const fetchData = async (path, method, body) => {
   const headers = { 'Content-type': 'application/json' };
   const init = { headers, method, body };
-  return fetch(path, init)
-    .then(response => response.json())
-    .catch(err => {
-      throw err;
-    });
+  return fetch(path, init).then(response => {
+    if (!response.ok) throw new Error();
+    return response.json();
+  });
 };
 
 export const fetchApi = {
