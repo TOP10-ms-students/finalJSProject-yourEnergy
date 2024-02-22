@@ -68,3 +68,9 @@
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
 }
+
+.noImg {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.5;
+}

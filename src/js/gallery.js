@@ -6,7 +6,6 @@ import { renderPagination } from './services/paginator-service';
 const gallery = document.querySelector('.js-gallery');
 const galleryFilterBlock = document.querySelector('.js-filter-block');
 const galleryFilter = document.querySelectorAll('.js-filter');
-const pagination = document.querySelector('.js-pagination');
 
 const filter = galleryFilter[0].textContent.trim();
 const params = {
@@ -20,7 +19,11 @@ function getExercisesGallery(params) {
   fetchApi
     .getExercisesFilter(params)
     .then(resp => {
-      const { page, totalPages, results } = resp;
+      const { totalPages, results } = resp;
+      const emptyItemsToAdd = params.limit - results.length;
+      for (let i = 0; i < emptyItemsToAdd; i++) {
+        results.push({});
+      }
       renderGalleryMarkup(results);
       renderPagination(totalPages, getExercisesGallery, params);
     })
