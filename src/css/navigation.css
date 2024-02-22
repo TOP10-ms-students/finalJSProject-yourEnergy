@@ -27,7 +27,16 @@
   }
 }
 
-.main-section-head h2 {
+.main-section-head h2.bradcrumbs-active {
+  cursor: pointer;
+}
+
+.main-section-head h2.bradcrumbs-active:hover {
+  text-decoration: underline;
+}
+
+.main-section-head h2,
+.main-section-head .bradcrumbs-inner {
   color: var(--black-text-color);
   font-size: 2rem;
   line-height: 1.5rem;
@@ -36,7 +45,8 @@
 }
 
 @media screen and (min-width: 768px) {
-  .main-section-head h2 {
+  .main-section-head h2,
+  .main-section-head .bradcrumbs-inner {
     font-size: 3.14rem;
     line-height: 1.09rem;
     letter-spacing: -0.88px;

@@ -3,23 +3,26 @@ import { showIziToast } from './services/iziToast';
 import { renderExcercises } from './services/gallery-service';
 import { renderPagination } from './services/paginator-service';
 import { openModalExercise } from './exercise-popup';
+import { removeFromFavorites } from './services/storage-fav-cards';
 
 
 // Constants
 
 const elems = {
     elMainBreadCrumbsState: document.querySelector('.js-bradcrumbs'),
+    elInnerBreadCrumbsState: document.querySelector('.js-bradcrumbs-inner'),
     elFilterBreadcrumb: document.querySelector('.js-bradcrumbs-filter'),
     elFilters: document.querySelector('.js-filter-block'),
     elInput: document.querySelector('.js-search-input'),
     elSearchForm: document.querySelector('.js-search-form'),
-    template: document.querySelector('#exercise')
+    template: document.querySelector('#exercise'),
+    elTrash: document.querySelector('.ex-item-trash-icon'),
 }
 
 export const galaryState = {
     page: '',
     excerciseFilter: '',
-    filter: 'muscles',
+    filter: 'Muscles',
     keyword: '',
 
     init(page) {
@@ -28,7 +31,6 @@ export const galaryState = {
         const elGallery = document.querySelector(galleryClass);
         elGallery.addEventListener('click', handlerGallaryClick);
         if (this.isPageExcercises()) {
-            
             elems.elFilters.addEventListener('click', handlerFilterClick);
             elems.elSearchForm.addEventListener('submit', handlerSearchFormSubmit);
             elems.elSearchForm.addEventListener('reset', handlerResetFilterClick);
@@ -54,10 +56,14 @@ export const galaryState = {
     setFilter(value) {
         this.filter = value;
         this.resetExcerciseFilter();
+        elems.elSearchForm.removeEventListener('submit', handlerSearchFormSubmit);
+        elems.elSearchForm.removeEventListener('reset', handlerResetFilterClick);
     },
 
     setExcerciseFilter(value) {
         this.excerciseFilter = value;
+        elems.elSearchForm.addEventListener('submit', handlerSearchFormSubmit);
+        elems.elSearchForm.addEventListener('reset', handlerResetFilterClick);
     },
 
     resetExcerciseFilter() {
@@ -81,17 +87,39 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+export const resetState = () => {
+    galaryState.resetExcerciseFilter();
+    galaryState.filter = 'Muscles';
+    renderNavigation();
+
+    const filters = elems.elFilters.querySelectorAll('.js-filter');
+    filters.forEach(filter => {
+        filter.classList.remove('active');
+        if (filter.dataset.filter === 'Muscles') {
+            filter.classList.add('active');
+        }
+    });
+
+}
+
 function renderNavigation() {
-    elems.elMainBreadCrumbsState.textContent = `${galaryState.page} ${galaryState.excerciseFilter ? ' /' : ''}`;
     elems.elFilterBreadcrumb.textContent = galaryState.excerciseFilter ? capitalizeFirstLetter(galaryState.excerciseFilter) : '';
-    if (galaryState.isPageExcercises) {
-        if (galaryState.isFilledExcercises) {
+    if (galaryState.isPageExcercises()) {
+        if (galaryState.isFilledExcercises()) {
             elems.elSearchForm.hidden = false;
+            elems.elInnerBreadCrumbsState.hidden = false;
+            if (!elems.elMainBreadCrumbsState.classList.contains('bradcrumbs-active')) {
+                elems.elMainBreadCrumbsState.classList.add('bradcrumbs-active')
+                elems.elMainBreadCrumbsState.addEventListener('click', resetState);
+            }
         }
         else {
             elems.elSearchForm.hidden = true;
+            elems.elInnerBreadCrumbsState.hidden = true;
+            elems.elMainBreadCrumbsState.classList.remove('bradcrumbs-active')
+            elems.elMainBreadCrumbsState.removeEventListener('click', resetState);
         }
-    } else if (galaryState.isPageFavorites) {
+    } else if (galaryState.isPageFavorites()) {
         elems.elSearchForm.hidden = true;
         elems.elFilters.hidden = true;
     }
@@ -132,6 +160,12 @@ function handlerGallaryClick(evt) {
             const id = galleryItem.id;
             openModalExercise(id);
         }
+
+        const trash = target.closest('.ex-item-trash-icon');
+        if (trash) {
+            const galleryItem = target.closest('.js-fav-item');
+            removeFromFavorites({"_id": galleryItem.id});
+        }
     }
 }
 
@@ -150,7 +184,8 @@ function handlerSearchFormSubmit(evt) {
 }
 
 function handlerResetFilterClick() {
-    galaryState.resetExcerciseFilter();
+    galaryState.keyword = '';
+    getExercisesGallery();
     renderNavigation();
 }
 
