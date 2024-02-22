@@ -46,7 +46,7 @@ main {
   .fav-gallery {
     padding-bottom: 64px;
     max-height: 490px;
-    width: 826px;
+    width: 852px;
     overflow-y: auto;
   }
 }
