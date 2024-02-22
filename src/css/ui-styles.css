@@ -80,44 +80,6 @@
 }
 
 /* Scroll to top button */
-.scroll-top {
-  position: fixed;
-  bottom: 50px;
-  right: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  width: 100px;
-  color: var(--white-color);
-  background-color: var(--primary-color);
-  border-radius: 100%;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.scroll-top:hover,
-.scroll-top:focus {
-  color: var(--primary-color);
-  background-color: var(--white-color);
-}
-
-.scroll-top.active {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-}
-.scroll-top:not(.active) {
-  /* visibility: hidden;
-  opacity: 0;
-  pointer-events: none; */
-}
-
-.scroll-top .icon-arrow {
-  /* fill: currentColor; */
-  transition: fill 0.3s ease;
-}
 
 /* Buttons */
 .button {
@@ -188,7 +150,7 @@
 .scroll-top {
   position: fixed;
   bottom: 20px;
-  right: 30px;
+  right: 20px;
   z-index: 99;
   transform: translateY(110%);
   opacity: 0;
@@ -211,6 +173,15 @@
 }
 @media (min-width: 768px) {
   .scroll-top {
+    bottom: 40px;
+    right: 40px;
+    width: 80px;
+    height: 80px;
+  }
+}
+@media (min-width: 1440px) {
+  .scroll-top {
+    right: 60px;
     width: 100px;
     height: 100px;
   }
@@ -232,7 +203,7 @@
 }
 @media (min-width: 768px) {
   .scroll-icon {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
   }
 }
