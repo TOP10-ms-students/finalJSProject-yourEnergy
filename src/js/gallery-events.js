@@ -91,7 +91,9 @@ function handlerGallaryClick(evt) {
     
     if (galaryState.isFilledCroupExcercises()) {
         const galleryItem = target.closest('.card-item');
-        if (!galleryItem) return;
+        if (!galleryItem) {
+            return;
+        };
         galaryState.setExcerciseFilter(galleryItem.dataset.name)
         getExercisesGallery();
     }
