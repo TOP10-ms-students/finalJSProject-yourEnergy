@@ -1,23 +1,29 @@
 import { fetchApi } from './services/api-service';
 import { showIziToast } from './services/iziToast';
 import { galleryTemplate } from './services/gallery-service';
+import { renderPagination } from './services/paginator-service';
 
 const gallery = document.querySelector('.js-gallery');
 const galleryFilterBlock = document.querySelector('.js-filter-block');
 const galleryFilter = document.querySelectorAll('.js-filter');
+const pagination = document.querySelector('.js-pagination');
 
 const filter = galleryFilter[0].textContent.trim();
-const filterParams = {
+const params = {
   page: 1,
-  limit: 9,
+  limit: window.innerWidth < 768 ? 9 : 12,
   filter,
 };
-getExercisesGallery(filterParams);
+getExercisesGallery(params);
 
 function getExercisesGallery(params) {
   fetchApi
     .getExercisesFilter(params)
-    .then(resp => renderGalleryMarkup(resp.results))
+    .then(resp => {
+      const { page, totalPages, results } = resp;
+      renderGalleryMarkup(results);
+      renderPagination(totalPages, getExercisesGallery, params);
+    })
     .catch(err => showIziToast(err.message));
 }
 
@@ -36,6 +42,6 @@ function handlerClick(evt) {
   if (evt.target.classList.contains('js-filter')) {
     const filterValue = evt.target.dataset.filter;
     evt.target.classList.add('active');
-    getExercisesGallery({ ...filterParams, filter: filterValue });
+    getExercisesGallery({ ...params, filter: filterValue });
   }
 }
