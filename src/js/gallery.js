@@ -1,6 +1,7 @@
 import { fetchApi } from './services/api-service';
 import { showIziToast } from './services/iziToast';
 import { galleryTemplate } from './services/gallery-service';
+import { setSpinner } from './spiner';
 
 const gallery = document.querySelector('.js-gallery');
 const galleryFilterBlock = document.querySelector('.js-filter-block');
@@ -15,10 +16,12 @@ const filterParams = {
 getExercisesGallery(filterParams);
 
 function getExercisesGallery(params) {
+  setSpinner(true);
   fetchApi
     .getExercisesFilter(params)
     .then(resp => renderGalleryMarkup(resp.results))
-    .catch(err => showIziToast(err.message));
+    .catch(err => showIziToast(err.message))
+    .finally(() => setSpinner(false));
 }
 
 function renderGalleryMarkup(data) {
