@@ -1,0 +1,48 @@
+.filter-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+.filter-block > li {
+  margin-right: 20px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.gallery-filter li.active::after {
+  content: '';
+  display: block;
+  margin-top: 4px;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--primary-color);
+}
+
+.gallery-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gallery-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 335px;
+  height: 225px;
+  border: 1px solid var(--primary-color);
+  border-radius: 12px;
+}
+.gallery-item > img {
+  width: 70%;
+  height: 70%;
+}
+.gallery-item > p {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
