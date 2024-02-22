@@ -2,15 +2,38 @@ import { fetchApi } from './services/api-service';
 import { showIziToast } from './services/iziToast';
 import { renderExcercises } from './services/gallery-service';
 import { renderPagination } from './services/paginator-service';
+import { openModalExercise } from './exercise-popup';
 
 
 // Constants
+
+const elems = {
+    elMainBreadCrumbsState: document.querySelector('.js-bradcrumbs'),
+    elFilterBreadcrumb: document.querySelector('.js-bradcrumbs-filter'),
+    elFilters: document.querySelector('.js-filter-block'),
+    elInput: document.querySelector('.js-search-input'),
+    elSearchForm: document.querySelector('.js-search-form'),
+    template: document.querySelector('#exercise')
+}
 
 export const galaryState = {
     page: '',
     excerciseFilter: '',
     filter: 'muscles',
     keyword: '',
+
+    init(page) {
+        this.page = page;
+        const galleryClass = this.isPageExcercises() ? '.js-gallery' : '.js-fav-gallery';
+        const elGallery = document.querySelector(galleryClass);
+        elGallery.addEventListener('click', handlerGallaryClick);
+        if (this.isPageExcercises()) {
+            
+            elems.elFilters.addEventListener('click', handlerFilterClick);
+            elems.elSearchForm.addEventListener('submit', handlerSearchFormSubmit);
+            elems.elSearchForm.addEventListener('reset', handlerResetFilterClick);
+        }
+    },
 
     isPageExcercises() {
         return this.page === pageExcercises;
@@ -45,16 +68,6 @@ export const galaryState = {
 
 export const pageExcercises = 'Excercises';
 export const pageFavorites = 'Favorites';
-
-const elems = {
-    elGallery: document.querySelector('.js-gallery'),
-    elMainBreadCrumbsState: document.querySelector('.js-bradcrumbs'),
-    elFilterBreadcrumb: document.querySelector('.js-bradcrumbs-filter'),
-    elFilters: document.querySelector('.js-filter-block'),
-    elInput: document.querySelector('.js-search-input'),
-    elSearchForm: document.querySelector('.js-search-form'),
-    template: document.querySelector('#exercise')
-}
 
 const defaultParams = {
   page: 1,
@@ -105,10 +118,21 @@ function handlerGallaryClick(evt) {
         if (buttonStart) {
             const galleryItem = target.closest('.ex-item');
             const id = galleryItem.dataset.id;
-            // function for modal window open
+            openModalExercise(id);
         }
     }
-    renderNavigation();
+
+    if (galaryState.isPageExcercises()) {
+        renderNavigation();
+    }
+    else if (galaryState.isPageFavorites()) {
+        const buttonStart = target.closest('.ex-item-start');
+        if (buttonStart) {
+            const galleryItem = target.closest('.js-fav-item');
+            const id = galleryItem.id;
+            openModalExercise(id);
+        }
+    }
 }
 
 function handlerFilterClick(evt) {
@@ -132,10 +156,6 @@ function handlerResetFilterClick() {
 
 // Listeners
 
-elems.elGallery.addEventListener('click', handlerGallaryClick);
-elems.elFilters.addEventListener('click', handlerFilterClick);
-elems.elSearchForm.addEventListener('submit', handlerSearchFormSubmit);
-elems.elSearchForm.addEventListener('reset', handlerResetFilterClick);
 
 // Render Excercises Gallery
 function getExercisesGallery() {

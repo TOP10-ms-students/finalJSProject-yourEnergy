@@ -8,4 +8,4 @@ import './scroll-top';
 import './exercise-popup';
 import { galaryState, pageExcercises } from './gallery-events';
 
-galaryState.page = pageExcercises;
+galaryState.init(pageExcercises);
