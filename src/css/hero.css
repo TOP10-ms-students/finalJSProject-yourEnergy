@@ -73,6 +73,14 @@
   letter-spacing: 0px;
 }
 
+@media screen and (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .hero-img {
+    background-image: url('../img/hero-img/hero-main-mob@2x.jpg');
+  }
+}
+
 @media screen and (min-width: 768px) {
   .hero-container {
     margin-top: 100px;
@@ -115,6 +123,14 @@
   .hashtag-block-item-text {
     font-size: 18px;
     line-height: 24px;
+  }
+}
+
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+  (min-width: 768px) and (min-resolution: 192dpi),
+  (min-width: 768px) and (min-resolution: 2dppx) {
+  .hero-img {
+    background-image: url('../img/hero-img/hero-main-tablet@2x.jpg');
   }
 }
 
@@ -191,5 +207,16 @@
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 60px;
+  }
+}
+
+@media screen and (min-width: 1440px) and (min-device-pixel-ratio: 2),
+  (min-width: 1440px) and (min-resolution: 192dpi),
+  (min-width: 1440px) and (min-resolution: 2dppx) {
+  .hero-img {
+    background-image: url('../img/hero-img/hero-main@2x.jpg');
+  }
+  .hero-right-side {
+    background-image: url('../img/hero-img/preview-exercise@2x.jpg');
   }
 }
