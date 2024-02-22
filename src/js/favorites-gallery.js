@@ -1,10 +1,11 @@
 initFavGallery();
 
 function initFavGallery() {
-  const template = document.querySelector('#exercise-fav');
-  const favGalleryEl = document.querySelector('.js-fav-gallery');
-  const emptyFavEl = document.querySelector('.js-no-fav-workouts');
-  const workouts = JSON.parse(localStorage.getItem('favWorkouts'));
+  const template = document.querySelector('#exercise-fav'),
+    favGalleryEl = document.querySelector('.js-fav-gallery'),
+    emptyFavEl = document.querySelector('.js-no-fav-workouts'),
+    workouts = JSON.parse(localStorage.getItem('favWorkouts')),
+    fragment = document.createDocumentFragment();
 
   if (!workouts?.length) {
     emptyFavEl.classList.remove('hidden');
@@ -28,6 +29,8 @@ function initFavGallery() {
 
     itemEl.setAttribute('id', _id);
 
-    favGalleryEl.appendChild(clone);
+    fragment.appendChild(clone);
   }
+
+  favGalleryEl.appendChild(fragment);
 }
