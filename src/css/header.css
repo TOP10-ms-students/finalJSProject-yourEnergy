@@ -1,53 +1,155 @@
 /* Header */
-@media only screen and (min-width: 768px) {
-  .header {
-    padding-top: 24px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .header {
-    padding-bottom: 110px;
-  }
-}
-
 .header-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
 }
 
 @media only screen and (min-width: 768px) {
-  .header-wrapper {
-    padding: 0 30px;
-  }
+    .header-wrapper {
+        padding-top: 24px;
+    }
 }
 
 @media only screen and (min-width: 1440px) {
-  .header-wrapper {
-    padding: 32px 32px 0 32px;
-  }
+    .header-wrapper {
+        padding-top: 32px;
+    }
 }
 
-.logo {
-  width: 132px;
-  height: 24px;
-  flex-shrink: 0;
+.main-logo {
+    width: 132px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .socials {
+        display: none;
+    }
+}
+
+.socials {
+    font-style: normal;
+}
+
+
+
+@media only screen and (min-width: 768px) {
+    .menu-btn {
+        display: none;
+    }
+}
+
+/* mobile burger menu */
+.menu-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: stroke var(--tran-fast);
+}
+
+.on-hover:hover,
+.on-hover:focus {
+    transform: scale(1.1);
+    transition: stroke var(--tran-fast);
+}
+
+/* mobile backdrop */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    opacity: 1;
+    background-color: var(--title-secondary-color);
+    transition: opacity var(--tran-fast), visibility var(--tran-fast);
+}
+
+.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.menu-toggle {
+    background: transparent;
+}
+
+@media only screen and (min-width: 768px) {
+    .menu-toggle {
+        display: none;
+    }
+}
+
+.menu-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 210px;
+    height: 812px;
+    padding-top: 280px;
+    background-color: var(--primary-color);
+    z-index: 999;
+    transform: translateX(100%);
+    transition: transform 250ms ease-in-out;
+}
+
+.menu-container.is-open {
+    transform: translateX(0);
+}
+
+.menu-container,
+.menu-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.menu-wrapper {
+    margin-bottom: 20px;
+}
+
+.menu-main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.menu-li>a {
+    color: var(--white-color);
+    font-family: var(--primary-font-family);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3em;
+    transition: color var(--tran-fast);
+}
+
+.social-icon-li:hover,
+.social-icon-li:focus {
+    border: 1px solid var(--white-color);
+}
+
+.social-icon-onblack {
+    fill: var(--white-color);
+    opacity: 0.8;
+    border-radius: 10px;
+    padding: 8px;
+    border: 1px solid var(--rating-color);
+    transition: fill var(--tran-fast);
 }
 
 /* UI component Header Menu 'toggle-bar'
-comes from /src/css/ui-styles.css */
-
-.socials {
-  font-style: normal;
-  display: none;
-}
-
-@media only screen and (min-width: 768px) {
-  .socials {
-    display: block;
-  }
-}
-
-/* UI component Header .social-icons-ul
 comes from /src/css/ui-styles.css */

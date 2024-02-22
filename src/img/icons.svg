@@ -1,5 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
   <defs>
+     <symbol id="icon-burger" viewBox="0 0 32 32">
+<path stroke="#242424" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M28 13.333H4M28 8H4M28 18.667H4M28 24H4"/>
+    </symbol>
+     <symbol id="icon-close" viewBox="0 0 32 32">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke="#F4F4F4" stroke-width="3" d="M24 8 8 24M8 8l16 16"/>
+       </symbol>
     <symbol id="icon-burger" viewBox="0 0 46 32">
       <path stroke-linecap="round" stroke-width="3.429" d="M8.671 5.074H44M8.671 24.468H44M19.602 14.771H44" />
     </symbol>

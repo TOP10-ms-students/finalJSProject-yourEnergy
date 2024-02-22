@@ -62,15 +62,18 @@
   gap: 6px;
   transform: translateY(-50%);
 }
+
 .button-icon {
   padding: 0;
   height: 18px;
   width: 18px;
   color: var(--primary-color);
 }
+
 .button-icon svg {
   fill: none;
 }
+
 .button-icon-clear {
   /* display: none; */
   padding: 0;
@@ -80,6 +83,45 @@
 }
 
 /* Scroll to top button */
+.scroll-top {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  border-radius: 100%;
+  transition: all .3s ease;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.scroll-top:hover,
+.scroll-top:focus {
+  color: var(--primary-color);
+  background-color: var(--white-color);
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scroll-top:not(.active) {
+  /* visibility: hidden;
+  opacity: 0;
+  pointer-events: none; */
+}
+
+.scroll-top .icon-arrow {
+  /* fill: currentColor; */
+  transition: fill .3s ease;
+}
 
 /* Buttons */
 .button {
@@ -244,6 +286,7 @@
   transition: background-color 200ms ease-out, color 200ms ease-out,
     opacity 260ms ease-in, transform 330ms ease-in-out;
 }
+
 @media (min-width: 768px) {
   .scroll-top {
     bottom: 40px;
@@ -252,6 +295,7 @@
     height: 80px;
   }
 }
+
 @media (min-width: 1440px) {
   .scroll-top {
     right: 60px;
@@ -274,9 +318,16 @@
   fill: currentColor;
   opacity: 0.9;
 }
+
 @media (min-width: 768px) {
   .scroll-icon {
     width: 32px;
     height: 32px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .toggle-bar {
+    display: none;
   }
 }
