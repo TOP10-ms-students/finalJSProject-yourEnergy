@@ -3,7 +3,7 @@ export function galleryTemplate(data) {
   const template = document.querySelector('#exercise-group');
   const fragment = document.createDocumentFragment();
 
-  data.forEach(({ name, filter, imgURL }) => {
+  data.forEach(({ name = '', filter = '', imgURL = '' }) => {
     const bgImg = imgURL
       ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${imgURL})`
       : `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("./img/no-img.jpg")`;
