@@ -82,47 +82,6 @@
   color: var(--primary-color);
 }
 
-/* Scroll to top button */
-.scroll-top {
-  position: fixed;
-  bottom: 50px;
-  right: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  width: 100px;
-  color: var(--white-color);
-  background-color: var(--primary-color);
-  border-radius: 100%;
-  transition: all .3s ease;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.scroll-top:hover,
-.scroll-top:focus {
-  color: var(--primary-color);
-  background-color: var(--white-color);
-}
-
-.scroll-top.active {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.scroll-top:not(.active) {
-  /* visibility: hidden;
-  opacity: 0;
-  pointer-events: none; */
-}
-
-.scroll-top .icon-arrow {
-  /* fill: currentColor; */
-  transition: fill .3s ease;
-}
-
 /* Buttons */
 .button {
   padding: 0 24px;
@@ -276,7 +235,7 @@
 
   width: 40px;
   height: 40px;
-  border: none;
+  border: 1px solid var(--white-color);
   outline: none;
   background-color: var(--primary-color);
   color: var(--white-color);
