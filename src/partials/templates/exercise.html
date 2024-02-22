@@ -4,7 +4,7 @@
       <div class="ex-item-header-right-row">
         <div class="ex-item-workout">WORKOUT</div>
         <div class="ex-item-rating">
-          <div class="ex-item-rating-text">4.0</div>
+          <div class="ex-item-rating-text js-rating">4.0</div>
           <div class="ex-item-rating-icon">
             <svg class="icon" width="14" height="14">
               <use href="/img/icons/icons.svg#icon-star"></use>
@@ -28,17 +28,20 @@
             <use href="/img/icons/icons.svg#icon-run-black"></use>
           </svg>
         </div>
-        <div class="ex-item-title-ex">Air bike</div>
+        <div class="ex-item-title-ex js-title"></div>
       </div>
       <div class="ex-item-footer">
         <div class="ex-item-calories">
-          <span class="ex-item-gray-text">Burned calories: </span>312 / 3 min
+          <span class="ex-item-gray-text">Burned calories: </span>
+          <span class="js-burned-calories"></span> / 3 min
         </div>
         <div class="ex-item-bodypart">
-          <span class="ex-item-gray-text">Body part: </span>Waist
+          <span class="ex-item-gray-text js-filter"></span>
+          <span class="js-filter-value"></span>
         </div>
         <div class="ex-item-target">
-          <span class="ex-item-gray-text">Target: </span>Abs
+          <span class="ex-item-gray-text">Target: </span>
+          <span class="js-target"></span>
         </div>
       </div>
     </div>
