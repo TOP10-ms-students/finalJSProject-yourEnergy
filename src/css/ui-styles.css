@@ -62,15 +62,18 @@
   gap: 6px;
   transform: translateY(-50%);
 }
+
 .button-icon {
   padding: 0;
   height: 18px;
   width: 18px;
   color: var(--primary-color);
 }
+
 .button-icon svg {
   fill: none;
 }
+
 .button-icon-clear {
   /* display: none; */
   padding: 0;
@@ -108,6 +111,7 @@
   opacity: 1;
   pointer-events: auto;
 }
+
 .scroll-top:not(.active) {
   /* visibility: hidden;
   opacity: 0;
@@ -180,4 +184,10 @@
   color: var(--primary-color);
   border-color: var(--primary-color);
   background-color: var(--white-color);
+}
+
+@media only screen and (max-width: 767px) {
+  .toggle-bar {
+    display: none;
+  }
 }
