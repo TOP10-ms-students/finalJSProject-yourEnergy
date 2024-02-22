@@ -82,7 +82,8 @@
   gap: 16px;
 }
 .ex-item-title-icon {
-  width: 26px;
+  flex-shrink: 0;
+  width: 24px;
   height: 24px;
   padding: 6px;
   border-radius: 50%;

@@ -1,13 +1,12 @@
 .quote-of-the-day {
   display: flex;
   gap: 20px;
-  width: 444px;
-  /* height: 100%; */
+  padding: 20px;
   padding: 20px;
   background: var(--primary-color);
   border-radius: 20px;
   color: var(--white-color);
-  margin-right: 32px;
+
 }
 @media screen and (min-width: 768px) {
   .quote-of-the-day {
@@ -17,7 +16,8 @@
 }
 
 .quote-icon-wrap {
-  width: 38px;
+  flex-shrink: 0;
+  width: 32px;
   height: 32px;
   padding: 6px;
   background-color: var(--rating-color);
@@ -27,6 +27,7 @@
 .quote-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .quote-title-container {
