@@ -34,21 +34,34 @@
     font-style: normal;
 }
 
-.social-icons-ul,
-.social-icons-list {
+.social-icons-ul {
     display: flex;
     justify-content: center;
     gap: 12px;
-    margin-left: auto;
+}
+
+.social-icon-li {
+    width: 44px;
+    height: 44px;
+}
+
+@media (max-width: 767px) {
+    .header .social-icon-li {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 .social-icon-link {
     display: block;
-    padding: 6px;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
     color: rgba(36, 36, 36, 0.8);
     border: 1px solid var(--frame-color);
     border-radius: 10px;
-    transition: color var(--tran-fast), background-color var(--tran-fast);
+    cursor: pointer;
+    transition: color var(--tran-fast);
 }
 
 .social-icon {
@@ -59,6 +72,7 @@
 .social-icon-link:focus {
     color: var(--white-color);
     background-color: var(--icon-bg-color);
+    border: 1px solid transparent;
 }
 
 @media only screen and (min-width: 768px) {
@@ -85,11 +99,14 @@
 .backdrop {
     position: fixed;
     top: 0;
+    bottom: 0;
     left: 0;
+    right: 0;
+    opacity: 1;
     width: 100%;
     height: 100%;
-    z-index: 999;
-    opacity: 1;
+    z-index: 9999;
+    overflow: hidden;
     background-color: var(--title-secondary-color);
     transition: opacity var(--tran-fast), visibility var(--tran-fast);
 }
@@ -118,9 +135,9 @@
     height: 812px;
     padding-top: 280px;
     background-color: var(--primary-color);
-    z-index: 999;
+    z-index: 10000;
     transform: translateX(100%);
-    transition: transform 250ms ease-in-out;
+    transition: transform var(--tran-fast);
 }
 
 .menu-container.is-open {
@@ -154,17 +171,11 @@
 
 .menu-li>a {
     color: var(--white-color);
-    font-family: var(--primary-font-family);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 1.3em;
     transition: color var(--tran-fast);
-}
-
-.social-icon-li:hover,
-.social-icon-li:focus {
-    border: 1px solid var(--white-color);
 }
 
 .social-icon-onblack {
@@ -178,3 +189,9 @@
 
 /* UI component Header Menu 'toggle-bar'
 comes from /src/css/ui-styles.css */
+/* 
+.footer .social-icon-link:hover,
+.footer .social-icon-link:focus {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+} */
