@@ -57,7 +57,8 @@ function renderNavigation() {
 function handlerGallaryClick(evt) {
     if (evt.target === evt.currentTarget) return;
     
-    const galleryItem = evt.target.closest('.gallery-item');
+    const galleryItem = evt.target.closest('.card-item');
+    if (!galleryItem) return;
     const excerciseFilter = galleryItem.dataset.name;
     galaryState.excerciseFilter = excerciseFilter;
     renderNavigation();
@@ -118,10 +119,10 @@ function renderExcercises(data) {
         const clone = elems.template.content.cloneNode(true);
         
         const elName = clone.querySelector('.ex-item-title-ex');
-        name.textContent = name;
+        elName.textContent = name;
 
         const elRating = clone.querySelector('.ex-item-rating-text');
-        rating.textContent = rating;
+        elRating.textContent = rating;
 
         elems.elGallery.appendChild(clone);
     }
