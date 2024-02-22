@@ -6,7 +6,7 @@ export function galleryTemplate(data) {
   data.forEach(({ name, filter, imgURL }) => {
     const bgImg = imgURL
       ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${imgURL})`
-      : `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../img/no-img.jpg")`;
+      : `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("./../../img/no-img.jpg")`;
     const clone = template.content.cloneNode(true);
     const cardItem = clone.querySelector('.card-item');
     cardItem.setAttribute('data-name', name);
