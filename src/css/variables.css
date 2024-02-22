@@ -1,6 +1,6 @@
 :root {
   --primary-color: #242424;
-  --white-color: #F4F4F4;
+  --white-color: #f4f4f4;
   --black-text-color: #242424;
   --text-secondary-color: rgba(244, 244, 244, 0.6);
   --title-color: rgba(244, 244, 244, 0.4);
@@ -14,4 +14,5 @@
   --tran-fast: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   --primary-font-family: 'DM Sans', Helvetica, Arial, sans-serif;
+  --tran-fast: 200ms ease-out;
 }

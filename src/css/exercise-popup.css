@@ -8,14 +8,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1;
     width: 100%;
     height: 100%;
     background: var(--title-secondary-color);
-}
-
-.hidden {
-    display: none;
 }
 
 .modal-exercise {
@@ -90,6 +85,10 @@
     font-weight: 500;
     line-height: 1;
     color: var(--white-color);
+}
+
+.modal-exercise__name::first-letter {
+    text-transform: uppercase;
 }
 
 @media screen and (min-width: 768px) {
@@ -183,6 +182,10 @@
     font-weight: 500;
     line-height: 1.28;
     color: var(--white-color);
+}
+
+.modal-exercise__text::first-letter {
+    text-transform: uppercase;
 }
 
 .modal-exercise__description {

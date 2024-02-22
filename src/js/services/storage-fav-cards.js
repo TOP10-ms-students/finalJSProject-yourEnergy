@@ -1,4 +1,4 @@
-function addToFavorites(obj) {
+export function addToFavorites(obj) {
   let favorites = JSON.parse(localStorage.getItem('favWorkouts')) || [];
   const isDuplicate = favorites.some(item => item._id === obj._id);
 
@@ -10,7 +10,7 @@ function addToFavorites(obj) {
   localStorage.setItem('favWorkouts', JSON.stringify(favorites));
 }
 
-function removeFromFavorites(obj) {
+export function removeFromFavorites(obj) {
   let favorites = JSON.parse(localStorage.getItem('favWorkouts')) || [];
   let index = favorites.findIndex(item => item._id === obj._id);
 

@@ -9,6 +9,36 @@ export const galaryState = {
     excerciseFilter: '',
     filter: 'muscles',
     keyword: '',
+
+    isPageExcercises() {
+        return this.page === pageExcercises;
+    },
+
+    isPageFavorites() {
+        return this.page === pageFavorites;
+    },
+
+    isFilledCroupExcercises() {
+        return !!(this.page === pageExcercises && !this.excerciseFilter);
+    },
+
+    isFilledExcercises() {
+        return !!(this.page === pageExcercises && this.excerciseFilter);
+    },
+
+    setFilter(value) {
+        this.filter = value;
+        this.resetExcerciseFilter();
+    },
+
+    setExcerciseFilter(value) {
+        this.excerciseFilter = value;
+    },
+
+    resetExcerciseFilter() {
+        this.excerciseFilter = '';
+        this.keyword = '';
+    }
 }
 
 export const pageExcercises = 'Excercises';
@@ -39,14 +69,14 @@ function capitalizeFirstLetter(string) {
 function renderNavigation() {
     elems.elMainBreadCrumbsState.textContent = `${galaryState.page} ${galaryState.excerciseFilter ? ' /' : ''}`;
     elems.elFilterBreadcrumb.textContent = galaryState.excerciseFilter ? capitalizeFirstLetter(galaryState.excerciseFilter) : '';
-    if (galaryState.page === pageExcercises) {
-        if (galaryState.excerciseFilter) {
+    if (galaryState.isPageExcercises) {
+        if (galaryState.isFilledExcercises) {
             elems.elSearchForm.hidden = false;
         }
         else {
             elems.elSearchForm.hidden = true;
         }
-    } else if (galaryState.page === pageFavorites) {
+    } else if (galaryState.isPageFavorites) {
         elems.elSearchForm.hidden = true;
         elems.elFilters.hidden = true;
     }
@@ -56,75 +86,107 @@ function renderNavigation() {
 
 function handlerGallaryClick(evt) {
     if (evt.target === evt.currentTarget) return;
-    
-    const galleryItem = evt.target.closest('.card-item');
-    if (!galleryItem) return;
-    const excerciseFilter = galleryItem.dataset.name;
-    galaryState.excerciseFilter = excerciseFilter;
-    renderNavigation();
 
-    if (galaryState.page === pageExcercises) {
-        getExercisesGallery()
+    const target = evt.target;
+    
+    if (galaryState.isFilledCroupExcercises()) {
+        const galleryItem = target.closest('.card-item');
+        if (!galleryItem) {
+            return;
+        };
+        galaryState.setExcerciseFilter(galleryItem.dataset.name)
+        getExercisesGallery();
     }
+
+    else if (galaryState.isFilledExcercises()) {
+        const buttonStart = target.closest('.ex-item-start');
+        if (buttonStart) {
+            const galleryItem = target.closest('.ex-item');
+            const id = galleryItem.dataset.id;
+            // function for modal window open
+        }
+    }
+    renderNavigation();
 }
 
 function handlerFilterClick(evt) {
     if (evt.target === evt.currentTarget) return;
     if (evt.target.classList.contains('js-filter')) {
-        galaryState.filter = evt.target.dataset.filter;
-        galaryState.excerciseFilter = '';
+        galaryState.setFilter(evt.target.dataset.filter);
         renderNavigation();
     }
+}
+
+function handlerSearchFormSubmit(evt) {
+    evt.preventDefault();
+    galaryState.keyword = evt.target.elements.search.value;
+    getExercisesGallery();
+}
+
+function handlerResetFilterClick() {
+    galaryState.resetExcerciseFilter();
+    renderNavigation();
 }
 
 // Listeners
 
 elems.elGallery.addEventListener('click', handlerGallaryClick);
 elems.elFilters.addEventListener('click', handlerFilterClick);
+elems.elSearchForm.addEventListener('submit', handlerSearchFormSubmit);
+elems.elSearchForm.addEventListener('reset', handlerResetFilterClick);
 
 // Render Excercises Gallery
 function getExercisesGallery() {
 
     const params = { ...defaultParams };
-    if (galaryState.page === pageExcercises) {
-        if (galaryState.excerciseFilter) {
-            if (galaryState.filter == 'Muscles') {
-                params.muscles = galaryState.excerciseFilter;
-            } else if (galaryState.filter == 'Equipment') {
-                params.equipment = galaryState.excerciseFilter;
-            } else if (galaryState.filter == 'Body parts') {
-                params.bodypart = galaryState.excerciseFilter;
-            }
-
-            if (galaryState.keyword) {
-                params.keyword = galaryState.keyword;
-            }
-            fetchApi
-            .getExercises(params)
-            .then(resp => renderExcercises(resp.results))
-            .catch(err => showIziToast(err.message));
-        }
-        else {
-            // function for modal window open
-        }
+    if (galaryState.filter == 'Muscles') {
+        params.muscles = galaryState.excerciseFilter;
+    } else if (galaryState.filter == 'Equipment') {
+        params.equipment = galaryState.excerciseFilter;
+    } else if (galaryState.filter == 'Body parts') {
+        params.bodypart = galaryState.excerciseFilter;
     }
+
+    if (galaryState.keyword) {
+        params.keyword = galaryState.keyword;
+    }
+    fetchApi
+    .getExercises(params)
+    .then(resp => renderExcercises(resp.results))
+    .catch(err => showIziToast(err.message));
 }
 
 function renderExcercises(data) {
-    // TODO: 
-    // dirty rander. develop next time TODO
     elems.elGallery.innerHTML = '';
+    const fragment = document.createDocumentFragment();
     for (let i = 0; i < data.length; i++) {
-        const {name, _id, rating} = data[i];
+        const {name, _id, rating, burnedCalories, target} = data[i];
         const clone = elems.template.content.cloneNode(true);
+
+        const mainCard = clone.querySelector('.ex-item');
+        mainCard.dataset.id = _id;
         
-        const elName = clone.querySelector('.ex-item-title-ex');
+        const elName = clone.querySelector('.js-title');
         elName.textContent = name;
 
-        const elRating = clone.querySelector('.ex-item-rating-text');
+        const elRating = clone.querySelector('.js-rating');
         elRating.textContent = rating;
 
-        elems.elGallery.appendChild(clone);
+        const elBurnedCalories = clone.querySelector('.js-burned-calories');
+        elBurnedCalories.textContent = burnedCalories;
+
+        const elTarget = clone.querySelector('.js-target');
+        elTarget.textContent = target;
+
+        const elFilter = clone.querySelector('.js-filter');
+        elFilter.textContent = `${galaryState.filter}:`;
+
+        const elFilterValue = clone.querySelector('.js-filter-value');
+        elFilterValue.textContent = galaryState.excerciseFilter;
+
+        fragment.appendChild(clone);
     }
+
+    elems.elGallery.appendChild(fragment);
     
 }
