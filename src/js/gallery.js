@@ -20,11 +20,8 @@ function getExercisesGallery(params) {
     .getExercisesFilter(params)
     .then(resp => {
       const { totalPages, results } = resp;
-      const emptyItemsToAdd = params.limit - results.length;
-      for (let i = 0; i < emptyItemsToAdd; i++) {
-        results.push({});
-      }
-      renderGalleryMarkup(results);
+      const data = addEmptyItemsToResult(results);
+      renderGalleryMarkup(data);
       renderPagination(totalPages, getExercisesGallery, params);
     })
     .catch(err => showIziToast(err.message));
@@ -47,4 +44,14 @@ function handlerClick(evt) {
     evt.target.classList.add('active');
     getExercisesGallery({ ...params, filter: filterValue });
   }
+}
+
+function addEmptyItemsToResult(results) {
+  if (window.innerWidth > 767) {
+    const emptyItemsToAdd = params.limit - results.length;
+    for (let i = 0; i < emptyItemsToAdd; i++) {
+      results.push({});
+    }
+  }
+  return results;
 }
