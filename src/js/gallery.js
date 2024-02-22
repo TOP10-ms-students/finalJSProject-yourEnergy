@@ -17,7 +17,7 @@ const params = {
 };
 getExercisesGallery(params);
 
-function getExercisesGallery(params) {
+export function getExercisesGallery(params) {
   setSpinner(true);
   fetchApi
     .getExercisesFilter(params)

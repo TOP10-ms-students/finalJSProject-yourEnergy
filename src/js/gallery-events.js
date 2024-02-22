@@ -3,12 +3,13 @@ import { showIziToast } from './services/iziToast';
 import { renderExcercises } from './services/gallery-service';
 import { renderPagination } from './services/paginator-service';
 import { openModalExercise } from './exercise-popup';
-import { removeFromFavorites } from './services/storage-fav-cards';
+import { getExercisesGallery as getGroupsGallery } from './gallery';
 
 
 // Constants
 
 const elems = {
+    elGallery: document.querySelector('.js-gallery'),
     elMainBreadCrumbsState: document.querySelector('.js-bradcrumbs'),
     elInnerBreadCrumbsState: document.querySelector('.js-bradcrumbs-inner'),
     elFilterBreadcrumb: document.querySelector('.js-bradcrumbs-filter'),
@@ -20,37 +21,16 @@ const elems = {
 }
 
 export const galaryState = {
-    page: '',
     excerciseFilter: '',
     filter: 'Muscles',
     keyword: '',
 
-    init(page) {
-        this.page = page;
-        const galleryClass = this.isPageExcercises() ? '.js-gallery' : '.js-fav-gallery';
-        const elGallery = document.querySelector(galleryClass);
-        elGallery.addEventListener('click', handlerGallaryClick);
-        if (this.isPageExcercises()) {
-            elems.elFilters.addEventListener('click', handlerFilterClick);
-            elems.elSearchForm.addEventListener('submit', handlerSearchFormSubmit);
-            elems.elSearchForm.addEventListener('reset', handlerResetFilterClick);
-        }
-    },
-
-    isPageExcercises() {
-        return this.page === pageExcercises;
-    },
-
-    isPageFavorites() {
-        return this.page === pageFavorites;
-    },
-
     isFilledCroupExcercises() {
-        return !!(this.page === pageExcercises && !this.excerciseFilter);
+        return !(this.excerciseFilter);
     },
 
     isFilledExcercises() {
-        return !!(this.page === pageExcercises && this.excerciseFilter);
+        return !!(this.excerciseFilter);
     },
 
     setFilter(value) {
@@ -72,9 +52,6 @@ export const galaryState = {
     }
 }
 
-export const pageExcercises = 'Excercises';
-export const pageFavorites = 'Favorites';
-
 const defaultParams = {
   page: 1,
   limit: 10
@@ -90,6 +67,7 @@ function capitalizeFirstLetter(string) {
 export const resetState = () => {
     galaryState.resetExcerciseFilter();
     galaryState.filter = 'Muscles';
+    getGroupsGallery({ ...defaultParams, filter: 'Muscles'});
     renderNavigation();
 
     const filters = elems.elFilters.querySelectorAll('.js-filter');
@@ -104,24 +82,19 @@ export const resetState = () => {
 
 function renderNavigation() {
     elems.elFilterBreadcrumb.textContent = galaryState.excerciseFilter ? capitalizeFirstLetter(galaryState.excerciseFilter) : '';
-    if (galaryState.isPageExcercises()) {
-        if (galaryState.isFilledExcercises()) {
-            elems.elSearchForm.hidden = false;
-            elems.elInnerBreadCrumbsState.hidden = false;
-            if (!elems.elMainBreadCrumbsState.classList.contains('bradcrumbs-active')) {
-                elems.elMainBreadCrumbsState.classList.add('bradcrumbs-active')
-                elems.elMainBreadCrumbsState.addEventListener('click', resetState);
-            }
+    if (galaryState.isFilledExcercises()) {
+        elems.elSearchForm.hidden = false;
+        elems.elInnerBreadCrumbsState.hidden = false;
+        if (!elems.elMainBreadCrumbsState.classList.contains('bradcrumbs-active')) {
+            elems.elMainBreadCrumbsState.classList.add('bradcrumbs-active')
+            elems.elMainBreadCrumbsState.addEventListener('click', resetState);
         }
-        else {
-            elems.elSearchForm.hidden = true;
-            elems.elInnerBreadCrumbsState.hidden = true;
-            elems.elMainBreadCrumbsState.classList.remove('bradcrumbs-active')
-            elems.elMainBreadCrumbsState.removeEventListener('click', resetState);
-        }
-    } else if (galaryState.isPageFavorites()) {
+    }
+    else {
         elems.elSearchForm.hidden = true;
-        elems.elFilters.hidden = true;
+        elems.elInnerBreadCrumbsState.hidden = true;
+        elems.elMainBreadCrumbsState.classList.remove('bradcrumbs-active')
+        elems.elMainBreadCrumbsState.removeEventListener('click', resetState);
     }
 }
 
@@ -150,23 +123,7 @@ function handlerGallaryClick(evt) {
         }
     }
 
-    if (galaryState.isPageExcercises()) {
-        renderNavigation();
-    }
-    else if (galaryState.isPageFavorites()) {
-        const buttonStart = target.closest('.ex-item-start');
-        if (buttonStart) {
-            const galleryItem = target.closest('.js-fav-item');
-            const id = galleryItem.id;
-            openModalExercise(id);
-        }
-
-        const trash = target.closest('.ex-item-trash-icon');
-        if (trash) {
-            const galleryItem = target.closest('.js-fav-item');
-            removeFromFavorites({"_id": galleryItem.id});
-        }
-    }
+    renderNavigation();
 }
 
 function handlerFilterClick(evt) {
@@ -190,6 +147,11 @@ function handlerResetFilterClick() {
 }
 
 // Listeners
+
+elems.elGallery.addEventListener('click', handlerGallaryClick);
+elems.elFilters.addEventListener('click', handlerFilterClick);
+elems.elSearchForm.addEventListener('submit', handlerSearchFormSubmit);
+elems.elSearchForm.addEventListener('reset', handlerResetFilterClick);
 
 
 // Render Excercises Gallery
