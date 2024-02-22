@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>YourEnergy - Favorites</title>
-    <link rel="stylesheet" href="./css/styles.css" />
-  </head>
-  <body>
-    <load src="partials/header.html" />
 
-    <main>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YourEnergy - Favorites</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+
+  <template id="exercise-fav">
+    <load src="partials/templates/exercise-fav.html" />
+  </template>
+</head>
+
+<body class="favorites">
+  <load src="partials/header.html" />
+  <load src="partials/favorites-title.html" />
+
+  <main>
+    <section class="container fav-main">
       <load src="partials/sidebar.html" />
-      <div id="gallery" class="gallery">
-        <div class="content"></div>
+        <load src="partials/favorites-gallery.html" />
         <load src="partials/components/pagination.html" />
-      </div>
-    </main>
+    </section>
+  </main>
 
-    <script type="module" src="./js/favorites.js"></script>
-  </body>
+  <script type="module" src="./js/favorites.js"></script>
+</body>
+
 </html>
