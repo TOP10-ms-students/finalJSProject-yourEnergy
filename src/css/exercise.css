@@ -99,7 +99,8 @@
 }
 .ex-item-calories,
 .ex-item-bodypart,
-.ex-item-target {
+.ex-item-target,
+.ex-item-title-ex {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
