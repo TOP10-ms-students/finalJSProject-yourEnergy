@@ -24,11 +24,19 @@ function renderGalleryMarkup(data) {
   gallery.innerHTML = '';
   const galleryMarkup = data.map(
     ({ name, filter, imgURL }) =>
-      `<li class="gallery-item">
-        <img src="${imgURL}" alt="${name}" class="card-image">
-        <p>${name}</p>
-        <span>${filter}</span>
-       </li>`
+      `<li
+      class="card-item"
+      data-name="${name}"
+      style="
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url(${imgURL});
+      "
+    >
+      <div class="card-text">
+        <div class="card-text-title">${name}</div>
+        <div class="card-text-subtitle">${filter}</div>
+      </div>
+    </li>`
   );
   gallery.innerHTML = galleryMarkup.join('');
 }
