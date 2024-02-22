@@ -1,9 +1,7 @@
 .hero-right-side {
   display: none;
 }
-.container {
-  padding: 0 20px;
-}
+
 .hero-container {
   margin-top: 80px;
   margin-bottom: 40px;
@@ -76,9 +74,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 704px;
-  }
   .hero-container {
     margin-top: 100px;
     margin-bottom: 64px;
@@ -124,10 +119,6 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .container {
-    padding: 0 32px;
-    max-width: 1376px;
-  }
   .hero-container {
     position: relative;
     display: flex;
