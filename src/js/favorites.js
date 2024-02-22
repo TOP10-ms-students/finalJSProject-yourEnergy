@@ -1,3 +1,6 @@
+import './quote-of-the-day';
+import './favorites-gallery';
+
 function addToFavorites(exerciseId) {
   let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
   if (!favorites.includes(exerciseId)) {

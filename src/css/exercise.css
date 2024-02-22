@@ -58,6 +58,8 @@
 }
 .ex-item-start-text {
   font-size: 14px;
+  border: none;
+  background-color: transparent;
 }
 @media (min-width: 768px) {
   .ex-item-start-text {
@@ -78,6 +80,9 @@
   display: flex;
   align-items: center;
   gap: 16px;
+}
+.ex-item-title-ex::first-letter {
+  text-transform: capitalize;
 }
 .ex-item-title-ex {
   font-size: 20px;

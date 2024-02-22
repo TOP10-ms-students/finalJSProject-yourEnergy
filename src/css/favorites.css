@@ -1,0 +1,31 @@
+.fav-title {
+  font-style: 44px;
+  line-height: 1;
+  color: var(--primary-color);
+}
+
+.fav-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .fav-gallery {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px 16px;
+  }
+}
+
+.no-fav-workouts {
+  padding-top: 20px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .no-fav-workouts {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+}
