@@ -9,6 +9,22 @@ export const galaryState = {
     excerciseFilter: '',
     filter: 'muscles',
     keyword: '',
+
+    isPageExcercises() {
+        return this.page === pageExcercises;
+    },
+
+    isPageFavorites() {
+        return this.page === pageFavorites;
+    },
+
+    isFilledCroupExcercises() {
+        return !!(this.page === pageExcercises && !this.excerciseFilter);
+    },
+
+    isFilledExcercises() {
+        return !!(this.page === pageExcercises && this.excerciseFilter);
+    }
 }
 
 export const pageExcercises = 'Excercises';
@@ -39,14 +55,14 @@ function capitalizeFirstLetter(string) {
 function renderNavigation() {
     elems.elMainBreadCrumbsState.textContent = `${galaryState.page} ${galaryState.excerciseFilter ? ' /' : ''}`;
     elems.elFilterBreadcrumb.textContent = galaryState.excerciseFilter ? capitalizeFirstLetter(galaryState.excerciseFilter) : '';
-    if (galaryState.page === pageExcercises) {
-        if (galaryState.excerciseFilter) {
+    if (galaryState.isPageExcercises) {
+        if (galaryState.isFilledExcercises) {
             elems.elSearchForm.hidden = false;
         }
         else {
             elems.elSearchForm.hidden = true;
         }
-    } else if (galaryState.page === pageFavorites) {
+    } else if (galaryState.isPageFavorites) {
         elems.elSearchForm.hidden = true;
         elems.elFilters.hidden = true;
     }
@@ -56,16 +72,27 @@ function renderNavigation() {
 
 function handlerGallaryClick(evt) {
     if (evt.target === evt.currentTarget) return;
-    
-    const galleryItem = evt.target.closest('.card-item');
-    if (!galleryItem) return;
-    const excerciseFilter = galleryItem.dataset.name;
-    galaryState.excerciseFilter = excerciseFilter;
-    renderNavigation();
 
-    if (galaryState.page === pageExcercises) {
-        getExercisesGallery()
+    const target = evt.target;
+    
+    if (galaryState.isFilledCroupExcercises()) {
+        const galleryItem = target.closest('.card-item');
+        if (!galleryItem) return;
+        const excerciseFilter = galleryItem.dataset.name;
+        galaryState.excerciseFilter = excerciseFilter;
+        getExercisesGallery();
     }
+
+    else if (galaryState.isFilledExcercises()) {
+        const buttonStart = target.closest('.ex-item-start');
+        if (buttonStart) {
+            const galleryItem = target.closest('.ex-item');
+            const id = galleryItem.dataset.id;
+            console.log(id);
+            // function for modal window open
+        }
+    }
+    renderNavigation();
 }
 
 function handlerFilterClick(evt) {
@@ -86,28 +113,21 @@ elems.elFilters.addEventListener('click', handlerFilterClick);
 function getExercisesGallery() {
 
     const params = { ...defaultParams };
-    if (galaryState.page === pageExcercises) {
-        if (galaryState.excerciseFilter) {
-            if (galaryState.filter == 'Muscles') {
-                params.muscles = galaryState.excerciseFilter;
-            } else if (galaryState.filter == 'Equipment') {
-                params.equipment = galaryState.excerciseFilter;
-            } else if (galaryState.filter == 'Body parts') {
-                params.bodypart = galaryState.excerciseFilter;
-            }
-
-            if (galaryState.keyword) {
-                params.keyword = galaryState.keyword;
-            }
-            fetchApi
-            .getExercises(params)
-            .then(resp => renderExcercises(resp.results))
-            .catch(err => showIziToast(err.message));
-        }
-        else {
-            // function for modal window open
-        }
+    if (galaryState.filter == 'Muscles') {
+        params.muscles = galaryState.excerciseFilter;
+    } else if (galaryState.filter == 'Equipment') {
+        params.equipment = galaryState.excerciseFilter;
+    } else if (galaryState.filter == 'Body parts') {
+        params.bodypart = galaryState.excerciseFilter;
     }
+
+    if (galaryState.keyword) {
+        params.keyword = galaryState.keyword;
+    }
+    fetchApi
+    .getExercises(params)
+    .then(resp => renderExcercises(resp.results))
+    .catch(err => showIziToast(err.message));
 }
 
 function renderExcercises(data) {
@@ -117,6 +137,9 @@ function renderExcercises(data) {
     for (let i = 0; i < data.length; i++) {
         const {name, _id, rating} = data[i];
         const clone = elems.template.content.cloneNode(true);
+
+        const mainCard = clone.querySelector('.ex-item');
+        mainCard.dataset.id = _id;
         
         const elName = clone.querySelector('.ex-item-title-ex');
         elName.textContent = name;
