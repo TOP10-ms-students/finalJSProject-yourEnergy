@@ -1,5 +1,5 @@
 <!-- Search input -->
-<div class="form-control {=$formclass}" hidden>
+<form class="form-control {=$formclass}" hidden>
   <input
     class="input {=$inputclass}"
     type="text"
@@ -7,7 +7,7 @@
     placeholder="Search"
   />
   <div class="control-buttons">
-    <button class="button-icon button-icon-clear">
+    <button class="button-icon button-icon-clear" type="reset">
       <svg
         width="18"
         height="18"
@@ -24,7 +24,7 @@
         />
       </svg>
     </button>
-    <button class="button-icon button-icon">
+    <button class="button-icon button-icon" type="submit">
       <svg
         width="18"
         height="18"
@@ -49,4 +49,4 @@
       </svg>
     </button>
   </div>
-</div>
+</form>
