@@ -9,6 +9,8 @@ export const galaryState = {
     excerciseFilter: '',
     filter: 'muscles',
     keyword: '',
+    inputSubmintEvent: undefined,
+    inputResetEvent: undefined,
 
     isPageExcercises() {
         return this.page === pageExcercises;
@@ -24,6 +26,21 @@ export const galaryState = {
 
     isFilledExcercises() {
         return !!(this.page === pageExcercises && this.excerciseFilter);
+    },
+
+    setFilter(value) {
+        this.filter = value;
+        this.resetExcerciseFilter();
+    },
+
+    setExcerciseFilter(value) {
+        this.excerciseFilter = value;
+        console.log(this);
+    },
+
+    resetExcerciseFilter() {
+        this.excerciseFilter = '';
+        this.keyword = '';
     }
 }
 
@@ -78,8 +95,7 @@ function handlerGallaryClick(evt) {
     if (galaryState.isFilledCroupExcercises()) {
         const galleryItem = target.closest('.card-item');
         if (!galleryItem) return;
-        const excerciseFilter = galleryItem.dataset.name;
-        galaryState.excerciseFilter = excerciseFilter;
+        galaryState.setExcerciseFilter(galleryItem.dataset.name)
         getExercisesGallery();
     }
 
@@ -98,16 +114,29 @@ function handlerGallaryClick(evt) {
 function handlerFilterClick(evt) {
     if (evt.target === evt.currentTarget) return;
     if (evt.target.classList.contains('js-filter')) {
-        galaryState.filter = evt.target.dataset.filter;
-        galaryState.excerciseFilter = '';
+        galaryState.setFilter(evt.target.dataset.filter);
         renderNavigation();
     }
+}
+
+function handlerSearchFormSubmit(evt) {
+    evt.preventDefault();
+    console.log(evt.target.elements.search.value);
+    galaryState.keyword = evt.target.elements.search.value;
+    getExercisesGallery();
+}
+
+function handlerResetFilterClick() {
+    galaryState.resetExcerciseFilter();
+    renderNavigation();
 }
 
 // Listeners
 
 elems.elGallery.addEventListener('click', handlerGallaryClick);
 elems.elFilters.addEventListener('click', handlerFilterClick);
+elems.elSearchForm.addEventListener('submit', handlerSearchFormSubmit);
+elems.elSearchForm.addEventListener('reset', handlerResetFilterClick);
 
 // Render Excercises Gallery
 function getExercisesGallery() {
