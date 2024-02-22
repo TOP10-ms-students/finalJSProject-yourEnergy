@@ -38,7 +38,7 @@ svg {
 }
 
 .hidden {
-  display: none !important; 
+  display: none !important;
   visibility: hidden !important;
 }
 
@@ -80,6 +80,6 @@ svg {
   .main {
     flex-direction: row;
     flex-direction: row-reverse;
-    row-gap: 32px;
+    gap: 32px;
   }
 }

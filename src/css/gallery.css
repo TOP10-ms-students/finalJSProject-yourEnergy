@@ -52,8 +52,20 @@
 }
 
 .js-pagination {
-  margin-bottom: 32px;
+  margin-bottom: 80px;
   text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .js-pagination {
+    margin-bottom: 64px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .js-pagination {
+    margin-bottom: 132px;
+  }
 }
 .js-pagination > button {
   width: 32px;
