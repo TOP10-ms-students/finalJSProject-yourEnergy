@@ -1,5 +1,7 @@
 import { fetchApi } from './services/api-service';
 import { showIziToast } from './services/iziToast';
+import { renderExcercises } from './services/gallery-service';
+import { renderPagination } from './services/paginator-service';
 
 
 // Constants
@@ -150,43 +152,19 @@ function getExercisesGallery() {
     if (galaryState.keyword) {
         params.keyword = galaryState.keyword;
     }
-    fetchApi
-    .getExercises(params)
-    .then(resp => renderExcercises(resp.results))
-    .catch(err => showIziToast(err.message));
+
+    fetchGallaryExcercises(params) 
+    
 }
 
-function renderExcercises(data) {
-    elems.elGallery.innerHTML = '';
-    const fragment = document.createDocumentFragment();
-    for (let i = 0; i < data.length; i++) {
-        const {name, _id, rating, burnedCalories, target} = data[i];
-        const clone = elems.template.content.cloneNode(true);
-
-        const mainCard = clone.querySelector('.ex-item');
-        mainCard.dataset.id = _id;
-        
-        const elName = clone.querySelector('.js-title');
-        elName.textContent = name;
-
-        const elRating = clone.querySelector('.js-rating');
-        elRating.textContent = rating;
-
-        const elBurnedCalories = clone.querySelector('.js-burned-calories');
-        elBurnedCalories.textContent = burnedCalories;
-
-        const elTarget = clone.querySelector('.js-target');
-        elTarget.textContent = target;
-
-        const elFilter = clone.querySelector('.js-filter');
-        elFilter.textContent = `${galaryState.filter}:`;
-
-        const elFilterValue = clone.querySelector('.js-filter-value');
-        elFilterValue.textContent = galaryState.excerciseFilter;
-
-        fragment.appendChild(clone);
-    }
-
-    elems.elGallery.appendChild(fragment);
-    
+function fetchGallaryExcercises(params) {
+    fetchApi
+    .getExercises(params)
+        .then(resp =>
+        {
+            const { totalPages, results } = resp;
+            renderExcercises(results, galaryState);
+            renderPagination(totalPages, fetchGallaryExcercises, params);
+        })
+    .catch(err => showIziToast(err.message));
 }
