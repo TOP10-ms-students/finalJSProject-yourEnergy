@@ -4,8 +4,9 @@ export const fetchData = async (path, method, body) => {
   const headers = { 'Content-type': 'application/json' };
   const init = { headers, method, body };
   const resp = await fetch(path, init);
-  if (!resp.ok)
+  if (!resp.ok) {
     throw new Error(`Error: status: ${resp.status}, ${resp.statusText}`);
+  }
   return resp.json();
 };
 
