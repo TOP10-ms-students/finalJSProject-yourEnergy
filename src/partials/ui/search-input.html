@@ -1,16 +1,23 @@
 <!-- Search input -->
 <div class="form-control">
-  <input class="input" type="text" name="search" placeholder="Search" />
-  <div class="control-buttons">
-    <button class="button-icon button-icon-clear">
-      <svg width="18" height="18">
-        <use href="../img/icons.svg#icon-clear-search"></use>
-      </svg>
-    </button>
-    <button class="button-icon button-icon">
-      <svg width="18" height="18">
-        <use href="../img/icons.svg#icon-search"></use>
-      </svg>
-    </button>
+  <div class="form-control {=$formclass}" hidden>
+    <input
+      class="input {=$inputclass}"
+      type="text"
+      name="search"
+      placeholder="Search"
+    />
+    <div class="control-buttons">
+      <button class="button-icon button-icon-clear">
+        <svg width="18" height="18">
+          <use href="../img/icons.svg#icon-clear-search"></use>
+        </svg>
+      </button>
+      <button class="button-icon button-icon">
+        <svg width="18" height="18">
+          <use href="../img/icons.svg#icon-search"></use>
+        </svg>
+      </button>
+    </div>
   </div>
 </div>
