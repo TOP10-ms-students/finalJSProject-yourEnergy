@@ -78,14 +78,8 @@
     transition: stroke var(--tran-fast);
 }
 
-.logo:hover,
-.logo:focus,
-.menu-li:hover,
-.menu-li:focus,
-.menu-btn:hover,
-.menu-btn:focus,
-.menu-toggle:hover,
-.menu-toggle:focus {
+.on-hover:hover,
+.on-hover:focus {
     transform: scale(1.1);
     transition: stroke var(--tran-fast);
 }
