@@ -131,23 +131,36 @@ function getExercisesGallery() {
 }
 
 function renderExcercises(data) {
-    // TODO: 
-    // dirty rander. develop next time TODO
     elems.elGallery.innerHTML = '';
+    const fragment = document.createDocumentFragment();
     for (let i = 0; i < data.length; i++) {
-        const {name, _id, rating} = data[i];
+        const {name, _id, rating, burnedCalories, target} = data[i];
         const clone = elems.template.content.cloneNode(true);
 
         const mainCard = clone.querySelector('.ex-item');
         mainCard.dataset.id = _id;
         
-        const elName = clone.querySelector('.ex-item-title-ex');
+        const elName = clone.querySelector('.js-title');
         elName.textContent = name;
 
-        const elRating = clone.querySelector('.ex-item-rating-text');
+        const elRating = clone.querySelector('.js-rating');
         elRating.textContent = rating;
 
-        elems.elGallery.appendChild(clone);
+        const elBurnedCalories = clone.querySelector('.js-burned-calories');
+        elBurnedCalories.textContent = burnedCalories;
+
+        const elTarget = clone.querySelector('.js-target');
+        elTarget.textContent = target;
+
+        const elFilter = clone.querySelector('.js-filter');
+        elFilter.textContent = `${galaryState.filter}:`;
+
+        const elFilterValue = clone.querySelector('.js-filter-value');
+        elFilterValue.textContent = galaryState.excerciseFilter;
+
+        fragment.appendChild(clone);
     }
+
+    elems.elGallery.appendChild(fragment);
     
 }
