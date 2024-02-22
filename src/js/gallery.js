@@ -1,7 +1,7 @@
 import { fetchApi } from './services/api-service';
 import { showIziToast } from './services/iziToast';
 import { galleryTemplate } from './services/gallery-service';
-import { setSpinner } from './spiner';
+import { setSpinner } from './spinner';
 
 const gallery = document.querySelector('.js-gallery');
 const galleryFilterBlock = document.querySelector('.js-filter-block');
