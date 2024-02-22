@@ -1,5 +1,6 @@
 import { fetchApi } from './services/api-service';
 import { showIziToast } from './services/iziToast';
+import { galleryTemplate } from './services/gallery-service';
 
 const gallery = document.querySelector('.js-gallery');
 const galleryFilterBlock = document.querySelector('.js-filter-block');
@@ -17,28 +18,12 @@ function getExercisesGallery(params) {
   fetchApi
     .getExercisesFilter(params)
     .then(resp => renderGalleryMarkup(resp.results))
-    .catch(err => showIziToast('An error occurred while loading data'));
+    .catch(err => showIziToast(err.message));
 }
 
 function renderGalleryMarkup(data) {
   gallery.innerHTML = '';
-  const galleryMarkup = data.map(
-    ({ name, filter, imgURL }) =>
-      `<li
-      class="card-item"
-      data-name="${name}"
-      style="
-        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-          url(${imgURL});
-      "
-    >
-      <div class="card-text">
-        <div class="card-text-title">${name}</div>
-        <div class="card-text-subtitle">${filter}</div>
-      </div>
-    </li>`
-  );
-  gallery.innerHTML = galleryMarkup.join('');
+  galleryTemplate(data);
 }
 
 galleryFilterBlock.addEventListener('click', handlerClick);
