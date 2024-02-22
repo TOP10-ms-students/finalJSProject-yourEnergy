@@ -34,33 +34,7 @@
     font-style: normal;
 }
 
-.social-icons-ul,
-.social-icons-list {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-left: auto;
-}
 
-.social-icon-link {
-    display: block;
-    padding: 6px;
-    color: rgba(36, 36, 36, 0.8);
-    border: 1px solid var(--frame-color);
-    border-radius: 10px;
-    transition: color var(--tran-fast), background-color var(--tran-fast);
-}
-
-.social-icon-link svg,
-.social-icon-link svg {
-    fill: currentColor;
-}
-
-.social-icon-link:hover,
-.social-icon-link:focus {
-    color: var(--white-color);
-    background-color: var(--icon-bg-color);
-}
 
 @media only screen and (min-width: 768px) {
     .menu-btn {

@@ -81,6 +81,15 @@
   align-items: center;
   gap: 16px;
 }
+.ex-item-title-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 6px;
+  border-radius: 50%;
+  background-color: #000;
+  color: var(--white-bg-color);
+}
 .ex-item-title-ex::first-letter {
   text-transform: capitalize;
 }
