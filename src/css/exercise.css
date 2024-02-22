@@ -79,6 +79,16 @@
   align-items: center;
   gap: 16px;
 }
+.ex-item-title-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #000;
+  color: var(--white-bg-color);
+}
 .ex-item-title-ex {
   font-size: 20px;
 }
