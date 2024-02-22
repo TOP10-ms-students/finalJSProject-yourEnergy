@@ -1,16 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>YourEnergy - Favorites</title>
-    
-    <script type="module" crossorigin src="/finalJSProject-yourEnergy/assets/styles-793d1078.js"></script>
-    <link rel="stylesheet" href="/finalJSProject-yourEnergy/assets/styles-2d16eae0.css">
-  </head>
-  <body>
-    <!-- Header -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YourEnergy - Favorites</title>
+  
+
+  <template id="exercise-fav">
+    <li class="ex-fav-item js-fav-item">
+  <div class="ex-item-wrapper">
+    <div class="ex-item-header">
+      <div class="ex-item-header-right-row-fav">
+        <div class="ex-item-workout">WORKOUT</div>
+        <button class="ex-item-trash-icon">
+          <svg class="icon" width="16" height="16">
+            <use href="./img/icons.svg#icon-trash"></use>
+          </svg>
+        </button>
+      </div>
+      <div class="ex-item-start">
+        <button class="ex-item-start-text">Start</button>
+        <div class="ex-item-start-icon">
+          <svg width="13" height="13" viewBox="0 0 13 13">
+            <image xlink:href="/img/icons/arrow.svg" width="13" height="13" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="ex-item-body">
+      <div class="ex-item-title">
+        <div class="ex-item-title-icon">
+          <svg class="icon" width="24" height="24">
+            <use href="./img/icons.svg#icon-run-black"></use>
+          </svg>
+        </div>
+        <div class="ex-item-title-ex js-fav-title"></div>
+      </div>
+      <div class="ex-item-footer">
+        <div class="ex-item-calories">
+          <span class="ex-item-gray-text">Burned calories: </span><span class="js-fav-calories"></span>
+        </div>
+        <div class="ex-item-bodypart">
+          <span class="ex-item-gray-text">Body part: </span><span class="js-fav-bodyPart"></span>
+        </div>
+        <div class="ex-item-target">
+          <span class="ex-item-gray-text">Target: </span><span class="js-fav-target"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
+
+  </template>
+  <script type="module" crossorigin src="/finalJSProject-yourEnergy/commonHelpers.js"></script>
+  <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/assets/quote-of-the-day-30ba7bec.js">
+  <link rel="stylesheet" href="/finalJSProject-yourEnergy/assets/quote-of-the-day-421e9751.css">
+</head>
+
+<body class="favorites">
+  <!-- Header -->
 <header class="header">
     <div class="container header-wrapper">
         <a class="logo js-logo" href="" aria-label="your energy logo" target="_blank">
@@ -22,8 +72,8 @@
         <!-- UI component Header Menu 'toggle-bar' -->
         <!-- Header Menu -->
 <div class="toggle-bar">
-  <button class="button active">Home</button>
-  <button class="button">Favorites</button>
+  <a href="./index.html" class="nav-link home-nav-link">Home</a>
+  <a href="./favorites.html" class="nav-link fav-nav-link">Favorites</a>
 </div>
 
         <div class="socials">
@@ -56,8 +106,12 @@
         </div>
     </div>
 </header>
+  <div class="container title-section">
+  <h1 class="fav-title">Favorites</h1>
+</div>
 
-    <main>
+  <main>
+    <section class="container fav-main">
       <!-- quote-of-the-day -->
 
 <div class="quote-of-the-day">
@@ -80,12 +134,17 @@
 </div>
 
 
-      <div id="gallery" class="gallery">
-        <div class="content"></div>
+        <ul class="fav-gallery js-fav-gallery"></ul>
+<div class="no-fav-workouts hidden js-no-fav-workouts">
+  <p class="">It appears that you haven't added any exercises to your
+    favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the
+    future.</p>
+</div>
         
-      </div>
-    </main>
+    </section>
+  </main>
 
-    
-  </body>
+  
+</body>
+
 </html>
