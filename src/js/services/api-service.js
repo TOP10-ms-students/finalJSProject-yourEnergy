@@ -3,11 +3,10 @@ const BASE_URL = 'https://your-energy.b.goit.study/api';
 export const fetchData = async (path, method, body) => {
   const headers = { 'Content-type': 'application/json' };
   const init = { headers, method, body };
-  return fetch(path, init).then(resp => {
-    if (!resp.ok)
-      throw new Error(`Error: status: ${resp.status}, ${resp.statusText}`);
-    return resp.json();
-  });
+  const resp = await fetch(path, init);
+  if (!resp.ok)
+    throw new Error(`Error: status: ${resp.status}, ${resp.statusText}`);
+  return resp.json();
 };
 
 export const fetchApi = {
