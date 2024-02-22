@@ -92,7 +92,7 @@
   color: var(--white-color);
   background-color: var(--primary-color);
   border-radius: 100%;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
   z-index: 10;
 }
@@ -116,7 +116,7 @@
 
 .scroll-top .icon-arrow {
   /* fill: currentColor; */
-  transition: fill .3s ease;
+  transition: fill 0.3s ease;
 }
 
 /* Buttons */
@@ -182,4 +182,57 @@
   color: var(--primary-color);
   border-color: var(--primary-color);
   background-color: var(--white-color);
+}
+
+/* Scroll to top button */
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  transform: translateY(110%);
+  opacity: 0;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 40px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  cursor: pointer;
+  border-radius: 50%;
+
+  transition: background-color 200ms ease-out, color 200ms ease-out,
+    opacity 260ms ease-in, transform 330ms ease-in-out;
+}
+@media (min-width: 768px) {
+  .scroll-top {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.scroll-top:hover {
+  background-color: #eea10c;
+  color: var(--primary-color);
+}
+
+.scroll-show {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+.scroll-icon {
+  fill: currentColor;
+  opacity: 0.9;
+}
+@media (min-width: 768px) {
+  .scroll-icon {
+    width: 36px;
+    height: 36px;
+  }
 }
