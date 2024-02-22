@@ -73,9 +73,9 @@
 
     </template>
     <script type="module" crossorigin src="/finalJSProject-yourEnergy/pr-preview/pr-23/commonHelpers2.js"></script>
-    <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/pr-preview/pr-23/assets/styles-60bd694d.js">
+    <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/pr-preview/pr-23/assets/styles-87df334e.js">
     <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/pr-preview/pr-23/assets/vendor-ad859c2f.js">
-    <link rel="stylesheet" href="/finalJSProject-yourEnergy/pr-preview/pr-23/assets/styles-6b9e9f41.css">
+    <link rel="stylesheet" href="/finalJSProject-yourEnergy/pr-preview/pr-23/assets/styles-90f6dcd5.css">
     <link rel="stylesheet" href="/finalJSProject-yourEnergy/pr-preview/pr-23/assets/vendor-e5212ee8.css">
   </head>
   <body>
@@ -149,24 +149,31 @@
     <section class="main-section-head">
   <div class="container">
     <div class="head-navigation">
-      <h2 class="js-header">Excercises /</h2>
-      <p class="js-second-header">Waist</p>
+      <h2 class="js-bradcrumbs">Excercises</h2>
+      <p class="js-bradcrumbs-filter"></p>
     </div>
     <div class="gallary-nav">
       <!-- Search input -->
 <div class="form-control">
-  <input class="input" type="text" name="search" placeholder="Search" />
-  <div class="control-buttons">
-    <button class="button-icon button-icon-clear">
-      <svg width="18" height="18">
-        <use href="../img/icons.svg#icon-clear-search"></use>
-      </svg>
-    </button>
-    <button class="button-icon button-icon">
-      <svg width="18" height="18">
-        <use href="../img/icons.svg#icon-search"></use>
-      </svg>
-    </button>
+  <div class="form-control js-search-form" hidden>
+    <input
+      class="input js-search-input"
+      type="text"
+      name="search"
+      placeholder="Search"
+    />
+    <div class="control-buttons">
+      <button class="button-icon button-icon-clear">
+        <svg width="18" height="18">
+          <use href="../img/icons.svg#icon-clear-search"></use>
+        </svg>
+      </button>
+      <button class="button-icon button-icon">
+        <svg width="18" height="18">
+          <use href="../img/icons.svg#icon-search"></use>
+        </svg>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -282,9 +289,13 @@
 </div>
 
     <main>
-      sidebar
+      <div class="main container">
+        <div id="gallery" class="gallery">
+  <ul class="js-gallery gallery-content"></ul>
+  
+</div>
 
-      <!-- quote-of-the-day -->
+        <!-- quote-of-the-day -->
 
 <div class="quote-of-the-day">
   <div class="quote-icon-wrap">
@@ -308,10 +319,13 @@
   </div>
 </div>
 
-      <div id="gallery" class="gallery">
-  <ul class="js-gallery gallery-content"></ul>
-  
-</div>
+
+      </div>
+      <button id="scroll-top" class="scroll-top">
+  <svg class="scroll-icon" width="20" height="20">
+    <use href="../../img/icons.svg#icon-arrow-top"></use>
+  </svg>
+</button>
 
     </main>
 
