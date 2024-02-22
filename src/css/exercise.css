@@ -111,6 +111,15 @@
   text-overflow: ellipsis;
 }
 
+.ex-item-bodypart,
+.ex-item-target {
+  width: 33%;
+}
+
+.ex-item-calories {
+  width: 50%;
+}
+
 /* FAV-CARD */
 
 .ex-fav-item {
