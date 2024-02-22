@@ -34,34 +34,32 @@
     font-style: normal;
 }
 
-.social-icons-ul {
+.social-icons-ul,
+.social-icons-list {
     display: flex;
     justify-content: center;
     gap: 12px;
     margin-left: auto;
 }
 
-.social-icon-li {
-    border-radius: 10px;
-    padding: 8px;
-    border: 1px solid var(--frame-color);
-    /* transition: border var(--tran-fast); */
-}
-
 .social-icon-link {
-    cursor: pointer;
+    display: block;
+    padding: 6px;
+    color: rgba(36, 36, 36, 0.8);
+    border: 1px solid var(--frame-color);
+    border-radius: 10px;
+    transition: color var(--tran-fast), background-color var(--tran-fast);
 }
 
 .social-icon-link svg,
 .social-icon-link svg {
-    fill: var(--primary-color);
-    opacity: 0.8;
-    transition: fill var(--tran-fast);
+    fill: currentColor;
 }
 
-.social-icon-li:hover,
-.social-icon-li:focus {
-    border: 1px solid var(--primary-color);
+.social-icon-link:hover,
+.social-icon-link:focus {
+    color: var(--white-color);
+    background-color: var(--icon-bg-color);
 }
 
 @media only screen and (min-width: 768px) {
@@ -92,7 +90,8 @@
     width: 100%;
     height: 100%;
     z-index: 999;
-    background-color: var(--primary-color);
+    opacity: 1;
+    background-color: var(--title-secondary-color);
     transition: opacity var(--tran-fast), visibility var(--tran-fast);
 }
 
@@ -103,18 +102,7 @@
 }
 
 .menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    color: var(--white-color);
-    background-color: transparent;
-    cursor: pointer;
-    border: none;
-    border-radius: 50%;
-    outline: none;
-    transition: background-color var(--tran-fast);
+    background: transparent;
 }
 
 @media only screen and (min-width: 768px) {
@@ -132,7 +120,6 @@
     padding-top: 280px;
     background-color: var(--primary-color);
     z-index: 999;
-
     transform: translateX(100%);
     transition: transform 250ms ease-in-out;
 }
@@ -141,26 +128,29 @@
     transform: translateX(0);
 }
 
-.menu-container .menu-toggle {
+.menu-container,
+.menu-toggle {
     position: absolute;
     top: 20px;
     right: 20px;
-    color: var(--white-color);
 }
 
 .menu-wrapper {
+    margin-bottom: 20px;
+}
+
+.menu-main {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
-.menu-main {
-    height: 100%;
-}
-
-.menu-li {
-    padding-bottom: 16px;
+.menu-ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .menu-li>a {
@@ -173,15 +163,18 @@
     transition: color var(--tran-fast);
 }
 
-.social-icon-li {
-    border-radius: 10px;
-    border: 1px solid var(--rating-color);
-    transition: border var(--tran-fast);
-}
-
 .social-icon-li:hover,
 .social-icon-li:focus {
     border: 1px solid var(--white-color);
+}
+
+.social-icon-onblack {
+    fill: var(--white-color);
+    opacity: 0.8;
+    border-radius: 10px;
+    padding: 8px;
+    border: 1px solid var(--rating-color);
+    transition: fill var(--tran-fast);
 }
 
 /* UI component Header Menu 'toggle-bar'
