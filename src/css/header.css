@@ -70,6 +70,7 @@
     }
 }
 
+/* mobile burger menu */
 .menu-btn {
     border: none;
     background-color: transparent;
@@ -89,6 +90,7 @@
     transition: stroke var(--tran-fast);
 }
 
+/* mobile backdrop */
 .backdrop {
     position: fixed;
     top: 0;
@@ -96,19 +98,14 @@
     width: 100%;
     height: 100%;
     z-index: 999;
-    background: var(--primary-color);
+    background-color: var(--primary-color);
     transition: opacity var(--tran-fast), visibility var(--tran-fast);
 }
 
 .is-hidden {
-    opacity: 0;
     visibility: hidden;
+    opacity: 0;
     pointer-events: none;
-}
-
-/* to check */
-.is-none {
-    display: none;
 }
 
 .menu-toggle {
