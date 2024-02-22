@@ -70,3 +70,16 @@ svg {
     max-width: 1440px;
   }
 }
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 1440px) {
+  .main {
+    flex-direction: row;
+    flex-direction: row-reverse;
+    row-gap: 32px;
+  }
+}
