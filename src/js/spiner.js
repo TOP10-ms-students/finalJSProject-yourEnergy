@@ -2,5 +2,5 @@ export const setSpinner = function (status) {
   const spinnerEl = document.querySelector('.js-spinner');
   status
     ? spinnerEl.classList.remove('hidden')
-    : spinnerEl.classList.add('hidden');
+    : setTimeout(() => spinnerEl.classList.add('hidden'), 300);
 };

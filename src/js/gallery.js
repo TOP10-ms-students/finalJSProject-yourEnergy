@@ -21,7 +21,7 @@ function getExercisesGallery(params) {
     .getExercisesFilter(params)
     .then(resp => renderGalleryMarkup(resp.results))
     .catch(err => showIziToast(err.message))
-    .finally(() => setTimeout(() => setSpinner(false), 300));
+    .finally(setSpinner(false));
 }
 
 function renderGalleryMarkup(data) {
