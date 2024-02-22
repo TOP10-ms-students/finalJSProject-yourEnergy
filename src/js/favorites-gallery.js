@@ -31,6 +31,8 @@ function initFavGallery() {
     return;
   }
 
+  console.log(template);
+
   for (let i = 0; i < workouts.length; i++) {
     const clone = template.content.cloneNode(true),
       itemEl = clone.querySelector('.js-fav-item'),

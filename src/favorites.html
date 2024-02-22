@@ -15,20 +15,16 @@
 
 <body class="favorites">
   <load src="partials/header.html" />
+  <load src="partials/favorites-title.html" />
 
-  <h1 class="fav-title">Favorites</h1>
   <main>
-    <section class="container">
-      <load src="partials/sidebar.html" />
-      <ul class="fav-gallery js-fav-gallery"></ul>
-      <p class="no-fav-workouts hidden js-no-fav-workouts">It appears that you haven't added any exercises to your
-        favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the
-        future.</p>
-    </section>
-    <div id="gallery" class="gallery">
+    <!-- <load src="partials/sidebar.html" /> -->
+    <load src="partials/favorites-main.html" />
+
+    <!-- <div id="gallery" class="gallery">
       <div class="content"></div>
       <load src="partials/components/pagination.html" />
-    </div>
+    </div> -->
   </main>
 
   <script type="module" src="./js/favorites.js"></script>
