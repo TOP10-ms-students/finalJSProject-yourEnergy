@@ -34,8 +34,6 @@
   }
 }
 
-/* photo-base-card  CARD */
-
 .photo-base-card {
   background-image: url(../img/sidebar-img/sidebar-mob@1x.jpg);
   background-position: center;
@@ -87,8 +85,6 @@
     background-image: url('../img/sidebar-img/sidebar-desk@2x.jpg');
   }
 }
-
-/* daily-norm-card  CARD */
 
 .daily-norm-card {
   background-color: var(--white-bg-color);
