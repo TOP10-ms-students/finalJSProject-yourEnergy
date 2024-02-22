@@ -114,6 +114,7 @@
     justify-content: center;
     margin: 0;
     padding: 0;
+    color: var(--white-color);
     background-color: transparent;
     cursor: pointer;
     border: none;
