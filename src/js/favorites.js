@@ -1,16 +1,20 @@
-function addToFavorites(exerciseId) {
-  let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  if (!favorites.includes(exerciseId)) {
-    favorites.push(exerciseId);
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+function addToFavorites(obj) {
+  let favorites = JSON.parse(localStorage.getItem('favWorkouts')) || [];
+
+  const isDuplicate = favorites.some(item => item._id === obj._id);
+
+  if (!isDuplicate) {
+    favorites.push(exerciseObject);
+    localStorage.setItem('favWorkouts', JSON.stringify(favorites));
   }
 }
+function removeFromFavorites(obj) {
+  let favorites = JSON.parse(localStorage.getItem('favWorkouts')) || [];
+  let index = favorites.findIndex(item => item._id === obj._id);
 
-function removeFromFavorites(exerciseId) {
-  let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  let index = favorites.indexOf(exerciseId);
   if (index !== -1) {
     favorites.splice(index, 1);
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+
+    localStorage.setItem('favWorkouts', JSON.stringify(favorites));
   }
 }
