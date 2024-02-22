@@ -9,8 +9,6 @@ export const galaryState = {
     excerciseFilter: '',
     filter: 'muscles',
     keyword: '',
-    inputSubmintEvent: undefined,
-    inputResetEvent: undefined,
 
     isPageExcercises() {
         return this.page === pageExcercises;
