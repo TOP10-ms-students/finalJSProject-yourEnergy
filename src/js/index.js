@@ -4,6 +4,7 @@ import './gallery';
 import './services/subscribe-action';
 import './gallery-events';
 import './scroll-top';
+import './exercise-popup';
 import { galaryState, pageExcercises } from './gallery-events';
 
 galaryState.page = pageExcercises;
