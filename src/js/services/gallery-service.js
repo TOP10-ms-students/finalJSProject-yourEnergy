@@ -1,3 +1,7 @@
+const gallery = document.querySelector('.js-gallery');
+const excerciseGroupTemplate = document.querySelector('#exercise-group');
+const excerciseTemplate = document.querySelector('#exercise');
+
 export function galleryTemplate(data) {
   const gallery = document.querySelector('.js-gallery');
   const template = document.querySelector('#exercise-group');
@@ -20,4 +24,39 @@ export function galleryTemplate(data) {
   });
 
   gallery.appendChild(fragment);
+}
+
+export function renderExcercises(data, galaryState) {
+    gallery.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < data.length; i++) {
+        const {name, _id, rating, burnedCalories, target} = data[i];
+        const clone = excerciseTemplate.content.cloneNode(true);
+
+        const mainCard = clone.querySelector('.ex-item');
+        mainCard.dataset.id = _id;
+        
+        const elName = clone.querySelector('.js-title');
+        elName.textContent = name;
+
+        const elRating = clone.querySelector('.js-rating');
+        elRating.textContent = rating;
+
+        const elBurnedCalories = clone.querySelector('.js-burned-calories');
+        elBurnedCalories.textContent = burnedCalories;
+
+        const elTarget = clone.querySelector('.js-target');
+        elTarget.textContent = target;
+
+        const elFilter = clone.querySelector('.js-filter');
+        elFilter.textContent = `${galaryState.filter}:`;
+
+        const elFilterValue = clone.querySelector('.js-filter-value');
+        elFilterValue.textContent = galaryState.excerciseFilter;
+
+        fragment.appendChild(clone);
+    }
+
+    gallery.appendChild(fragment);
+    
 }

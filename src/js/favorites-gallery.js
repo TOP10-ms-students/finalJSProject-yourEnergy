@@ -1,6 +1,6 @@
 initFavGallery();
 
-function initFavGallery() {
+export function initFavGallery() {
   const template = document.querySelector('#exercise-fav'),
     favGalleryEl = document.querySelector('.js-fav-gallery'),
     emptyFavEl = document.querySelector('.js-no-fav-workouts'),

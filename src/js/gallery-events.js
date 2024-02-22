@@ -1,57 +1,55 @@
 import { fetchApi } from './services/api-service';
 import { showIziToast } from './services/iziToast';
+import { renderExcercises } from './services/gallery-service';
+import { renderPagination } from './services/paginator-service';
+import { openModalExercise } from './exercise-popup';
+import { getExercisesGallery as getGroupsGallery } from './gallery';
 
 
 // Constants
 
+const elems = {
+    elGallery: document.querySelector('.js-gallery'),
+    elMainBreadCrumbsState: document.querySelector('.js-bradcrumbs'),
+    elInnerBreadCrumbsState: document.querySelector('.js-bradcrumbs-inner'),
+    elFilterBreadcrumb: document.querySelector('.js-bradcrumbs-filter'),
+    elFilters: document.querySelector('.js-filter-block'),
+    elInput: document.querySelector('.js-search-input'),
+    elSearchForm: document.querySelector('.js-search-form'),
+    template: document.querySelector('#exercise'),
+    elTrash: document.querySelector('.ex-item-trash-icon'),
+}
+
 export const galaryState = {
-    page: '',
     excerciseFilter: '',
-    filter: 'muscles',
+    filter: 'Muscles',
     keyword: '',
 
-    isPageExcercises() {
-        return this.page === pageExcercises;
-    },
-
-    isPageFavorites() {
-        return this.page === pageFavorites;
-    },
-
     isFilledCroupExcercises() {
-        return !!(this.page === pageExcercises && !this.excerciseFilter);
+        return !(this.excerciseFilter);
     },
 
     isFilledExcercises() {
-        return !!(this.page === pageExcercises && this.excerciseFilter);
+        return !!(this.excerciseFilter);
     },
 
     setFilter(value) {
         this.filter = value;
         this.resetExcerciseFilter();
+        elems.elSearchForm.removeEventListener('submit', handlerSearchFormSubmit);
+        elems.elSearchForm.removeEventListener('reset', handlerResetFilterClick);
     },
 
     setExcerciseFilter(value) {
         this.excerciseFilter = value;
+        elems.elSearchForm.addEventListener('submit', handlerSearchFormSubmit);
+        elems.elSearchForm.addEventListener('reset', handlerResetFilterClick);
     },
 
     resetExcerciseFilter() {
         this.excerciseFilter = '';
         this.keyword = '';
     }
-}
-
-export const pageExcercises = 'Excercises';
-export const pageFavorites = 'Favorites';
-
-const elems = {
-    elGallery: document.querySelector('.js-gallery'),
-    elMainBreadCrumbsState: document.querySelector('.js-bradcrumbs'),
-    elFilterBreadcrumb: document.querySelector('.js-bradcrumbs-filter'),
-    elFilters: document.querySelector('.js-filter-block'),
-    elInput: document.querySelector('.js-search-input'),
-    elSearchForm: document.querySelector('.js-search-form'),
-    template: document.querySelector('#exercise')
 }
 
 const defaultParams = {
@@ -66,19 +64,37 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+export const resetState = () => {
+    galaryState.resetExcerciseFilter();
+    galaryState.filter = 'Muscles';
+    getGroupsGallery({ ...defaultParams, filter: 'Muscles'});
+    renderNavigation();
+
+    const filters = elems.elFilters.querySelectorAll('.js-filter');
+    filters.forEach(filter => {
+        filter.classList.remove('active');
+        if (filter.dataset.filter === 'Muscles') {
+            filter.classList.add('active');
+        }
+    });
+
+}
+
 function renderNavigation() {
-    elems.elMainBreadCrumbsState.textContent = `${galaryState.page} ${galaryState.excerciseFilter ? ' /' : ''}`;
     elems.elFilterBreadcrumb.textContent = galaryState.excerciseFilter ? capitalizeFirstLetter(galaryState.excerciseFilter) : '';
-    if (galaryState.isPageExcercises) {
-        if (galaryState.isFilledExcercises) {
-            elems.elSearchForm.hidden = false;
+    if (galaryState.isFilledExcercises()) {
+        elems.elSearchForm.hidden = false;
+        elems.elInnerBreadCrumbsState.hidden = false;
+        if (!elems.elMainBreadCrumbsState.classList.contains('bradcrumbs-active')) {
+            elems.elMainBreadCrumbsState.classList.add('bradcrumbs-active')
+            elems.elMainBreadCrumbsState.addEventListener('click', resetState);
         }
-        else {
-            elems.elSearchForm.hidden = true;
-        }
-    } else if (galaryState.isPageFavorites) {
+    }
+    else {
         elems.elSearchForm.hidden = true;
-        elems.elFilters.hidden = true;
+        elems.elInnerBreadCrumbsState.hidden = true;
+        elems.elMainBreadCrumbsState.classList.remove('bradcrumbs-active')
+        elems.elMainBreadCrumbsState.removeEventListener('click', resetState);
     }
 }
 
@@ -103,9 +119,10 @@ function handlerGallaryClick(evt) {
         if (buttonStart) {
             const galleryItem = target.closest('.ex-item');
             const id = galleryItem.dataset.id;
-            // function for modal window open
+            openModalExercise(id);
         }
     }
+
     renderNavigation();
 }
 
@@ -124,7 +141,8 @@ function handlerSearchFormSubmit(evt) {
 }
 
 function handlerResetFilterClick() {
-    galaryState.resetExcerciseFilter();
+    galaryState.keyword = '';
+    getExercisesGallery();
     renderNavigation();
 }
 
@@ -134,6 +152,7 @@ elems.elGallery.addEventListener('click', handlerGallaryClick);
 elems.elFilters.addEventListener('click', handlerFilterClick);
 elems.elSearchForm.addEventListener('submit', handlerSearchFormSubmit);
 elems.elSearchForm.addEventListener('reset', handlerResetFilterClick);
+
 
 // Render Excercises Gallery
 function getExercisesGallery() {
@@ -150,43 +169,19 @@ function getExercisesGallery() {
     if (galaryState.keyword) {
         params.keyword = galaryState.keyword;
     }
-    fetchApi
-    .getExercises(params)
-    .then(resp => renderExcercises(resp.results))
-    .catch(err => showIziToast(err.message));
+
+    fetchGallaryExcercises(params) 
+    
 }
 
-function renderExcercises(data) {
-    elems.elGallery.innerHTML = '';
-    const fragment = document.createDocumentFragment();
-    for (let i = 0; i < data.length; i++) {
-        const {name, _id, rating, burnedCalories, target} = data[i];
-        const clone = elems.template.content.cloneNode(true);
-
-        const mainCard = clone.querySelector('.ex-item');
-        mainCard.dataset.id = _id;
-        
-        const elName = clone.querySelector('.js-title');
-        elName.textContent = name;
-
-        const elRating = clone.querySelector('.js-rating');
-        elRating.textContent = rating;
-
-        const elBurnedCalories = clone.querySelector('.js-burned-calories');
-        elBurnedCalories.textContent = burnedCalories;
-
-        const elTarget = clone.querySelector('.js-target');
-        elTarget.textContent = target;
-
-        const elFilter = clone.querySelector('.js-filter');
-        elFilter.textContent = `${galaryState.filter}:`;
-
-        const elFilterValue = clone.querySelector('.js-filter-value');
-        elFilterValue.textContent = galaryState.excerciseFilter;
-
-        fragment.appendChild(clone);
-    }
-
-    elems.elGallery.appendChild(fragment);
-    
+function fetchGallaryExcercises(params) {
+    fetchApi
+    .getExercises(params)
+        .then(resp =>
+        {
+            const { totalPages, results } = resp;
+            renderExcercises(results, galaryState);
+            renderPagination(totalPages, fetchGallaryExcercises, params);
+        })
+    .catch(err => showIziToast(err.message));
 }
