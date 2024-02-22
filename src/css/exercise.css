@@ -58,6 +58,8 @@
 }
 .ex-item-start-text {
   font-size: 14px;
+  border: none;
+  background-color: transparent;
 }
 @media (min-width: 768px) {
   .ex-item-start-text {
@@ -79,6 +81,9 @@
   align-items: center;
   gap: 16px;
 }
+.ex-item-title-ex::first-letter {
+  text-transform: capitalize;
+}
 .ex-item-title-ex {
   font-size: 20px;
 }
@@ -99,7 +104,8 @@
 }
 .ex-item-calories,
 .ex-item-bodypart,
-.ex-item-target {
+.ex-item-target,
+.ex-item-title-ex {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -132,6 +138,8 @@
 .ex-item-trash-icon {
   display: flex;
   align-items: center;
+  border: none;
+  background-color: transparent;
   cursor: pointer;
 }
 

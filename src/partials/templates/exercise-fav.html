@@ -1,16 +1,16 @@
-<li class="ex-fav-item">
+<li class="ex-fav-item js-fav-item">
   <div class="ex-item-wrapper">
     <div class="ex-item-header">
       <div class="ex-item-header-right-row-fav">
         <div class="ex-item-workout">WORKOUT</div>
-        <div class="ex-item-trash-icon">
+        <button class="ex-item-trash-icon">
           <svg class="icon" width="16" height="16">
-            <use href="/img/icons/icons.svg#icon-trash"></use>
+            <use href="./img/icons.svg#icon-trash"></use>
           </svg>
-        </div>
+        </button>
       </div>
       <div class="ex-item-start">
-        <div class="ex-item-start-text">Start</div>
+        <button class="ex-item-start-text">Start</button>
         <div class="ex-item-start-icon">
           <svg width="13" height="13" viewBox="0 0 13 13">
             <image xlink:href="/img/icons/arrow.svg" width="13" height="13" />
@@ -22,20 +22,20 @@
       <div class="ex-item-title">
         <div class="ex-item-title-icon">
           <svg class="icon" width="24" height="24">
-            <use href="/img/icons/icons.svg#icon-run-black"></use>
+            <use href="./img/icons.svg#icon-run-black"></use>
           </svg>
         </div>
-        <div class="ex-item-title-ex">Air bike</div>
+        <div class="ex-item-title-ex js-fav-title"></div>
       </div>
       <div class="ex-item-footer">
         <div class="ex-item-calories">
-          <span class="ex-item-gray-text">Burned calories: </span>312 / 3 min
+          <span class="ex-item-gray-text">Burned calories: </span><span class="js-fav-calories"></span>
         </div>
         <div class="ex-item-bodypart">
-          <span class="ex-item-gray-text">Body part: </span>Waist
+          <span class="ex-item-gray-text">Body part: </span><span class="js-fav-bodyPart"></span>
         </div>
         <div class="ex-item-target">
-          <span class="ex-item-gray-text">Target: </span>Abs
+          <span class="ex-item-gray-text">Target: </span><span class="js-fav-target"></span>
         </div>
       </div>
     </div>

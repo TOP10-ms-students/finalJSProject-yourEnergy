@@ -4,6 +4,7 @@
   background: var(--primary-color);
   border-radius: 20px;
   color: var(--white-color);
+  margin-right: 32px;
 }
 
 .quote-container {
