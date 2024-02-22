@@ -58,6 +58,8 @@
 }
 .ex-item-start-text {
   font-size: 14px;
+  border: none;
+  background-color: transparent;
 }
 @media (min-width: 768px) {
   .ex-item-start-text {
@@ -89,6 +91,9 @@
   background-color: #000;
   color: var(--white-bg-color);
 }
+.ex-item-title-ex::first-letter {
+  text-transform: capitalize;
+}
 .ex-item-title-ex {
   font-size: 20px;
 }
@@ -109,10 +114,20 @@
 }
 .ex-item-calories,
 .ex-item-bodypart,
-.ex-item-target {
+.ex-item-target,
+.ex-item-title-ex {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.ex-item-bodypart,
+.ex-item-target {
+  width: 33%;
+}
+
+.ex-item-calories {
+  width: 50%;
 }
 
 /* FAV-CARD */
@@ -142,6 +157,8 @@
 .ex-item-trash-icon {
   display: flex;
   align-items: center;
+  border: none;
+  background-color: transparent;
   cursor: pointer;
 }
 

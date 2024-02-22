@@ -37,6 +37,11 @@ svg {
   overflow: hidden;
 }
 
+.hidden {
+  display: none !important; 
+  visibility: hidden !important;
+}
+
 .container {
   max-width: 375px;
   padding-left: 20px;

@@ -131,19 +131,19 @@
 
 /* Header Menu toggle bar */
 .toggle-bar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 50px;
-  width: fit-content;
-  background-color: var(--primary-color);
-  border-radius: 60px;
+  display: none;
 }
 
-.toggle-bar .active {
-  color: var(--primary-color);
-  border-color: var(--primary-color);
-  background-color: var(--white-color);
+@media (min-width: 768px) {
+  .toggle-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 34px;
+    width: fit-content;
+    background-color: var(--primary-color);
+    border-radius: 60px;
+  }
 }
 
 /* Socials links list */
@@ -199,6 +199,26 @@
   background-color: var(--white-color);
   color: var(--primary-color);
 }
+@media (min-width: 1440px) {
+  .toggle-bar {
+    padding: 8px 50px;
+  }
+}
+
+.toggle-bar .nav-link {
+  padding: 6px 12px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--white-color);
+}
+
+.homepage .toggle-bar .home-nav-link,
+.favorites .toggle-bar .fav-nav-link {
+  color: var(--primary-color);
+  background-color: var(--white-color);
+  border-radius: 30px;
+}
+
 /* Scroll to top button */
 .scroll-top {
   position: fixed;
