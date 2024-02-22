@@ -37,6 +37,11 @@ svg {
   overflow: hidden;
 }
 
+.hidden {
+  display: none !important; 
+  visibility: hidden !important;
+}
+
 .container {
   max-width: 375px;
   padding-left: 20px;
@@ -63,5 +68,18 @@ svg {
 @media screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 1440px) {
+  .main {
+    flex-direction: row;
+    flex-direction: row-reverse;
+    row-gap: 32px;
   }
 }
