@@ -33,7 +33,6 @@ export const galaryState = {
 
     setExcerciseFilter(value) {
         this.excerciseFilter = value;
-        console.log(this);
     },
 
     resetExcerciseFilter() {
@@ -102,7 +101,6 @@ function handlerGallaryClick(evt) {
         if (buttonStart) {
             const galleryItem = target.closest('.ex-item');
             const id = galleryItem.dataset.id;
-            console.log(id);
             // function for modal window open
         }
     }
@@ -119,7 +117,6 @@ function handlerFilterClick(evt) {
 
 function handlerSearchFormSubmit(evt) {
     evt.preventDefault();
-    console.log(evt.target.elements.search.value);
     galaryState.keyword = evt.target.elements.search.value;
     getExercisesGallery();
 }
