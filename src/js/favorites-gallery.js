@@ -1,22 +1,3 @@
-// import { fetchApi } from './services/api-service';
-// // getExercises
-// const exercisesParams = {
-//   page: 1,
-//   limit: 10,
-//   bodypart: 'cardio',
-//   // muscles: 'string',
-//   // equipment: 'string',
-//   // keyword: 'string',
-// };
-// fetchApi
-//   .getExercises(exercisesParams)
-//   .then(resp => {
-//     const workouts = JSON.stringify(resp.results);
-//     localStorage.setItem('favWorkouts', workouts);
-//   })
-//   .catch(err => console.log(err));
-
-
 initFavGallery();
 
 function initFavGallery() {
@@ -24,14 +5,12 @@ function initFavGallery() {
   const favGalleryEl = document.querySelector('.js-fav-gallery');
   const emptyFavEl = document.querySelector('.js-no-fav-workouts');
   const workouts = JSON.parse(localStorage.getItem('favWorkouts'));
-  // const workouts = null
 
   if (!workouts?.length) {
     emptyFavEl.classList.remove('hidden');
+    favGalleryEl.classList.add('hidden');
     return;
   }
-
-  console.log(template);
 
   for (let i = 0; i < workouts.length; i++) {
     const clone = template.content.cloneNode(true),

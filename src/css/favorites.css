@@ -2,6 +2,10 @@ main {
   justify-content: center;
 }
 
+.favorites .quote-of-the-day {
+  margin: 0;
+}
+
 .fav-main {
   display: flex;
   flex-direction: column;
@@ -17,7 +21,9 @@ main {
 @media (min-width: 1440px) {
   .fav-main {
     flex-direction: row;
+    justify-content: space-between;
     gap: 32px;
+    width: 1440px;
   }
 }
 
@@ -40,12 +46,14 @@ main {
   .fav-gallery {
     padding-bottom: 64px;
     max-height: 490px;
-    overflow-y: scroll;
+    width: 826px;
+    overflow-y: auto;
   }
 }
 
 .no-fav-workouts {
   padding-top: 20px;
+  max-width: 554px;
   text-align: center;
 }
 
@@ -53,6 +61,16 @@ main {
   .no-fav-workouts {
     font-size: 18px;
     line-height: 1.3;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1400px) {
+  .no-fav-workouts {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 44px;
   }
 }
 
