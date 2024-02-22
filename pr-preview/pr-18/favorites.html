@@ -1,16 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>YourEnergy - Favorites</title>
-    
-    <script type="module" crossorigin src="/finalJSProject-yourEnergy/pr-preview/pr-18/assets/styles-fed23351.js"></script>
-    <link rel="stylesheet" href="/finalJSProject-yourEnergy/pr-preview/pr-18/assets/styles-b401e586.css">
-  </head>
-  <body>
-    <!-- Header -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YourEnergy - Favorites</title>
+  
+
+  <template id="exercise-fav">
+    <li class="ex-fav-item js-fav-item">
+  <div class="ex-item-wrapper">
+    <div class="ex-item-header">
+      <div class="ex-item-header-right-row-fav">
+        <div class="ex-item-workout">WORKOUT</div>
+        <button class="ex-item-trash-icon">
+          <svg class="icon" width="16" height="16">
+            <use href="./img/icons.svg#icon-trash"></use>
+          </svg>
+        </button>
+      </div>
+      <div class="ex-item-start">
+        <button class="ex-item-start-text">Start</button>
+        <div class="ex-item-start-icon">
+          <svg width="13" height="13" viewBox="0 0 13 13">
+            <image xlink:href="/img/icons/arrow.svg" width="13" height="13" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="ex-item-body">
+      <div class="ex-item-title">
+        <div class="ex-item-title-icon">
+          <svg class="icon" width="24" height="24">
+            <use href="./img/icons.svg#icon-run-black"></use>
+          </svg>
+        </div>
+        <div class="ex-item-title-ex js-fav-title"></div>
+      </div>
+      <div class="ex-item-footer">
+        <div class="ex-item-calories">
+          <span class="ex-item-gray-text">Burned calories: </span><span class="js-fav-calories"></span>
+        </div>
+        <div class="ex-item-bodypart">
+          <span class="ex-item-gray-text">Body part: </span><span class="js-fav-bodyPart"></span>
+        </div>
+        <div class="ex-item-target">
+          <span class="ex-item-gray-text">Target: </span><span class="js-fav-target"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
+
+  </template>
+  <script type="module" crossorigin src="/finalJSProject-yourEnergy/pr-preview/pr-18/commonHelpers.js"></script>
+  <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/pr-preview/pr-18/assets/quote-of-the-day-860a6051.js">
+  <link rel="stylesheet" href="/finalJSProject-yourEnergy/pr-preview/pr-18/assets/quote-of-the-day-d2eb3536.css">
+</head>
+
+<body class="favorites">
+  <!-- Header -->
 <header class="header">
     <div class="container header-wrapper">
         <a class="logo js-logo" href="" aria-label="your energy logo" target="_blank">
@@ -22,8 +72,8 @@
         <!-- UI component Header Menu 'toggle-bar' -->
         <!-- Header Menu -->
 <div class="toggle-bar">
-  <button class="button active">Home</button>
-  <button class="button">Favorites</button>
+  <a href="./index.html" class="nav-link home-nav-link">Home</a>
+  <a href="./favorites.html" class="nav-link fav-nav-link">Favorites</a>
 </div>
 
         <div class="socials">
@@ -56,16 +106,45 @@
         </div>
     </div>
 </header>
+  <div class="container title-section">
+  <h1 class="fav-title">Favorites</h1>
+</div>
 
-    <main>
-      sidebar
+  <main>
+    <section class="container fav-main">
+      <!-- quote-of-the-day -->
 
-      <div id="gallery" class="gallery">
-        <div class="content"></div>
+<div class="quote-of-the-day">
+  <!-- <svg class="quote-icon" width="" height="">
+    <use href=""></use>
+  </svg> -->
+  <div class="quote-container">
+    <div>
+      <h1 class="quote-title">Quote of the day</h1>
+      <!-- <svg class="quote-commas" width="" height="">
+        <use href=""></use>
+      </svg> -->
+    </div>
+
+    <div>
+      <p class="js-quote-content quote-content"></p>
+      <p class="js-quote-author quote-author"></p>
+    </div>
+  </div>
+</div>
+
+
+        <ul class="fav-gallery js-fav-gallery"></ul>
+<div class="no-fav-workouts hidden js-no-fav-workouts">
+  <p class="">It appears that you haven't added any exercises to your
+    favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the
+    future.</p>
+</div>
         
-      </div>
-    </main>
+    </section>
+  </main>
 
-    
-  </body>
+  
+</body>
+
 </html>
