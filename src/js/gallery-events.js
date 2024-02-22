@@ -1,4 +1,5 @@
 import { fetchApi } from './services/api-service';
+import { showIziToast } from './services/iziToast';
 
 
 // Constants
@@ -10,6 +11,9 @@ export const galaryState = {
     keyword: '',
 }
 
+export const pageExcercises = 'Excercises';
+export const pageFavorites = 'Favorites';
+
 const elems = {
     elGallery: document.querySelector('.js-gallery'),
     elMainBreadCrumbsState: document.querySelector('.js-bradcrumbs'),
@@ -17,6 +21,7 @@ const elems = {
     elFilters: document.querySelector('.js-filter-block'),
     elInput: document.querySelector('.js-search-input'),
     elSearchForm: document.querySelector('.js-search-form'),
+    template: document.querySelector('#exercise')
 }
 
 const defaultParams = {
@@ -34,14 +39,14 @@ function capitalizeFirstLetter(string) {
 function renderNavigation() {
     elems.elMainBreadCrumbsState.textContent = `${galaryState.page} ${galaryState.excerciseFilter ? ' /' : ''}`;
     elems.elFilterBreadcrumb.textContent = galaryState.excerciseFilter ? capitalizeFirstLetter(galaryState.excerciseFilter) : '';
-    if (galaryState.page === 'Excercises') {
+    if (galaryState.page === pageExcercises) {
         if (galaryState.excerciseFilter) {
             elems.elSearchForm.hidden = false;
         }
         else {
             elems.elSearchForm.hidden = true;
         }
-    } else if (galaryState.page === 'Favorites') {
+    } else if (galaryState.page === pageFavorites) {
         elems.elSearchForm.hidden = true;
         elems.elFilters.hidden = true;
     }
@@ -57,10 +62,8 @@ function handlerGallaryClick(evt) {
     galaryState.excerciseFilter = excerciseFilter;
     renderNavigation();
 
-    if (galaryState.page === 'Excercises') {
+    if (galaryState.page === pageExcercises) {
         getExercisesGallery()
-    } else if (galaryState.page === 'Favorites') {
-
     }
 }
 
@@ -82,11 +85,11 @@ elems.elFilters.addEventListener('click', handlerFilterClick);
 function getExercisesGallery() {
 
     const params = { ...defaultParams };
-    if (galaryState.page === 'Excercises') {
+    if (galaryState.page === pageExcercises) {
         if (galaryState.excerciseFilter) {
-            if (galaryState.filter == 'muscles') {
+            if (galaryState.filter == 'Muscles') {
                 params.muscles = galaryState.excerciseFilter;
-            } else if (galaryState.filter == 'equipment') {
+            } else if (galaryState.filter == 'Equipment') {
                 params.equipment = galaryState.excerciseFilter;
             } else if (galaryState.filter == 'Body parts') {
                 params.bodypart = galaryState.excerciseFilter;
@@ -97,8 +100,8 @@ function getExercisesGallery() {
             }
             fetchApi
             .getExercises(params)
-            .then(resp => renderGalleryMarkup(resp.results))
-            .catch(err => showIziToast('An error occurred while loading data'));
+            .then(resp => renderExcercises(resp.results))
+            .catch(err => showIziToast(err.message));
         }
         else {
             // function for modal window open
@@ -106,16 +109,21 @@ function getExercisesGallery() {
     }
 }
 
-function renderGalleryMarkup(data) {
+function renderExcercises(data) {
     // TODO: 
     // dirty rander. develop next time TODO
     elems.elGallery.innerHTML = '';
-    const galleryMarkup = data.map(
-        ({ _id, burnedCalories, bodyPart, target, rating, name }) =>
-        `<li class="gallery-item" data-id="${_id}">
-            <p>${name}</p>
-            <span>${target}</span>
-        </li>`
-    );
-    elems.elGallery.innerHTML = galleryMarkup.join('');
+    for (let i = 0; i < data.length; i++) {
+        const {name, _id, rating} = data[i];
+        const clone = elems.template.content.cloneNode(true);
+        
+        const elName = clone.querySelector('.ex-item-title-ex');
+        name.textContent = name;
+
+        const elRating = clone.querySelector('.ex-item-rating-text');
+        rating.textContent = rating;
+
+        elems.elGallery.appendChild(clone);
+    }
+    
 }
