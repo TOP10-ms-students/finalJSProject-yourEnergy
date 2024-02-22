@@ -1,6 +1,7 @@
 export function galleryTemplate(data) {
   const gallery = document.querySelector('.js-gallery');
   const template = document.querySelector('#exercise-group');
+  const fragment = document.createDocumentFragment();
 
   data.forEach(({ name, filter, imgURL }) => {
     const clone = template.content.cloneNode(true);
@@ -11,6 +12,8 @@ export function galleryTemplate(data) {
     title.textContent = name;
     const subtitle = clone.querySelector('.card-text-subtitle');
     subtitle.textContent = filter;
-    gallery.appendChild(clone);
+    fragment.appendChild(clone);
   });
+
+  gallery.appendChild(fragment);
 }
