@@ -35,7 +35,7 @@
 }
 
 .photo-base-card {
-  background-image: url('./img/sidebar-img/sidebar-mob@1x.jpg');
+  background-image: url('../img/sidebar-img/sidebar-mob@1x.jpg');
   background-position: center;
   background-size: cover;
   border-radius: 20px;
@@ -48,7 +48,7 @@
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
   .photo-base-card {
-    background-image: url('./img/sidebar-img/sidebar-mob@2x.jpg');
+    background-image: url('../img/sidebar-img/sidebar-mob@2x.jpg');
   }
 }
 
@@ -57,7 +57,7 @@
     width: 288px;
     height: 249px;
 
-    background-image: url('./img/sidebar-img/sidebar-tabl@1x.jpg');
+    background-image: url('../img/sidebar-img/sidebar-tabl@1x.jpg');
   }
 }
 
@@ -65,7 +65,7 @@
   (min-width: 768px) and (min-resolution: 192dpi),
   (min-width: 768px) and (min-resolution: 2dppx) {
   .photo-base-card {
-    background-image: url('./img/sidebar-img/sidebar-tabl@2x.jpg');
+    background-image: url('../img/sidebar-img/sidebar-tabl@2x.jpg');
   }
 }
 
@@ -74,7 +74,7 @@
     width: 444px;
     height: 242px;
 
-    background-image: url('./img/sidebar-img/sidebar-desk@1x.jpg');
+    background-image: url('../img/sidebar-img/sidebar-desk@1x.jpg');
   }
 }
 
@@ -82,7 +82,7 @@
   (min-width: 1440px) and (min-resolution: 192dpi),
   (min-width: 1440px) and (min-resolution: 2dppx) {
   .photo-base-card {
-    background-image: url('./img/sidebar-img/sidebar-desk@2x.jpg');
+    background-image: url('../img/sidebar-img/sidebar-desk@2x.jpg');
   }
 }
 
