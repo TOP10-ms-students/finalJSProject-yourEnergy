@@ -2,7 +2,7 @@
   display: flex;
   gap: 20px;
   width: 444px;
-  height: 100%;
+  /* height: 100%; */
   padding: 20px;
   background: var(--primary-color);
   border-radius: 20px;
@@ -17,11 +17,9 @@
 }
 
 .quote-icon-wrap {
-  width: 35px;
+  width: 38px;
   height: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 6px;
   background-color: var(--rating-color);
   border-radius: 50%;
 }
