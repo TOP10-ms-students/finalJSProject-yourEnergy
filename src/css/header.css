@@ -51,8 +51,7 @@
     transition: color var(--tran-fast), background-color var(--tran-fast);
 }
 
-.social-icon-link svg,
-.social-icon-link svg {
+.social-icon {
     fill: currentColor;
 }
 
