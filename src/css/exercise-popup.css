@@ -209,12 +209,19 @@
     }
 }
 
-.modal-exercise__btn svg {
-    fill: none;
-}
-
 @media screen and (max-width: 767px) {
     .modal-exercise__btn {
         width: 100%;
     }
+}
+
+.modal-exercise__svg {
+    fill: none;
+    stroke: var(--icon-bg-color);
+    transition: all 0.3s ease;
+}
+
+.button-with-icon:hover .modal-exercise__svg,
+.button-with-icon:focus .modal-exercise__svg {
+    stroke: var(--white-color);
 }
