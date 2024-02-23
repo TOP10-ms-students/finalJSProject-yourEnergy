@@ -118,7 +118,7 @@ function markUp({
 
     return `
     <div class="modal-exercise__container">
-            <button class="modal-exercise__btn-close">
+            <button aria-label="Close modal button" class="modal-exercise__btn-close">
                 <svg width="24" height="24" >
                     <use href="${icons}#icon-close"></use>
                 </svg>
