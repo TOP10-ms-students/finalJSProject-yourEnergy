@@ -4,6 +4,7 @@ import { addToFavorites, removeFromFavorites } from './services/storage-fav-card
 import icons from '/img/icons.svg';
 import { setSpinner } from './spinner';
 import { showIziToast } from './services/iziToast';
+import { initFavGallery } from './favorites-gallery';
 
 const modalExercise = document.querySelector('.modal-exercise');
 const overlay = document.querySelector('.overlay');
@@ -34,6 +35,7 @@ export async function openModalExercise(id) {
                 } else {
                     removeFromFavorites(dataExercise);
                     buttonAddRemoveFavorites.innerHTML = createAddButton();
+                    initFavGallery();
                 }
         });
     } catch (err) {
