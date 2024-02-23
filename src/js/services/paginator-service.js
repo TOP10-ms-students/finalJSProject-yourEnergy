@@ -6,6 +6,7 @@ export function renderPagination(totalPages, fetchGallery, params, isLocal) {
   const paginationContainer = document.querySelector('.js-pagination');
   paginationContainer.innerHTML = '';
 
+  const fragment = document.createDocumentFragment();
   for (let i = 1; i <= totalPages; i++) {
     const pageButton = document.createElement('button');
     pageButton.textContent = i;
@@ -26,6 +27,8 @@ export function renderPagination(totalPages, fetchGallery, params, isLocal) {
 
       scrollToTop();
     });
-    paginationContainer.appendChild(pageButton);
+    fragment.appendChild(pageButton);
   }
+  paginationContainer.appendChild(fragment);
+
 }
