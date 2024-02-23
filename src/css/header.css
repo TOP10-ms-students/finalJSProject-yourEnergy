@@ -56,13 +56,18 @@
     height: 100%;
     z-index: 99;
     background-color: var(--title-secondary-color);
-    transition: opacity var(--tran-fast), visibility var(--tran-fast);
+    transition: opacity var(--tran-fast);
 }
 
 .is-hidden {
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
+}
+
+.no-scroll {
+    visibility: hidden;
+    height: 100%;
 }
 
 .menu-toggle {
@@ -80,7 +85,7 @@
     top: 0;
     right: 0;
     width: 210px;
-    height: 812px;
+    height: 100%;
     padding-top: 280px;
     background-color: var(--primary-color);
     z-index: 100;
