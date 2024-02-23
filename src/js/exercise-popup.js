@@ -1,6 +1,7 @@
 import { fetchApi } from './services/api-service';
 import image from '/img/example-img.jpg';
 import { addToFavorites, removeFromFavorites } from './services/storage-fav-cards';
+import icons from '/img/icons.svg';
 
 
 
@@ -53,13 +54,13 @@ function createStarRating(rating) {
     const fillStar = `
         <svg width="14" height="13" viewBox="0 0 14 13" fill="none">
           <use
-            href="./img/icons.svg#icon-star-full"
+            href="${icons}#icon-star-full"
           ></use>
         </svg>`;
     const emptyStar = `
         <svg width="14" height="13" viewBox="0 0 14 13" fill="none">
           <use
-            href="./img/icons.svg#icon-star-empty"
+            href="${icons}#icon-star-empty"
           ></use>
         </svg>`;
     const roundedRating = Math.round(rating);
@@ -77,14 +78,14 @@ function createStarRating(rating) {
 function createAddButton() {
     return `<span>Add to favorite</span>
     <svg class="modal-exercise__svg" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-      <use href="./img/icons.svg#icon-heart"></use>
+      <use href="${icons}#icon-heart"></use>
     </svg>`
 };
 
 function createRemoveButton() {
     return `<span>Remove from favorites</span>
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <use href="./img/icons.svg#icon-trash"></use>
+      <use href="${icons}#icon-trash"></use>
     </svg>`
 };
 
@@ -101,11 +102,13 @@ function markUp({
     time,
     description
 }) {
+    const starsRating = createStarRating(rating);
+
     return `
     <div class="modal-exercise__container">
             <button class="modal-exercise__btn-close">
                 <svg width="24" height="24" >
-                    <use href="./img/icons.svg#icon-close"></use>
+                    <use href="${icons}#icon-close"></use>
                 </svg>
             </button>
 
@@ -115,7 +118,7 @@ function markUp({
                 <h2 class="modal-exercise__name">${name}</h2>
                 <div class="modal-exercise__rating">
                     ${rating}
-                    ${createStarRating(rating)}
+                    ${starsRating}
                 </div>
 
                 <div class="modal-exercise__attributes">
