@@ -27,6 +27,7 @@
 .card-text-title {
   font-size: 20px;
   text-align: center;
+  text-transform: capitalize;
 }
 
 .card-text-subtitle {
