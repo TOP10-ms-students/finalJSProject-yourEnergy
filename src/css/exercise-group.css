@@ -19,7 +19,7 @@
 }
 
 .card-item.noImg {
-  background-color: lightgrey;
+  background-color: var(--frame-color);
   background-image: url('../img/no-img.jpg');;
 }
 
