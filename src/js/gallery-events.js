@@ -138,8 +138,10 @@ function handlerFilterClick(evt) {
 
 function handlerSearchFormSubmit(evt) {
     evt.preventDefault();
+    if (!elems.elInput.value) return;
     galaryState.keyword = evt.target.elements.search.value;
     getExercisesGallery();
+    elems.elInput.value = '';
 }
 
 function handlerResetFilterClick() {
@@ -186,6 +188,8 @@ function fetchGallaryExcercises(params) {
             const { totalPages, results } = resp;
             renderExcercises(results, galaryState);
             renderPagination(totalPages, fetchGallaryExcercises, params);
+
+            !totalPages && showIziToast('No matching workouts found. Try different keywords or filters.')
         })
         .catch(err => showIziToast(err.message))
         .finally(setSpinner(false));

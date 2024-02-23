@@ -11,6 +11,6 @@ export const showIziToast = (message, color, time) => {
     messageColor: '#2a2a2a',
     closeOnClick: true,
     animateInside: true,
-    backgroundColor: color ?? '#fa903e',
+    backgroundColor: color ?? '#fca664',
   });
 };

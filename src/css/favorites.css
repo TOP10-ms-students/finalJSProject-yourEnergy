@@ -112,7 +112,7 @@ main {
 }
 
 @media (min-width: 1440px) {
-  .fav-pagination {
+  .favorites .pagination {
     display: none;
   }
 }
