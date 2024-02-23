@@ -11,10 +11,8 @@ const overlay = document.querySelector('.overlay');
 let isFavorite = false;
 
 export async function openModalExercise(id) {
-    overlay.addEventListener('click', e => e.target === overlay && closeModalExercise());
-    document.addEventListener('keydown',
-        ({ key }) => (key === "Escape" && !modalExercise.classList.contains('hidden')) && closeModalExercise()
-    );
+    overlay.addEventListener('click', clickOnOverlay);
+    document.addEventListener('keydown', clickOnEscape);
 
     try {
         setSpinner(true);
@@ -169,9 +167,19 @@ function markUp({
             </div>
         </div>
         <div class="modal-exercise__btn-container">
-            <button class="button button-with-icon button-white modal-exercise__btn"></button>
-            <button class="button modal-exercise__btn">Give a rating</button>
+            <button aria-label="Remove or add favorite exercise" class="button button-with-icon button-white modal-exercise__btn"></button>
+            <button aria-label="Give a rating" class="button modal-exercise__btn">Give a rating</button>
         </div>`
+};
+
+function clickOnOverlay(e) {
+    e.target === overlay && closeModalExercise();
+};
+
+function clickOnEscape({ key }) {
+    (key === "Escape"
+        && !modalExercise.classList.contains('hidden'))
+        && closeModalExercise();
 };
 
 function showModalExercise() {
@@ -186,7 +194,5 @@ function closeModalExercise() {
     document.body.style.overflow = 'scroll';
 };
 
-overlay.removeEventListener('click', e => e.target === overlay && closeModalExercise());
-document.removeEventListener('keydown',
-    ({ key }) => (key === "Escape" && !modalExercise.classList.contains('hidden')) && closeModalExercise()
-);
+overlay.removeEventListener('click', clickOnOverlay);
+document.removeEventListener('keydown', clickOnEscape);
