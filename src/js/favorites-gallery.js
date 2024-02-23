@@ -41,7 +41,7 @@ export function initFavGallery(pageNumber = 1) {
       elements = classNames.map(className => itemEl.querySelector(`.${className}`)),
       { _id, name: title, bodyPart, target, burnedCalories: calories } = workouts[i];
   
-    [title, bodyPart, target, calories].forEach((prop, idx) => {
+    [target, calories, bodyPart, title ].forEach((prop, idx) => {
       elements[idx].textContent = prop;
     });
 
