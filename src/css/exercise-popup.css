@@ -64,6 +64,14 @@
     }
 }
 
+.modal-exercise__btn-close svg {
+    transition: transform .45s;
+}
+
+.modal-exercise__btn-close svg:hover {
+    transform: rotate(180deg);
+}
+
 .modal-exercise__img {
     width: 100%;
     height: 258px;
