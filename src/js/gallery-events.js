@@ -69,7 +69,11 @@ export const resetState = () => {
     elems.elGallery.innerHTML = '';
     galaryState.resetExcerciseFilter();
     galaryState.filter = 'Muscles';
-    getGroupsGallery({ ...defaultParams, filter: 'Muscles'});
+    getGroupsGallery({
+        page: 1,
+        limit: 12,
+        filter: 'Muscles'
+    });
     renderNavigation();
 
     const filters = elems.elFilters.querySelectorAll('.js-filter');
