@@ -92,4 +92,4 @@ import{i as j}from"./vendor-ad859c2f.js";(function(){const e=document.createElem
             </button>
             <button class="button modal-exercise__btn">Give a rating</button>
         </div>`}function U(){h.classList.remove("hidden"),p.classList.remove("hidden"),document.body.style.overflow="hidden"}function _(){h.classList.add("hidden"),p.classList.add("hidden"),document.body.style.overflow="scroll"}h.addEventListener("click",t=>t.target===h&&_());document.addEventListener("keydown",({key:t})=>t==="Escape"&&!p.classList.contains("hidden")&&_());export{F as a,E as f,b as i,K as o,V as r};
-//# sourceMappingURL=exercise-popup-c2ab7fb0.js.map
+//# sourceMappingURL=exercise-popup-7d4133e6.js.map
