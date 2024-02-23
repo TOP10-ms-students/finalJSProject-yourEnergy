@@ -19,6 +19,10 @@
 
     margin-bottom: 100px;
   }
+
+  .favorites .sidebar-container {
+    margin-bottom: 0;
+  }
 }
 
 @media (min-width: 1440px) {

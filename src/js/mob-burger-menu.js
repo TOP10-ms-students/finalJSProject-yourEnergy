@@ -3,6 +3,7 @@ const mobileMenu = document.querySelector('.js-menu-container');
 const openMenuBtn = document.querySelector('.js-open-menu');
 const closeMenuBtn = document.querySelector('.js-close-menu');
 const mobMenuLinks = document.querySelectorAll('.js-menu-link');
+const body = document.querySelector('body');
 
 // toggle visibility of the menu backdrop
 function toggleMenu() {

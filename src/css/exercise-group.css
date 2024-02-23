@@ -15,6 +15,12 @@
   cursor: pointer;
 
   border-radius: 12px;
+  background-color: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+.card-item.noImg {
+  background-color: var(--frame-color);
+  background-image: url('../img/no-img.jpg');;
 }
 
 .card-text {
@@ -27,6 +33,7 @@
 .card-text-title {
   font-size: 20px;
   text-align: center;
+  text-transform: capitalize;
 }
 
 .card-text-subtitle {
