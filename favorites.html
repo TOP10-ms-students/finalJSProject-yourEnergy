@@ -6,13 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <link rel="icon" type="image/svg+xml" href="/finalJSProject-yourEnergy/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <title>YourEnergy - Favorites</title>
   
   <script type="module" crossorigin src="/finalJSProject-yourEnergy/commonHelpers.js"></script>
   <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/assets/vendor-ad859c2f.js">
-  <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/assets/mob-burger-menu-d6686fa5.js">
+  <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/assets/scroll-top-3370a4be.js">
   <link rel="stylesheet" href="/finalJSProject-yourEnergy/assets/vendor-e5212ee8.css">
-  <link rel="stylesheet" href="/finalJSProject-yourEnergy/assets/mob-burger-menu-231bfd2c.css">
+  <link rel="stylesheet" href="/finalJSProject-yourEnergy/assets/scroll-top-b88e9ae9.css">
 </head>
 
 <body class="favorites">
@@ -225,13 +227,19 @@
 </div>
 
       <ul class="fav-gallery js-fav-gallery js-gallery-scroll"></ul>
-<div class="fav-pagination js-pagination"></div>
+<div class="pagination js-pagination"></div>
 <div class="no-fav-workouts hidden js-no-fav-workouts">
   <p class="">It appears that you haven't added any exercises to your
     favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the
     future.</p>
 </div>
     </section>
+    <button id="scroll-top" class="scroll-top" aria-label="Scroll top">
+  <svg class="scroll-icon" width="20" height="20">
+    <use href="/finalJSProject-yourEnergy/assets/icons-7601a5dc.svg#icon-arrow-top"></use>
+  </svg>
+</button>
+
   </main>
 
   <div class="spinner-backdrop hidden js-spinner">
