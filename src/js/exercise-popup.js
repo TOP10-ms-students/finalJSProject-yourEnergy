@@ -2,8 +2,8 @@ import { fetchApi } from './services/api-service';
 import image from '/img/example-img.jpg';
 import { addToFavorites, removeFromFavorites } from './services/storage-fav-cards';
 import icons from '/img/icons.svg';
-
-
+import { setSpinner } from './spinner';
+import { showIziToast } from './services/iziToast';
 
 const modalExercise = document.querySelector('.modal-exercise');
 const overlay = document.querySelector('.overlay');
@@ -11,26 +11,33 @@ const overlay = document.querySelector('.overlay');
 let isFavorite = false;
 
 export async function openModalExercise(id) {
-    const dataExercise = await fetchApi.getExercisesId(id);
-
-    const markup = markUp(dataExercise);
-    createMarkUpModal(markup, dataExercise);
-    showModalExercise();
-
-    const closeModalButton = document.querySelector('.modal-exercise__btn-close');
-    const buttonAddRemoveFavorites = document.querySelector('.modal-exercise__btn');
-    closeModalButton.addEventListener('click', closeModalExercise);
-    buttonAddRemoveFavorites.addEventListener('click', () => {
-        isFavorite = !isFavorite;   
-        
-            if (isFavorite) {
-                addToFavorites(dataExercise);
-                buttonAddRemoveFavorites.innerHTML = createRemoveButton();
-            } else {
-                removeFromFavorites(dataExercise);
-                buttonAddRemoveFavorites.innerHTML = createAddButton();
-            }
-    });
+    try {
+        setSpinner(true);
+        const dataExercise = await fetchApi.getExercisesId(id);
+    
+        const markup = markUp(dataExercise);
+        createMarkUpModal(markup, dataExercise);
+        showModalExercise();
+    
+        const closeModalButton = document.querySelector('.modal-exercise__btn-close');
+        const buttonAddRemoveFavorites = document.querySelector('.modal-exercise__btn');
+        closeModalButton.addEventListener('click', closeModalExercise);
+        buttonAddRemoveFavorites.addEventListener('click', () => {
+            isFavorite = !isFavorite;   
+            
+                if (isFavorite) {
+                    addToFavorites(dataExercise);
+                    buttonAddRemoveFavorites.innerHTML = createRemoveButton();
+                } else {
+                    removeFromFavorites(dataExercise);
+                    buttonAddRemoveFavorites.innerHTML = createAddButton();
+                }
+        });
+    } catch (err) {
+        showIziToast(err.message);
+    } finally {
+        setSpinner(false);
+    };
 };
 
 function createMarkUpModal(markup, data) {
