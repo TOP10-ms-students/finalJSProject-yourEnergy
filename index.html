@@ -6,74 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YourEnergy</title>
     
-
-    <template id="exercise-group">
-      <li
-  class="card-item"
-  style="
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url('img/1.png');
-  "
->
-  <div class="card-text">
-    <div class="card-text-title">Abductor</div>
-    <div class="card-text-subtitle">Muscles</div>
-  </div>
-</li>
-
-    </template>
-    <template id="exercise">
-      <li class="ex-item">
-  <div class="ex-item-wrapper">
-    <div class="ex-item-header">
-      <div class="ex-item-header-right-row">
-        <div class="ex-item-workout">WORKOUT</div>
-        <div class="ex-item-rating">
-          <div class="ex-item-rating-text js-rating">4.0</div>
-          <div class="ex-item-rating-icon">
-            <svg class="icon" width="14" height="14">
-              <use href="./img/icons.svg#icon-star-full"></use>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="ex-item-start">
-        <div class="ex-item-start-text">Start</div>
-        <div class="ex-item-start-icon">
-          <svg width="13" height="13" viewBox="0 0 15 15">
-            <use href="./img/icons.svg#icon-arrow-start"></use>
-          </svg>
-        </div>
-      </div>
-    </div>
-    <div class="ex-item-body">
-      <div class="ex-item-title">
-        <div class="ex-item-title-icon">
-          <svg class="icon" width="14" height="16">
-            <use href="./img/icons.svg#icon-run"></use>
-          </svg>
-        </div>
-        <div class="ex-item-title-ex js-title"></div>
-      </div>
-      <div class="ex-item-footer">
-        <div class="ex-item-calories">
-          <span class="ex-item-gray-text">Burned calories: </span>
-          <span class="js-burned-calories"></span> / 3 min
-        </div>
-        <div class="ex-item-bodypart">
-          <span class="ex-item-gray-text js-filter"></span>
-          <span class="js-filter-value"></span>
-        </div>
-        <div class="ex-item-target">
-          <span class="ex-item-gray-text">Target: </span>
-          <span class="js-target"></span>
-        </div>
-      </div>
-    </div>
-  </div>
-</li>
-
-    </template>
     <script type="module" crossorigin src="/finalJSProject-yourEnergy/commonHelpers2.js"></script>
     <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/assets/exercise-popup-2503795f.js">
     <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/assets/vendor-ad859c2f.js">
@@ -500,6 +432,74 @@
   </div>
 </div>
 
+
+    <div style="display: none" id="exercise-group">
+      <li
+  class="card-item"
+  style="
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('/finalJSProject-yourEnergy/assets/1-6a976b60.png');
+  "
+>
+  <div class="card-text">
+    <div class="card-text-title">Abductor</div>
+    <div class="card-text-subtitle">Muscles</div>
+  </div>
+</li>
+
+    </div>
+    <div style="display: none" id="exercise">
+      <li class="ex-item">
+  <div class="ex-item-wrapper">
+    <div class="ex-item-header">
+      <div class="ex-item-header-right-row">
+        <div class="ex-item-workout">WORKOUT</div>
+        <div class="ex-item-rating">
+          <div class="ex-item-rating-text js-rating">4.0</div>
+          <div class="ex-item-rating-icon">
+            <svg class="icon" width="14" height="14">
+              <use href="/finalJSProject-yourEnergy/assets/icons-67e507c4.svg#icon-star-full"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="ex-item-start">
+        <div class="ex-item-start-text">Start</div>
+        <div class="ex-item-start-icon">
+          <svg width="13" height="13" viewBox="0 0 15 15">
+            <use href="/finalJSProject-yourEnergy/assets/icons-67e507c4.svg#icon-arrow-start"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="ex-item-body">
+      <div class="ex-item-title">
+        <div class="ex-item-title-icon">
+          <svg class="icon" width="14" height="16">
+            <use href="/finalJSProject-yourEnergy/assets/icons-67e507c4.svg#icon-run"></use>
+          </svg>
+        </div>
+        <div class="ex-item-title-ex js-title"></div>
+      </div>
+      <div class="ex-item-footer">
+        <div class="ex-item-calories">
+          <span class="ex-item-gray-text">Burned calories: </span>
+          <span class="js-burned-calories"></span> / 3 min
+        </div>
+        <div class="ex-item-bodypart">
+          <span class="ex-item-gray-text js-filter"></span>
+          <span class="js-filter-value"></span>
+        </div>
+        <div class="ex-item-target">
+          <span class="ex-item-gray-text">Target: </span>
+          <span class="js-target"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
+
+    </div>
 
     
   </body>
