@@ -35,13 +35,12 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
-    transition: stroke var(--tran-fast);
 }
 
 .on-hover:hover,
 .on-hover:focus {
     transform: scale(1.1);
-    transition: stroke var(--tran-fast);
+    transition: transform var(--tran-icon);
 }
 
 /* mobile backdrop */
