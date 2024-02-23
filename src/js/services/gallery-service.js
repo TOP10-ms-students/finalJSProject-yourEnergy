@@ -1,21 +1,23 @@
 const gallery = document.querySelector('.js-gallery');
 const excerciseGroupTemplate = document.querySelector('#exercise-group');
 const excerciseTemplate = document.querySelector('#exercise');
+const gradient = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),"
 
 export function galleryTemplate(data) {
   const fragment = document.createDocumentFragment();
   data.forEach(({ name = '', filter = '', imgURL = '' }) => {
-    const bgImg = imgURL
-      ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${imgURL})`
-      : `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("./img/no-img.jpg")`;
+    debugger
     const cardItem = excerciseGroupTemplate.children[0].cloneNode(true);
+    if (imgURL) {
+      cardItem.style.backgroundImage = `${gradient} url(${imgURL})`;
+    } else {
+      cardItem.classList.add('noImg');
+    }
     cardItem.setAttribute('data-name', name);
-    cardItem.style.backgroundImage = bgImg;
     const title = cardItem.querySelector('.card-text-title');
     title.textContent = name;
     const subtitle = cardItem.querySelector('.card-text-subtitle');
     subtitle.textContent = filter;
-    if (!imgURL) cardItem.classList.add('noImg');
     fragment.appendChild(cardItem);
   });
 

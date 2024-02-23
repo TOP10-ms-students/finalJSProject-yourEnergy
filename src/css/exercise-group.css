@@ -15,6 +15,12 @@
   cursor: pointer;
 
   border-radius: 12px;
+  background-color: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+.card-item.noImg {
+  background-color: lightgrey;
+  background-image: url('../img/no-img.jpg');;
 }
 
 .card-text {
