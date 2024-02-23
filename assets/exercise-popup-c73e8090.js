@@ -92,4 +92,4 @@
             </button>
             <button class="button modal-exercise__btn">Give a rating</button>
         </div>`}function k(){u.classList.remove("hidden"),m.classList.remove("hidden"),document.body.style.overflow="hidden"}function C(){u.classList.add("hidden"),m.classList.add("hidden"),document.body.style.overflow="scroll"}u.addEventListener("click",t=>t.target===u&&C());document.addEventListener("keydown",({key:t})=>t==="Escape"&&!m.classList.contains("hidden")&&C());export{g as f,$ as o,E as r};
-//# sourceMappingURL=exercise-popup-2503795f.js.map
+//# sourceMappingURL=exercise-popup-c73e8090.js.map
