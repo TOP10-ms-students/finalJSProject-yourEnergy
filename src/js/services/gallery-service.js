@@ -6,7 +6,6 @@ const gradient = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),"
 export function galleryTemplate(data) {
   const fragment = document.createDocumentFragment();
   data.forEach(({ name = '', filter = '', imgURL = '' }) => {
-    debugger
     const cardItem = excerciseGroupTemplate.children[0].cloneNode(true);
     if (imgURL) {
       cardItem.style.backgroundImage = `${gradient} url(${imgURL})`;
