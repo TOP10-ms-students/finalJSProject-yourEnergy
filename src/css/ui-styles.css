@@ -92,7 +92,7 @@
   background-color: var(--primary-color);
   border: 1px solid var(--white-color);
   border-radius: 30px;
-  transition: all 0.3s ease;
+  transition: all var(--tran-icon);
 }
 
 .button:hover,
@@ -194,8 +194,6 @@
   border-radius: 10px;
   border: 1px solid var(--frame-color);
   cursor: pointer;
-
-  transition: var(--tran-fast);
 }
 
 .menu-wrapper .social-icon-link {
@@ -211,6 +209,7 @@
   background-color: var(--primary-color);
   color: var(--white-color);
   border: 1px solid transparent;
+  transition: all var(--tran-icon), var(--trans-duration);
 }
 
 .menu-wrapper .social-icon-link:hover,
@@ -219,6 +218,8 @@
 .footer .social-icon-link:focus {
   background-color: var(--white-color);
   color: var(--primary-color);
+  transition: background-color var(--tran-fast),
+    var(--trans-duration) color var(--tran-fast);
 }
 
 /* toggle-bar */
