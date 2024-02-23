@@ -149,7 +149,7 @@
 }
 @media (min-width: 1440px) {
   .ex-fav-item {
-    width: 405px;
+    width: calc((100% - 16px) / 2);
   }
 }
 
