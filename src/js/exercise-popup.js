@@ -11,6 +11,11 @@ const overlay = document.querySelector('.overlay');
 let isFavorite = false;
 
 export async function openModalExercise(id) {
+    overlay.addEventListener('click', e => e.target === overlay && closeModalExercise());
+    document.addEventListener('keydown',
+        ({ key }) => (key === "Escape" && !modalExercise.classList.contains('hidden')) && closeModalExercise()
+    );
+
     try {
         setSpinner(true);
         const dataExercise = await fetchApi.getExercisesId(id);
@@ -124,7 +129,9 @@ function markUp({
             <div class="modal-exercise__card">
                 <h2 class="modal-exercise__name">${name}</h2>
                 <div class="modal-exercise__rating">
-                    ${rating}
+                    ${Number.isInteger(rating)
+                        ? `${rating}.0`
+                        : rating.toFixed(1)}
                     ${starsRating}
                 </div>
 
@@ -162,11 +169,7 @@ function markUp({
             </div>
         </div>
         <div class="modal-exercise__btn-container">
-            <button class="button button-with-icon button-white modal-exercise__btn"><span>Add to favorite</span>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <use href="./img/icons.svg#icon-trash"></use>
-                </svg>
-            </button>
+            <button class="button button-with-icon button-white modal-exercise__btn"></button>
             <button class="button modal-exercise__btn">Give a rating</button>
         </div>`
 };
@@ -183,7 +186,7 @@ function closeModalExercise() {
     document.body.style.overflow = 'scroll';
 };
 
-overlay.addEventListener('click', e => e.target === overlay && closeModalExercise());
-document.addEventListener('keydown',
+overlay.removeEventListener('click', e => e.target === overlay && closeModalExercise());
+document.removeEventListener('keydown',
     ({ key }) => (key === "Escape" && !modalExercise.classList.contains('hidden')) && closeModalExercise()
 );
