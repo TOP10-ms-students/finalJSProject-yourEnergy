@@ -1,12 +1,13 @@
 .overlay {
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    z-index: 100;
-    overflow: auto;
-    background: var(--title-secondary-color);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  overflow: auto;
+  background: var(--title-secondary-color);
+  backdrop-filter: blur(2px);
 }
 
 .modal-exercise {
