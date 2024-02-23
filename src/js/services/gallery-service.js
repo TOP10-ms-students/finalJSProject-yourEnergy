@@ -1,17 +1,13 @@
 const gallery = document.querySelector('.js-gallery');
 const excerciseGroupTemplate = document.querySelector('#exercise-group');
 const excerciseTemplate = document.querySelector('#exercise');
-const gradient = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),"
+const gradient = 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),';
 
 export function galleryTemplate(data) {
   const fragment = document.createDocumentFragment();
   data.forEach(({ name = '', filter = '', imgURL = '' }) => {
     const cardItem = excerciseGroupTemplate.children[0].cloneNode(true);
-    if (imgURL) {
-      cardItem.style.backgroundImage = `${gradient} url(${imgURL})`;
-    } else {
-      cardItem.classList.add('noImg');
-    }
+    cardItem.style.backgroundImage = `${gradient} url(${imgURL})`;
     cardItem.setAttribute('data-name', name);
     const title = cardItem.querySelector('.card-text-title');
     title.textContent = name;
@@ -53,5 +49,4 @@ export function renderExcercises(data, galaryState) {
   }
 
   gallery.appendChild(fragment);
-
 }
