@@ -7,10 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>YourEnergy - Favorites</title>
   <link rel="stylesheet" href="./css/styles.css" />
-
-  <template id="exercise-fav">
-    <load src="partials/templates/exercise-fav.html" />
-  </template>
 </head>
 
 <body class="favorites">
@@ -26,7 +22,9 @@
   </main>
 
   <load src="partials/exercise-popup.html" />
+    <div style="display: none" id="exercise-fav">
+      <load src="partials/templates/exercise-fav.html" />
+    </div>
   <script type="module" src="./js/favorites.js"></script>
 </body>
-
 </html>
