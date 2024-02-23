@@ -79,6 +79,9 @@
   color: #d4d4d4;
   border: none;
   background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .pagination button.active {
   border-radius: 50%;
