@@ -4,7 +4,6 @@ import { galleryTemplate } from './services/gallery-service';
 import { setSpinner } from './spinner';
 import { renderPagination } from './services/paginator-service';
 
-
 const gallery = document.querySelector('.js-gallery');
 const galleryFilterBlock = document.querySelector('.js-filter-block');
 const galleryFilter = document.querySelectorAll('.js-filter');
@@ -23,8 +22,7 @@ export function getExercisesGallery(params) {
     .getExercisesFilter(params)
     .then(resp => {
       const { totalPages, results } = resp;
-      const data = addEmptyItemsToResult(results);
-      renderGalleryMarkup(data);
+      renderGalleryMarkup(results);
       renderPagination(totalPages, getExercisesGallery, params);
     })
     .catch(err => showIziToast(err.message))
@@ -48,14 +46,4 @@ function handlerClick(evt) {
     evt.target.classList.add('active');
     getExercisesGallery({ ...params, filter: filterValue });
   }
-}
-
-function addEmptyItemsToResult(results) {
-  if (window.innerWidth > 767) {
-    const emptyItemsToAdd = params.limit - results.length;
-    for (let i = 0; i < emptyItemsToAdd; i++) {
-      results.push({});
-    }
-  }
-  return results;
 }

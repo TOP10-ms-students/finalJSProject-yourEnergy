@@ -8,7 +8,7 @@ export function initFavGallery(pageNumber = 1) {
   if (!template) return;
 
   const workouts = JSON.parse(localStorage.getItem('favWorkouts')),
-    { favGalleryEl, emptyFavEl, fragment } = getRefs(),
+    { favGalleryEl, emptyFavEl, paginationFavEl, fragment } = getRefs(),
     screenWidth = window.innerWidth,
     DESKTOP_WIDTH = 1440,
     TABLET_WIDTH = 768;
@@ -16,6 +16,7 @@ export function initFavGallery(pageNumber = 1) {
   if (!workouts?.length) {
     emptyFavEl.classList.remove('hidden');
     favGalleryEl.classList.add('hidden');
+    paginationFavEl.classList.add('hidden');
     return;
   }
 
@@ -72,6 +73,7 @@ function getRefs() {
   return {
     favGalleryEl: document.querySelector('.js-fav-gallery'),
     emptyFavEl: document.querySelector('.js-no-fav-workouts'),
+    paginationFavEl: document.querySelector('.js-pagination'),
     fragment: document.createDocumentFragment(),
   };
 }

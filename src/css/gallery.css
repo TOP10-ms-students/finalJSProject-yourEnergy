@@ -79,6 +79,9 @@
   color: #d4d4d4;
   border: none;
   background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .pagination button.active {
   border-radius: 50%;
@@ -86,8 +89,4 @@
   border: 1px solid var(--primary-color);
 }
 
-.noImg {
-  pointer-events: none;
-  cursor: default;
-  opacity: 0.5;
-}
+
