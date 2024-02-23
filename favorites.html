@@ -8,8 +8,10 @@
   <title>YourEnergy - Favorites</title>
   
   <script type="module" crossorigin src="/finalJSProject-yourEnergy/commonHelpers.js"></script>
-  <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/assets/exercise-popup-c73e8090.js">
-  <link rel="stylesheet" href="/finalJSProject-yourEnergy/assets/exercise-popup-41506b82.css">
+  <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/assets/vendor-ad859c2f.js">
+  <link rel="modulepreload" crossorigin href="/finalJSProject-yourEnergy/assets/exercise-popup-a1fbb753.js">
+  <link rel="stylesheet" href="/finalJSProject-yourEnergy/assets/vendor-e5212ee8.css">
+  <link rel="stylesheet" href="/finalJSProject-yourEnergy/assets/exercise-popup-02ca4e82.css">
 </head>
 
 <body class="favorites">
@@ -220,21 +222,21 @@
   </div>
 </div>
 
-        <ul class="fav-gallery js-fav-gallery"></ul>
+      <ul class="fav-gallery js-fav-gallery js-gallery-scroll"></ul>
+<div class="fav-pagination js-pagination"></div>
 <div class="no-fav-workouts hidden js-no-fav-workouts">
   <p class="">It appears that you haven't added any exercises to your
     favorites yet. To get started, you can add exercises that you like to your favorites for easier access in the
     future.</p>
 </div>
-        <!-- ENOENT: no such file or directory, open '/home/runner/work/finalJSProject-yourEnergy/finalJSProject-yourEnergy/src/partials/components/pagination.html' -->
     </section>
   </main>
 
   <div class="overlay hidden">
     <div class="modal-exercise hidden"></div>
 </div>
-    <div style="display: none" id="exercise-fav">
-      <li class="ex-fav-item js-fav-item">
+  <div style="display: none" id="exercise-fav">
+    <li class="ex-fav-item js-fav-item">
   <div class="ex-item-wrapper">
     <div class="ex-item-header">
       <div class="ex-item-header-right-row-fav">
@@ -281,7 +283,8 @@
   </div>
 </li>
 
-    </div>
+  </div>
   
 </body>
+
 </html>
