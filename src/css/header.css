@@ -65,8 +65,8 @@
     pointer-events: none;
 }
 
-.no-scroll {
-    visibility: hidden;
+body:has(.menu-container.is-open) {
+    overflow: hidden;
     height: 100%;
 }
 
