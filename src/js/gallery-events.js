@@ -67,7 +67,7 @@ function capitalizeFirstLetter(string) {
 export const resetState = () => {
     galaryState.resetExcerciseFilter();
     galaryState.filter = 'Muscles';
-    getGroupsGallery({ ...defaultParams, filter: 'Muscles'});
+    getGroupsGallery({ ...defaultParams, limit: 12, filter: 'Muscles'});
     renderNavigation();
 
     const filters = elems.elFilters.querySelectorAll('.js-filter');
