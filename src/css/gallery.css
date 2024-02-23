@@ -5,7 +5,6 @@
   margin: 20px 0;
 }
 .filter-block > li {
-  margin-right: 20px;
   height: 25px;
   cursor: pointer;
 }
@@ -33,21 +32,21 @@
 @media screen and (max-width: 375px) {
   .gallery-content {
     max-width: 705px;
-    min-height: calc((225 * 4px) + (32 * 3px));
+    min-height: calc((141 * 4px) + (20 * 3px));
   }
 }
 
 @media screen and (min-width: 768px) {
   .gallery-content {
     width: 705px;
-    min-height: calc((225 * 4px) + (32 * 3px));
+    min-height: calc((141 * 4px) + (32 * 3px));
   }
 }
 
 @media screen and (min-width: 1440px) {
   .gallery-content {
     width: 900px;
-    min-height: calc((242 * 4px) + (32 * 3px));
+    min-height: calc((141 * 4px) + (32 * 3px));
   }
 }
 

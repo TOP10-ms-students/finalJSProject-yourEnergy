@@ -1,11 +1,16 @@
+import { renderPagination } from "./services/paginator-service";
+
 initFavGallery();
 
-export function initFavGallery() {
-  const template = document.querySelector('#exercise-fav'),
-    favGalleryEl = document.querySelector('.js-fav-gallery'),
-    emptyFavEl = document.querySelector('.js-no-fav-workouts'),
-    workouts = JSON.parse(localStorage.getItem('favWorkouts')),
-    fragment = document.createDocumentFragment();
+export function initFavGallery(pageNumber = 1) {
+  const template = getTemplate();
+  if (!template) return;
+
+  const workouts = JSON.parse(localStorage.getItem('favWorkouts')),
+    { favGalleryEl, emptyFavEl, fragment } = getRefs(),
+    screenWidth = window.innerWidth,
+    DESKTOP_WIDTH = 1440,
+    TABLET_WIDTH = 768;
 
   if (!workouts?.length) {
     emptyFavEl.classList.remove('hidden');
@@ -13,23 +18,49 @@ export function initFavGallery() {
     return;
   }
 
-  for (let i = 0; i < workouts.length; i++) {
-    const itemEl = template.children[0].cloneNode(true),
-      targetEl = itemEl.querySelector('.js-fav-target'),
-      caloriesEl = itemEl.querySelector('.js-fav-calories'),
-      bodyPartEl = itemEl.querySelector('.js-fav-bodyPart'),
-      titleEl = itemEl.querySelector('.js-fav-title'),
-      { _id, name: title, bodyPart, target, burnedCalories } = workouts[i];
+  const PER_PAGE = screenWidth < TABLET_WIDTH ? 9 : 10,
+    totalWorkouts = workouts.length,
+    totalPages = Math.ceil(totalWorkouts / PER_PAGE),
+    params = { page: pageNumber };
 
-    targetEl.textContent = target;
-    bodyPartEl.textContent = bodyPart;
-    caloriesEl.textContent = burnedCalories;
-    titleEl.textContent = title;
+  let startIndex = (pageNumber - 1) * PER_PAGE,
+    endIndex = Math.min(startIndex + PER_PAGE, totalWorkouts);
+
+  if (screenWidth < DESKTOP_WIDTH) {
+    renderPagination(totalPages, null, params, true);
+  } else {
+    startIndex = 0;
+    endIndex = totalWorkouts;
+  }
+
+  favGalleryEl.innerHTML = '';
+
+  for (let i = startIndex; i < endIndex; i++) {
+    const itemEl = template.children[0].cloneNode(true),
+      classNames = ['js-fav-target', 'js-fav-calories', 'js-fav-bodyPart', 'js-fav-title'],
+      elements = classNames.map(className => itemEl.querySelector(`.${className}`)),
+      { _id, name: title, bodyPart, target, burnedCalories: calories } = workouts[i];
+  
+    [target, calories, bodyPart, title ].forEach((prop, idx) => {
+      elements[idx].textContent = prop;
+    });
 
     itemEl.setAttribute('id', _id);
-
     fragment.appendChild(itemEl);
   }
 
   favGalleryEl.appendChild(fragment);
+}
+
+function getRefs() {
+  return {
+    favGalleryEl: document.querySelector('.js-fav-gallery'),
+    emptyFavEl: document.querySelector('.js-no-fav-workouts'),
+    fragment: document.createDocumentFragment(),
+  };
+}
+
+function getTemplate() {
+  return document.querySelector('#exercise-fav');
+  
 }

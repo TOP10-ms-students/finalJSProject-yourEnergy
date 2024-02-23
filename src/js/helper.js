@@ -9,3 +9,7 @@ iziToast.settings({
   transitionOut: 'flipOutX',
   position: 'topRight',
 });
+
+export function scrollToTop() {
+  document.querySelector('.js-gallery-scroll').scrollIntoView({ behavior: 'smooth' });
+}
