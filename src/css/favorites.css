@@ -24,6 +24,7 @@ main {
     justify-content: space-between;
     gap: 32px;
     width: 1440px;
+    padding-bottom: 164px;
   }
 }
 
@@ -104,5 +105,11 @@ main {
   .fav-title {
     font-size: 44px;
     line-height: 1.1;
+  }
+}
+
+@media (min-width: 1440px) {
+  .fav-pagination {
+    display: none;
   }
 }

@@ -1,4 +1,7 @@
-export function renderPagination(totalPages, fetchGallery, params) {
+import { initFavGallery } from '../favorites-gallery';
+import { scrollToTop } from '../helper';
+
+export function renderPagination(totalPages, fetchGallery, params, isLocal) {
   if (params.page >= totalPages) return;
   const paginationContainer = document.querySelector('.js-pagination');
   paginationContainer.innerHTML = '';
@@ -16,7 +19,12 @@ export function renderPagination(totalPages, fetchGallery, params) {
       });
       const btn = evt.currentTarget;
       btn.classList.add('active');
-      fetchGallery({ ...params, page: i });
+
+      isLocal
+        ? initFavGallery(i)
+        : fetchGallery({ ...params, page: i });
+
+      scrollToTop();
     });
     paginationContainer.appendChild(pageButton);
   }
