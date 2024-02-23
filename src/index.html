@@ -6,13 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YourEnergy</title>
     <link rel="stylesheet" href="./css/styles.css" />
-
-    <template id="exercise-group">
-      <load src="partials/templates/exercise-group.html" />
-    </template>
-    <template id="exercise">
-      <load src="partials/templates/exercise.html" />
-    </template>
   </head>
   <body class="homepage">
     <load src="partials/header.html" />
@@ -30,6 +23,13 @@
 
     <load src="partials/footer.html" />
     <load src="partials/spinner.html" />
+
+    <div style="display: none" id="exercise-group">
+      <load src="partials/templates/exercise-group.html" />
+    </div>
+    <div style="display: none" id="exercise">
+      <load src="partials/templates/exercise.html" />
+    </div>
 
     <script type="module" src="./js/index.js"></script>
   </body>
