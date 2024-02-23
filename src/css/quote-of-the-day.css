@@ -7,11 +7,20 @@
   border-radius: 20px;
   color: var(--white-color);
 
+  width: 335px;
 }
 @media screen and (min-width: 768px) {
   .quote-of-the-day {
     padding: 40px;
     gap: 16px;
+
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .quote-of-the-day {
+    width: 444px;
   }
 }
 

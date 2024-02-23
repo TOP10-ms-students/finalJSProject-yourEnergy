@@ -1,6 +1,6 @@
 initFavGallery();
 
-function initFavGallery() {
+export function initFavGallery() {
   const template = document.querySelector('#exercise-fav'),
     favGalleryEl = document.querySelector('.js-fav-gallery'),
     emptyFavEl = document.querySelector('.js-no-fav-workouts'),
@@ -14,12 +14,11 @@ function initFavGallery() {
   }
 
   for (let i = 0; i < workouts.length; i++) {
-    const clone = template.content.cloneNode(true),
-      itemEl = clone.querySelector('.js-fav-item'),
-      targetEl = clone.querySelector('.js-fav-target'),
-      caloriesEl = clone.querySelector('.js-fav-calories'),
-      bodyPartEl = clone.querySelector('.js-fav-bodyPart'),
-      titleEl = clone.querySelector('.js-fav-title'),
+    const itemEl = template.children[0].cloneNode(true),
+      targetEl = itemEl.querySelector('.js-fav-target'),
+      caloriesEl = itemEl.querySelector('.js-fav-calories'),
+      bodyPartEl = itemEl.querySelector('.js-fav-bodyPart'),
+      titleEl = itemEl.querySelector('.js-fav-title'),
       { _id, name: title, bodyPart, target, burnedCalories } = workouts[i];
 
     targetEl.textContent = target;
@@ -29,7 +28,7 @@ function initFavGallery() {
 
     itemEl.setAttribute('id', _id);
 
-    fragment.appendChild(clone);
+    fragment.appendChild(itemEl);
   }
 
   favGalleryEl.appendChild(fragment);
