@@ -92,9 +92,9 @@
     transform: translateX(0);
 }
 
-.menu-container,
 .menu-toggle {
     position: absolute;
+    border: none;
     top: 20px;
     right: 20px;
 }

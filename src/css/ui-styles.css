@@ -198,6 +198,10 @@
   transition: var(--tran-fast);
 }
 
+.menu-wrapper .social-icon-link {
+  color: var(--white-color);
+}
+
 .social-icon-link svg {
   fill: currentColor;
 }

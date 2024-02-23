@@ -83,3 +83,8 @@ svg {
     gap: 32px;
   }
 }
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
