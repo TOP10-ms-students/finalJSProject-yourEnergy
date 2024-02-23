@@ -31,6 +31,9 @@ main {
 .fav-gallery {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: left;
+  align-content: flex-start;
   gap: 20px;
 }
 
