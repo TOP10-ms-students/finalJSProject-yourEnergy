@@ -1,4 +1,5 @@
 import { renderPagination } from "./services/paginator-service";
+import { setSpinner } from "./spinner";
 
 initFavGallery();
 
@@ -50,6 +51,8 @@ export function initFavGallery(pageNumber = 1) {
   }
 
   favGalleryEl.appendChild(fragment);
+  setSpinner(true);
+  setSpinner(false);
 }
 
 function getRefs() {
