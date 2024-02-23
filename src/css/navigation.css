@@ -150,3 +150,7 @@
 .filter-block .filter-item:focus {
   color: var(--black-text-color);
 }
+
+input:placeholder-shown + .control-buttons .button-icon-clear {
+  display: none;
+}
