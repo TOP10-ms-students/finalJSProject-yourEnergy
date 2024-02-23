@@ -2,9 +2,9 @@ import { initFavGallery } from '../favorites-gallery';
 import { scrollToTop } from '../helper';
 
 export function renderPagination(totalPages, fetchGallery, params, isLocal) {
-  if (params.page >= totalPages) return;
   const paginationContainer = document.querySelector('.js-pagination');
   paginationContainer.innerHTML = '';
+  if (totalPages === 1) return;
 
   for (let i = 1; i <= totalPages; i++) {
     const pageButton = document.createElement('button');

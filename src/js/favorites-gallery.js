@@ -1,4 +1,5 @@
-import { renderPagination } from "./services/paginator-service";
+import { renderPagination } from './services/paginator-service';
+import { setSpinner } from './spinner';
 
 initFavGallery();
 
@@ -33,15 +34,29 @@ export function initFavGallery(pageNumber = 1) {
     endIndex = totalWorkouts;
   }
 
+  setSpinner(true);
   favGalleryEl.innerHTML = '';
 
   for (let i = startIndex; i < endIndex; i++) {
     const itemEl = template.children[0].cloneNode(true),
-      classNames = ['js-fav-target', 'js-fav-calories', 'js-fav-bodyPart', 'js-fav-title'],
-      elements = classNames.map(className => itemEl.querySelector(`.${className}`)),
-      { _id, name: title, bodyPart, target, burnedCalories: calories } = workouts[i];
-  
-    [target, calories, bodyPart, title ].forEach((prop, idx) => {
+      classNames = [
+        'js-fav-target',
+        'js-fav-calories',
+        'js-fav-bodyPart',
+        'js-fav-title',
+      ],
+      elements = classNames.map(className =>
+        itemEl.querySelector(`.${className}`)
+      ),
+      {
+        _id,
+        name: title,
+        bodyPart,
+        target,
+        burnedCalories: calories,
+      } = workouts[i];
+
+    [target, calories, bodyPart, title].forEach((prop, idx) => {
       elements[idx].textContent = prop;
     });
 
@@ -50,6 +65,7 @@ export function initFavGallery(pageNumber = 1) {
   }
 
   favGalleryEl.appendChild(fragment);
+  setSpinner(false);
 }
 
 function getRefs() {
@@ -62,5 +78,4 @@ function getRefs() {
 
 function getTemplate() {
   return document.querySelector('#exercise-fav');
-  
 }
