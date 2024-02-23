@@ -4,6 +4,7 @@ import { renderExcercises } from './services/gallery-service';
 import { renderPagination } from './services/paginator-service';
 import { openModalExercise } from './exercise-popup';
 import { getExercisesGallery as getGroupsGallery } from './gallery';
+import { setSpinner } from './spinner';
 
 
 // Constants
@@ -65,9 +66,10 @@ function capitalizeFirstLetter(string) {
 }
 
 export const resetState = () => {
+    elems.elGallery.innerHTML = '';
     galaryState.resetExcerciseFilter();
     galaryState.filter = 'Muscles';
-    getGroupsGallery({ ...defaultParams, filter: 'Muscles'});
+    getGroupsGallery({ ...defaultParams, limit: 12, filter: 'Muscles'});
     renderNavigation();
 
     const filters = elems.elFilters.querySelectorAll('.js-filter');
@@ -156,6 +158,7 @@ elems.elSearchForm.addEventListener('reset', handlerResetFilterClick);
 
 // Render Excercises Gallery
 function getExercisesGallery() {
+    elems.elGallery.innerHTML = '';
 
     const params = { ...defaultParams };
     if (galaryState.filter == 'Muscles') {
@@ -175,6 +178,7 @@ function getExercisesGallery() {
 }
 
 function fetchGallaryExcercises(params) {
+    setSpinner(true);
     fetchApi
     .getExercises(params)
         .then(resp =>
@@ -183,5 +187,6 @@ function fetchGallaryExcercises(params) {
             renderExcercises(results, galaryState);
             renderPagination(totalPages, fetchGallaryExcercises, params);
         })
-    .catch(err => showIziToast(err.message));
+        .catch(err => showIziToast(err.message))
+        .finally(setSpinner(false));
 }
