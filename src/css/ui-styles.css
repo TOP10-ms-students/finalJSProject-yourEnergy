@@ -209,7 +209,7 @@
   background-color: var(--primary-color);
   color: var(--white-color);
   border: 1px solid transparent;
-  transition: all var(--tran-icon), var(--trans-duration);
+  transition: all var(--tran-icon);
 }
 
 .menu-wrapper .social-icon-link:hover,
@@ -218,8 +218,7 @@
 .footer .social-icon-link:focus {
   background-color: var(--white-color);
   color: var(--primary-color);
-  transition: background-color var(--tran-fast),
-    var(--trans-duration) color var(--tran-fast);
+  transition: all var(--tran-icon);
 }
 
 /* toggle-bar */
