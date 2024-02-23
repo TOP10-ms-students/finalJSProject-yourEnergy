@@ -158,7 +158,6 @@ elems.elSearchForm.addEventListener('reset', handlerResetFilterClick);
 
 // Render Excercises Gallery
 function getExercisesGallery() {
-    setSpinner(true);
     elems.elGallery.innerHTML = '';
 
     const params = { ...defaultParams };
@@ -179,6 +178,7 @@ function getExercisesGallery() {
 }
 
 function fetchGallaryExcercises(params) {
+    setSpinner(true);
     fetchApi
     .getExercises(params)
         .then(resp =>
