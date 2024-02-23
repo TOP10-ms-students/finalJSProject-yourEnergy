@@ -28,6 +28,6 @@ function getQuoteData() {
       quote.content.textContent = newQuote;
       quote.author.textContent = author;
     })
-    .catch(err => console.log(err));
+    .catch(err => showIziToast(err.message));
 }
 getQuoteData();
