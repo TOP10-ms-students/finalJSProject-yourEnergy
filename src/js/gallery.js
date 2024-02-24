@@ -1,10 +1,9 @@
 import { fetchApi } from './services/api-service';
 import { showIziToast } from './services/iziToast';
-import { galleryTemplate } from './services/gallery-service';
+import { renderGallery } from './services/gallery-service';
 import { setSpinner } from './spinner';
 import { renderPagination } from './services/paginator-service';
 
-const gallery = document.querySelector('.js-gallery');
 const galleryFilterBlock = document.querySelector('.js-filter-block');
 const galleryFilter = document.querySelectorAll('.js-filter');
 
@@ -22,18 +21,13 @@ export async function getExercisesGallery(params) {
     setSpinner(true);
     const resp = await fetchApi.getExercisesFilter(params);
     const { totalPages, results } = resp;
-    renderGalleryMarkup(results);
+    renderGallery(results);
     renderPagination(totalPages, getExercisesGallery, params);
   } catch (err) {
     showIziToast(err.message);
   } finally {
     setSpinner(false);
   }
-}
-
-function renderGalleryMarkup(data) {
-  gallery.innerHTML = '';
-  galleryTemplate(data);
 }
 
 galleryFilterBlock.addEventListener('click', handlerClick);
