@@ -15,8 +15,7 @@ function getQuoteData() {
     const currentDate = new Date();
 
     if (savedDate.getDate() === currentDate.getDate()) {
-      quote.content.textContent = quoteContent;
-      quote.author.textContent = author;
+      addTextContent(quoteContent, author);
       return;
     }
   }
@@ -32,11 +31,15 @@ async function fetchGetExercisesQuote() {
     const { quote: newQuote, author } = resp;
     const quoteData = { quote: newQuote, author, date: new Date() };
     localStorage.setItem('quoteData', JSON.stringify(quoteData));
-    quote.content.textContent = newQuote;
-    quote.author.textContent = author;
+    addTextContent(newQuote, author);
   } catch (err) {
     showIziToast(err.message);
   } finally {
     setSpinner(true);
   }
+}
+
+function addTextContent(content, author) {
+  quote.content.textContent = content;
+  quote.author.textContent = author;
 }
