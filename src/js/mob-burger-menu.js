@@ -2,13 +2,19 @@ const backdrop = document.querySelector('.js-menu-backdrop');
 const mobMenu = document.querySelector('.js-menu-container');
 const openMenuBtn = document.querySelector('.js-open-menu');
 const closeMenuBtn = document.querySelector('.js-close-menu');
-const mobMenuLinks = document.querySelectorAll('.js-menu-link, .js-close-menu');
+const mobMenuLink = document.querySelector('.js-menu-link');
 
 function toggleMenu() {
-  const isMenuOpen = openMenuBtn.getAttribute('aria-expanded') === 'true';
-  openMenuBtn.setAttribute('aria-expanded', !isMenuOpen);
   mobMenu.classList.toggle('is-open');
   backdrop.classList.toggle('is-hidden');
+}
+
+function onMenuClick(evt) {
+  // in case when ul clicked //
+  if (evt.currentTarget === evt.target) {
+    return;
+  }
+  toggleMenu();
 }
 
 function handlerBackdrop({ target }) {
@@ -19,15 +25,6 @@ function handlerBackdrop({ target }) {
 
 openMenuBtn.addEventListener('click', toggleMenu);
 closeMenuBtn.addEventListener('click', toggleMenu);
-mobMenuLinks.forEach(link => {
-  link.addEventListener('click', toggleMenu);
-});
+mobMenuLink.addEventListener('click', onMenuClick);
 
 backdrop.addEventListener('click', handlerBackdrop);
-
-//.
-/* mobMenu.addEventListener('click', event => {
-  if (!event.target.classList.contains('menu-container')) {
-    toggleMenu();
-  }
-}); */
