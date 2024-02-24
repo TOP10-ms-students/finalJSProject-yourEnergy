@@ -35,7 +35,7 @@ async function fetchGetExercisesQuote() {
   } catch (err) {
     showIziToast(err.message);
   } finally {
-    setSpinner(true);
+    setSpinner(false);
   }
 }
 

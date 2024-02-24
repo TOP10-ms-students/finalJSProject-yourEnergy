@@ -3,15 +3,15 @@ import { showIziToast } from './services/iziToast';
 import { renderGallery } from './services/gallery-service';
 import { setSpinner } from './spinner';
 import { renderPagination } from './services/paginator-service';
+import { GALLERY_LIMIT } from './variables';
 
 const galleryFilterBlock = document.querySelector('.js-filter-block');
 const galleryFilter = document.querySelectorAll('.js-filter');
 
 const filter = galleryFilter[0].textContent.trim();
-const limit = window.innerWidth < 768 ? 9 : 12;
 const params = {
   page: 1,
-  limit,
+  limit: GALLERY_LIMIT,
   filter,
 };
 getExercisesGallery(params);

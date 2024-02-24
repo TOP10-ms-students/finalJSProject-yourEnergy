@@ -15,8 +15,7 @@ export function renderGallery(data) {
     fragment.appendChild(cardItem);
   });
 
-  gallery.innerHTML = '';
-  gallery.appendChild(fragment);
+  gallery.replaceChildren(fragment);
 }
 
 export function renderExcercises(data, galaryState) {
