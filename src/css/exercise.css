@@ -168,88 +168,35 @@
   gap: 8px;
 }
 
-/* HOVER */
+/* TOOLTIP */
+.ex-item-title {
+  position: relative;
 
-/* .ex-item:hover .ex-item-footer {
-  width: 100%;
   z-index: 1;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 10px;
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 34px;
+  top: 35px;
+  font-size: 16px;
+  padding: 5px 10px;
+  background-color: white;
+  border: 1px black solid;
   border-radius: 20px;
+  text-transform: capitalize;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.tooltip::after {
+  content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
-.ex-item:hover .ex-item-target {
-  white-space: normal;
-}
-.ex-item:hover .ex-item-calories {
-  white-space: normal;
-}
-.ex-item:hover .ex-item-bodypart {
-  white-space: normal;
-} */
-/* .ex-item:hover .ex-item-footer {
-}
-.ex-item:hover .ex-item-target {
-  white-space: normal;
-}
-.ex-item:hover .ex-item-calories {
-  white-space: normal;
-}
-.ex-item:hover .ex-item-bodypart {
-  white-space: normal;
-}*/
-/* .ex-item:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-} */
-
-/* Tooltip text */
-.ex-item .ex-item-tooltiptext {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  visibility: hidden;
-  width: 100%;
-  background-color: white;
-
-  text-align: center;
-  padding: 8px 0;
-  border-radius: 10px;
-
-  position: absolute;
-
-  top: 100%;
-  left: 0;
-  z-index: 1;
-}
-
-.ex-item:hover .ex-item-tooltiptext {
-  visibility: visible;
-}
-
-.ex-item-tooltiptext::after {
-  content: ' ';
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent gray transparent;
-}
-
-/* .ex-item:hover .ex-item-target {
-  white-space: normal;
-}
-.ex-item:hover .js-target {
-  width: 100%;
-  background-color: white;
-
-  text-align: center;
-}
-
-.ex-item:hover .ex-item-calories {
-  white-space: normal;
-}
-.ex-item:hover .ex-item-bodypart {
-  white-space: normal;
-} */

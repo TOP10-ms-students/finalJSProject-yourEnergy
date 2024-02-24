@@ -1,7 +1,7 @@
 const gallery = document.querySelector('.js-gallery');
 const excerciseGroupTemplate = document.querySelector('#exercise-group');
 const excerciseTemplate = document.querySelector('#exercise');
-const gradient = "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),"
+const gradient = 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),';
 
 export function galleryTemplate(data) {
   const fragment = document.createDocumentFragment();
@@ -34,6 +34,13 @@ export function renderExcercises(data, galaryState) {
     const elName = mainCard.querySelector('.js-title');
     elName.textContent = name;
 
+    if (name.length > 34) {
+      const elTooltip = mainCard.querySelector('.js-tooltip');
+      elTooltip.dataset.tooltip = name;
+
+      elTooltip.classList.add('tooltip');
+    }
+
     const elRating = mainCard.querySelector('.js-rating');
     elRating.textContent = rating;
 
@@ -53,5 +60,4 @@ export function renderExcercises(data, galaryState) {
   }
 
   gallery.appendChild(fragment);
-
 }

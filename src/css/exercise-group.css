@@ -18,9 +18,13 @@
   background-color: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
 
+.card-item:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
 .card-item.noImg {
   background-color: var(--frame-color);
-  background-image: url('../img/no-img.jpg');;
+  background-image: url('../img/no-img.jpg');
 }
 
 .card-text {
