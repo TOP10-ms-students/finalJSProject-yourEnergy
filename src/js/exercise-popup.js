@@ -15,36 +15,11 @@ export async function openModalExercise(id) {
     overlay.addEventListener('click', clickOnOverlay);
     document.addEventListener('keydown', clickOnEscape);
 
-    try {
-        setSpinner(true);
-        const dataExercise = await fetchApi.getExercisesId(id);
-    
-        const markup = markUp(dataExercise);
-        createMarkUpModal(markup, dataExercise);
-        showModalExercise();
-    
-        const closeModalButton = document.querySelector('.modal-exercise__btn-close');
-        const buttonAddRemoveFavorites = document.querySelector('.modal-exercise__btn');
-        closeModalButton.addEventListener('click', closeModalExercise);
-        buttonAddRemoveFavorites.addEventListener('click', () => {
-            isFavorite = !isFavorite;   
-            
-                if (isFavorite) {
-                    addToFavorites(dataExercise);
-                    buttonAddRemoveFavorites.innerHTML = createRemoveButton();
-                } else {
-                    removeFromFavorites(dataExercise);
-                    buttonAddRemoveFavorites.innerHTML = createAddButton();
-                    initFavGallery();
-                }
-        });
-    } catch (err) {
-        showIziToast(err.message);
-    } finally {
-        setSpinner(false);
-    };
-};
+    const buttonSendRating = document.querySelector('.modal-rating-button');
 
+    buttonSendRating.addEventListener('click', () =>
+      showIziToast('Sorry, this feature is currently unavailable')
+    );
 function createMarkUpModal(markup, data) {
     modalExercise.innerHTML = markup;
     showRightButtons(data);
@@ -170,7 +145,7 @@ function markUp({
         </div>
         <div class="modal-exercise__btn-container">
             <button aria-label="Remove or add favorite exercise" class="button button-with-icon button-white modal-exercise__btn"></button>
-            <button aria-label="Give a rating" class="button modal-exercise__btn">Give a rating</button>
+            <button aria-label="Give a rating" class="button modal-exercise__btn modal-rating-button">Give a rating</button>
         </div>`
 };
 
