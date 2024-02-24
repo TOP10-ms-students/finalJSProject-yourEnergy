@@ -5,8 +5,7 @@ const closeMenuBtn = document.querySelector('.js-close-menu');
 const mobMenuLinks = document.querySelectorAll('.js-menu-link, .js-close-menu');
 
 function toggleMenu() {
-  const isMenuOpen =
-    openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
+  const isMenuOpen = openMenuBtn.getAttribute('aria-expanded') === 'true';
   openMenuBtn.setAttribute('aria-expanded', !isMenuOpen);
   mobMenu.classList.toggle('is-open');
   backdrop.classList.toggle('is-hidden');
