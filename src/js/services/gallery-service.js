@@ -4,22 +4,18 @@ const excerciseTemplate = document.querySelector('#exercise');
 const gradient = 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),';
 
 export function renderGallery(data) {
-  gallery.innerHTML = '';
   const fragment = document.createDocumentFragment();
+
   data.forEach(({ name, filter, imgURL }) => {
     const cardItem = excerciseGroupTemplate.children[0].cloneNode(true);
     cardItem.style.backgroundImage = `${gradient} url(${imgURL})`;
     cardItem.setAttribute('data-name', name);
-
-    const title = cardItem.querySelector('.card-text-title');
-    title.textContent = name;
-
-    const subtitle = cardItem.querySelector('.card-text-subtitle');
-    subtitle.textContent = filter;
-
+    cardItem.querySelector('.card-text-title').textContent = name;
+    cardItem.querySelector('.card-text-subtitle').textContent = filter;
     fragment.appendChild(cardItem);
   });
 
+  gallery.innerHTML = '';
   gallery.appendChild(fragment);
 }
 
