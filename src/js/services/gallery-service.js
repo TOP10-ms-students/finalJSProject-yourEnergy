@@ -19,7 +19,6 @@ export function renderGallery(data) {
 }
 
 export function renderExcercises(data, galaryState) {
-  gallery.innerHTML = '';
   const fragment = document.createDocumentFragment();
   for (let i = 0; i < data.length; i++) {
     const { name, _id, rating, burnedCalories, target } = data[i];
@@ -47,5 +46,5 @@ export function renderExcercises(data, galaryState) {
     fragment.appendChild(mainCard);
   }
 
-  gallery.appendChild(fragment);
+  gallery.replaceChildren(fragment);
 }

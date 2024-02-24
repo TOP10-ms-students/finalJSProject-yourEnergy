@@ -66,7 +66,6 @@ function capitalizeFirstLetter(string) {
 }
 
 export const resetState = () => {
-    elems.elGallery.innerHTML = '';
     galaryState.resetExcerciseFilter();
     galaryState.filter = 'Muscles';
     getGroupsGallery({ ...defaultParams, limit: 12, filter: 'Muscles'});
@@ -179,18 +178,18 @@ function getExercisesGallery() {
     
 }
 
-function fetchGallaryExcercises(params) {
+async function fetchGallaryExcercises(params) {
     setSpinner(true);
-    fetchApi
-    .getExercises(params)
-        .then(resp =>
-        {
-            const { totalPages, results } = resp;
-            renderExcercises(results, galaryState);
-            renderPagination(totalPages, fetchGallaryExcercises, params);
+    try {
+        const resp = await fetchApi.getExercises(params);
+        const { totalPages, results } = resp;
+        renderExcercises(results, galaryState);
+        renderPagination(totalPages, fetchGallaryExcercises, params);
 
-            !totalPages && showIziToast('No matching workouts found. Try different keywords or filters.')
-        })
-        .catch(err => showIziToast(err.message))
-        .finally(setSpinner(false));
+        !totalPages && showIziToast('No matching workouts found. Try different keywords or filters.')
+    } catch (err) {
+        showIziToast(err.message);
+    } finally {
+        setSpinner(false);
+    }
 }
