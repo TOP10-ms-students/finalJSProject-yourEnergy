@@ -11,14 +11,23 @@ function toggleMenu() {
   backdrop.classList.toggle('is-hidden');
 }
 
+function handlerBackdrop({ target }) {
+  if (!target.closest('#mob-menu')) {
+    toggleMenu();
+  }
+}
+
 openMenuBtn.addEventListener('click', toggleMenu);
 closeMenuBtn.addEventListener('click', toggleMenu);
 mobMenuLinks.forEach(link => {
   link.addEventListener('click', toggleMenu);
 });
 
-backdrop.addEventListener('click', ({ target }) => {
-  if (!target.closest('#mob-menu')) {
+backdrop.addEventListener('click', handlerBackdrop);
+
+//.
+/* mobMenu.addEventListener('click', event => {
+  if (!event.target.classList.contains('menu-container')) {
     toggleMenu();
   }
-});
+}); */

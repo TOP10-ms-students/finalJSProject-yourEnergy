@@ -193,7 +193,6 @@
   padding: 8px;
   border-radius: 10px;
   border: 1px solid var(--frame-color);
-  cursor: pointer;
 }
 
 .menu-wrapper .social-icon-link {
@@ -261,7 +260,6 @@
   outline: none;
   background-color: var(--primary-color);
   color: var(--white-color);
-  cursor: pointer;
   border-radius: 50%;
 
   transition: background-color 200ms ease-out, color 200ms ease-out,
