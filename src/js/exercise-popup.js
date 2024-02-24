@@ -10,6 +10,7 @@ const modalExercise = document.querySelector('.modal-exercise');
 const overlay = document.querySelector('.overlay');
 
 let isFavorite = false;
+let currentData;
 
 export async function openModalExercise(id) {
     overlay.addEventListener('click', clickOnOverlay);
@@ -18,26 +19,17 @@ export async function openModalExercise(id) {
     try {
         setSpinner(true);
         const dataExercise = await fetchApi.getExercisesId(id);
-    
+        currentData = dataExercise;
         const markup = markUp(dataExercise);
         createMarkUpModal(markup, dataExercise);
         showModalExercise();
     
         const closeModalButton = document.querySelector('.modal-exercise__btn-close');
-        const buttonAddRemoveFavorites = document.querySelector('.modal-exercise__btn');
+        const buttonAddRemoveFavorites = document.querySelector('.js-favorite__btn');
+        const buttonRating = document.querySelector('.js-rating__btn');
         closeModalButton.addEventListener('click', closeModalExercise);
-        buttonAddRemoveFavorites.addEventListener('click', () => {
-            isFavorite = !isFavorite;   
-            
-                if (isFavorite) {
-                    addToFavorites(dataExercise);
-                    buttonAddRemoveFavorites.innerHTML = createRemoveButton();
-                } else {
-                    removeFromFavorites(dataExercise);
-                    buttonAddRemoveFavorites.innerHTML = createAddButton();
-                    initFavGallery();
-                }
-        });
+        buttonAddRemoveFavorites.addEventListener('click', toggleButton);
+        buttonRating.addEventListener('click', showNotification);
     } catch (err) {
         showIziToast(err.message);
     } finally {
@@ -51,7 +43,7 @@ function createMarkUpModal(markup, data) {
 };
 
 function showRightButtons(obj) {
-    const buttonAddRemoveFavorites = document.querySelector('.modal-exercise__btn');
+    const buttonAddRemoveFavorites = document.querySelector('.js-favorite__btn');
     let favorites = JSON.parse(localStorage.getItem('favWorkouts')) || [];
     const isDuplicate = favorites.some(item => item._id === obj._id);
     if (isDuplicate) {
@@ -169,9 +161,23 @@ function markUp({
             </div>
         </div>
         <div class="modal-exercise__btn-container">
-            <button aria-label="Remove or add favorite exercise" class="button button-with-icon button-white modal-exercise__btn"></button>
-            <button aria-label="Give a rating" class="button modal-exercise__btn">Give a rating</button>
+            <button aria-label="Remove or add favorite exercise" class="button button-with-icon button-white modal-exercise__btn js-favorite__btn"></button>
+            <button aria-label="Give a rating" class="button modal-exercise__btn js-rating__btn">Give a rating</button>
         </div>`
+};
+
+function toggleButton() {
+    const buttonAddRemoveFavorites = document.querySelector('.js-favorite__btn');
+    isFavorite = !isFavorite;   
+            
+    if (isFavorite) {
+        addToFavorites(currentData);
+        buttonAddRemoveFavorites.innerHTML = createRemoveButton();
+    } else {
+        removeFromFavorites(currentData);
+        buttonAddRemoveFavorites.innerHTML = createAddButton();
+        initFavGallery();
+    };
 };
 
 function clickOnOverlay(e) {
@@ -184,6 +190,10 @@ function clickOnEscape({ key }) {
         && closeModalExercise();
 };
 
+function showNotification() {
+    showIziToast('Under development');
+};
+
 function showModalExercise() {
     overlay.classList.remove('hidden');
     modalExercise.classList.remove('hidden');
@@ -194,7 +204,6 @@ function closeModalExercise() {
     overlay.classList.add('hidden');
     modalExercise.classList.add('hidden');
     document.body.style.overflow = 'scroll';
+    overlay.removeEventListener('click', clickOnOverlay);
+    document.removeEventListener('keydown', clickOnEscape);
 };
-
-overlay.removeEventListener('click', clickOnOverlay);
-document.removeEventListener('keydown', clickOnEscape);

@@ -3,24 +3,22 @@ const excerciseGroupTemplate = document.querySelector('#exercise-group');
 const excerciseTemplate = document.querySelector('#exercise');
 const gradient = 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),';
 
-export function galleryTemplate(data) {
+export function renderGallery(data) {
   const fragment = document.createDocumentFragment();
-  data.forEach(({ name = '', filter = '', imgURL = '' }) => {
+
+  data.forEach(({ name, filter, imgURL }) => {
     const cardItem = excerciseGroupTemplate.children[0].cloneNode(true);
     cardItem.style.backgroundImage = `${gradient} url(${imgURL})`;
     cardItem.setAttribute('data-name', name);
-    const title = cardItem.querySelector('.card-text-title');
-    title.textContent = name;
-    const subtitle = cardItem.querySelector('.card-text-subtitle');
-    subtitle.textContent = filter;
+    cardItem.querySelector('.card-text-title').textContent = name;
+    cardItem.querySelector('.card-text-subtitle').textContent = filter;
     fragment.appendChild(cardItem);
   });
 
-  gallery.appendChild(fragment);
+  gallery.replaceChildren(fragment);
 }
 
 export function renderExcercises(data, galaryState) {
-  gallery.innerHTML = '';
   const fragment = document.createDocumentFragment();
   for (let i = 0; i < data.length; i++) {
     const { name, _id, rating, burnedCalories, target } = data[i];
@@ -48,5 +46,5 @@ export function renderExcercises(data, galaryState) {
     fragment.appendChild(mainCard);
   }
 
-  gallery.appendChild(fragment);
+  gallery.replaceChildren(fragment);
 }

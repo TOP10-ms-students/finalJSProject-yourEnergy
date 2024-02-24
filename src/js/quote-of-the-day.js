@@ -1,5 +1,6 @@
 import { fetchApi } from './services/api-service';
 import { showIziToast } from './services/iziToast';
+import { setSpinner } from './spinner';
 
 const quote = {
   content: document.querySelector('.js-quote-content'),
@@ -14,21 +15,31 @@ function getQuoteData() {
     const currentDate = new Date();
 
     if (savedDate.getDate() === currentDate.getDate()) {
-      quote.content.textContent = quoteContent;
-      quote.author.textContent = author;
+      addTextContent(quoteContent, author);
       return;
     }
   }
-
-  fetchApi
-    .getExercisesQuote()
-    .then(resp => {
-      const { quote: newQuote, author } = resp;
-      const quoteData = { quote: newQuote, author, date: new Date() };
-      localStorage.setItem('quoteData', JSON.stringify(quoteData));
-      quote.content.textContent = newQuote;
-      quote.author.textContent = author;
-    })
-    .catch(err => showIziToast(err.message))
+  fetchGetExercisesQuote();
 }
+
 getQuoteData();
+
+async function fetchGetExercisesQuote() {
+  try {
+    setSpinner(true);
+    const resp = await fetchApi.getExercisesQuote();
+    const { quote: newQuote, author } = resp;
+    const quoteData = { quote: newQuote, author, date: new Date() };
+    localStorage.setItem('quoteData', JSON.stringify(quoteData));
+    addTextContent(newQuote, author);
+  } catch (err) {
+    showIziToast(err.message);
+  } finally {
+    setSpinner(false);
+  }
+}
+
+function addTextContent(content, author) {
+  quote.content.textContent = content;
+  quote.author.textContent = author;
+}
