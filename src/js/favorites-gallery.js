@@ -131,7 +131,7 @@ function renderGalleryItems({
 
     itemEl.setAttribute('id', _id);
 
-    if (title.length > 32) {
+    if (title.length > 31) {
       const elTooltip = itemEl.querySelector('.js-tooltip');
       elTooltip.dataset.tooltip = title;
 

@@ -28,7 +28,7 @@ export function renderExcercises(data, galaryState) {
     const elName = mainCard.querySelector('.js-title');
     elName.textContent = name;
 
-    if (name.length > 32) {
+    if (name.length > 31) {
       const elTooltip = mainCard.querySelector('.js-tooltip');
       elTooltip.dataset.tooltip = name;
 
