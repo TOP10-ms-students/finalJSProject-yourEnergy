@@ -116,7 +116,7 @@ function markUp({
                 </svg>
             </button>
 
-            <img class="modal-exercise__img" src="${gifUrl ?? image}" alt="Example of exercise" loading="lazy" />
+            <img class="modal-exercise__img" src="${gifUrl ?? image}" width="260" height="260" alt="Example of exercise" loading="lazy" />
 
             <div class="modal-exercise__card">
                 <h2 class="modal-exercise__name">${name}</h2>
