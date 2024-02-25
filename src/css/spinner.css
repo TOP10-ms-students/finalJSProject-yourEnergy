@@ -32,7 +32,7 @@
   margin: 0 auto;
   width: 15%;
   height: 15%;
-  background-color: #505050;
+  background-color: var(--accent-color);
   border-radius: 100%;
   -webkit-animation: spinnerBounceDelay 1.2s infinite ease-in-out both;
   animation: spinnerBounceDelay 1.2s infinite ease-in-out both;
