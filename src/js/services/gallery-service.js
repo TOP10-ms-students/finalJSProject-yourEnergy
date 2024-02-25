@@ -1,3 +1,5 @@
+import { MAX_SIZE_TITLE } from '../variables.js';
+
 const gallery = document.querySelector('.js-gallery');
 const excerciseGroupTemplate = document.querySelector('#exercise-group');
 const excerciseTemplate = document.querySelector('#exercise');
@@ -28,8 +30,17 @@ export function renderExcercises(data, galaryState) {
     const elName = mainCard.querySelector('.js-title');
     elName.textContent = name;
 
+    if (name.length > MAX_SIZE_TITLE) {
+      const elTooltip = mainCard.querySelector('.js-tooltip');
+      elTooltip.dataset.tooltip = name;
+
+      elTooltip.classList.add('tooltip');
+    }
+
     const elRating = mainCard.querySelector('.js-rating');
-    elRating.textContent = Number.isInteger(rating) ? `${rating}.0` : rating.toFixed(1);
+    elRating.textContent = Number.isInteger(rating)
+      ? `${rating}.0`
+      : rating.toFixed(1);
 
     const elBurnedCalories = mainCard.querySelector('.js-burned-calories');
     elBurnedCalories.textContent = burnedCalories;

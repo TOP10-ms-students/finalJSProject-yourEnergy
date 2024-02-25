@@ -1,5 +1,6 @@
 import { renderPagination } from './services/paginator-service';
 import { setSpinner } from './spinner';
+import { MAX_SIZE_TITLE } from './variables';
 
 const DESKTOP_WIDTH = 1440,
   TABLET_WIDTH = 768,
@@ -130,6 +131,14 @@ function renderGalleryItems({
     });
 
     itemEl.setAttribute('id', _id);
+
+    if (title.length > MAX_SIZE_TITLE) {
+      const elTooltip = itemEl.querySelector('.js-tooltip');
+      elTooltip.dataset.tooltip = title;
+
+      elTooltip.classList.add('tooltip');
+    }
+
     fragment.appendChild(itemEl);
   }
 
