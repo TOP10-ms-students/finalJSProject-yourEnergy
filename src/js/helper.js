@@ -20,7 +20,8 @@ export function scrollToTop() {
 export function calculateFillStar(numStar, valueStars) {
     if (numStar + 1 <= valueStars) {
         return 100;
-    } if (numStar > valueStars) {
+    } 
+    if (numStar > valueStars) {
           return 0;
       };
     return (valueStars % 1) * 100;
