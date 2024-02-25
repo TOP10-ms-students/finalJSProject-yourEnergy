@@ -55,28 +55,29 @@ function showRightButtons(obj) {
 };
 
 function createStarRating(rating) {
-    const fillStar = `
+    const fullStarColor = '#eea10c';
+    const emptyStarColor = '#f4f4f433';
+    const totalStars = 5;
+    let starsRating = '';
+
+    for (let i = 0; i < totalStars; i += 1) {
+        const gradientId = `gradient-id${i}`;
+        const offsetPercent = i + 1 <= rating ? 100 :
+            i > rating ? 0 : (rating % 1) * 100;
+        
+        const linearGradient = `
+        <linearGradient id="${gradientId}" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="${offsetPercent}%" stop-color=${fullStarColor}></stop>
+            <stop offset="0%" stop-color=${emptyStarColor}></stop>
+        </linearGradient>`;
+        
+        starsRating += `
         <svg width="14" height="13" viewBox="0 0 14 13" fill="none">
-          <use
-            href="${icons}#icon-star-full"
-          ></use>
+            ${linearGradient}
+            <use href="${icons}#icon-star" fill="url(#${gradientId})"></use>
         </svg>`;
-    const emptyStar = `
-        <svg width="14" height="13" viewBox="0 0 14 13" fill="none">
-          <use
-            href="${icons}#icon-star-empty"
-          ></use>
-        </svg>`;
-    const roundedRating = Math.round(rating);
-    let stars = '';
-    
-    for (let i = 0; i < roundedRating; i += 1) {
-        stars += fillStar;
     };
-    for (let i = 0; i < 5 - roundedRating; i += 1) {
-            stars += emptyStar;
-    };
-    return stars;
+    return starsRating;
 };
 
 function createAddButton() {
