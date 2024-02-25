@@ -5,10 +5,13 @@ import icons from '/img/icons.svg';
 import { setSpinner } from './spinner';
 import { showIziToast } from './services/iziToast';
 import { initFavGallery } from './favorites-gallery';
-import { calculatePercent, roundOff } from './helper';
+import { calculateFillStar } from './helper';
 
 const modalExercise = document.querySelector('.modal-exercise');
 const overlay = document.querySelector('.overlay');
+const fullStarColor = '#eea10c';
+const emptyStarColor = '#f4f4f433';
+const totalStars = 5;
 
 let isFavorite = false;
 let currentData;
@@ -56,14 +59,11 @@ function showRightButtons(obj) {
 };
 
 function createStarRating(rating) {
-    const fullStarColor = '#eea10c';
-    const emptyStarColor = '#f4f4f433';
-    const totalStars = 5;
     let starsRating = '';
 
     for (let i = 0; i < totalStars; i += 1) {
         const gradientId = `gradient-id${i}`;
-        const offsetPercent = calculatePercent(i, rating);
+        const offsetPercent = calculateFillStar(i, rating);
         
         const linearGradient = `
         <linearGradient id="${gradientId}" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -122,7 +122,7 @@ function markUp({
             <div class="modal-exercise__card">
                 <h2 class="modal-exercise__name">${name}</h2>
                 <div class="modal-exercise__rating">
-                    ${roundOff(rating)}
+                    ${rating.toFixed(1)}
                     ${starsRating}
                 </div>
 

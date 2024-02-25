@@ -17,21 +17,11 @@ export function scrollToTop() {
     .scrollIntoView({ behavior: 'smooth' });
 };
 
-export function calculatePercent(i, num) {
-    if (i + 1 <= num) {
+export function calculateFillStar(numStar, valueStars) {
+    if (numStar + 1 <= valueStars) {
         return 100;
-    } else {
-        if (i > num) {
-            return 0;
-        };
-        return (num % 1) * 100;
-    };
-};
-
-export function roundOff(num) {
-    if (Number.isInteger(num)) {
-        return `${num}.0`;
-    } else {
-        return num.toFixed(1);
-    };
+    } if (numStar > valueStars) {
+          return 0;
+      };
+    return (valueStars % 1) * 100;
 };
