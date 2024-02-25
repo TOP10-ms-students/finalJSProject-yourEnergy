@@ -7,6 +7,8 @@
   padding: 16px;
   width: 335px;
   height: 141px;
+
+  position: relative;
 }
 
 @media (min-width: 768px) {
@@ -164,4 +166,37 @@
 .ex-item-header-right-row-fav {
   display: flex;
   gap: 8px;
+}
+
+/* TOOLTIP */
+.ex-item-title {
+  position: relative;
+
+  z-index: 1;
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 34px;
+  top: 35px;
+  font-size: 16px;
+  padding: 5px 10px;
+  background-color: white;
+  border: 1px black solid;
+  border-radius: 20px;
+  text-transform: capitalize;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }

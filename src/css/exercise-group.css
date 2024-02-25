@@ -18,6 +18,10 @@
   background-color: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
 
+.card-item:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
 .card-text {
   display: flex;
   flex-direction: column;
