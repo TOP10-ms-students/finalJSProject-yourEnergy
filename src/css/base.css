@@ -87,3 +87,24 @@ svg {
     gap: 32px;
   }
 }
+
+/* scrollbar stylized */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(36, 36, 36, 0.8);
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(244, 244, 244, 0.2);
+}
