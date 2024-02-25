@@ -1,13 +1,10 @@
 import { renderPagination } from './services/paginator-service';
 import { setSpinner } from './spinner';
-import { handleSpinnerStart } from './helper';
 import {
   DESKTOP_WIDTH,
   GALLERY_LIMIT as perPage,
   FAV_CARD_CLASS_NAMES as classNames,
 } from './variables';
-
-let isFirstLoad = true;
 
 initFavGallery();
 
@@ -32,7 +29,7 @@ export function initFavGallery(pageNumber = 1) {
     screenWidth,
   });
 
-  isFirstLoad = handleSpinnerStart(isFirstLoad);
+  setSpinner(true);
 
   renderGalleryItems({
     workouts,
