@@ -6,6 +6,7 @@ import { openModalExercise } from './exercise-popup';
 import { getExercisesGallery as getGroupsGallery } from './gallery';
 import { setSpinner } from './spinner';
 import { GALLERY_LIMIT } from './variables';
+import { scrollToTop } from './helper';
 
 
 // Constants
@@ -138,13 +139,18 @@ function handlerFilterClick(evt) {
     if (evt.target === evt.currentTarget) return;
     if (evt.target.classList.contains('js-filter')) {
         galaryState.setFilter(evt.target.dataset.filter);
+        scrollToTop();
         renderNavigation();
     }
 }
 
 function handlerSearchFormSubmit(evt) {
     evt.preventDefault();
-    if (!elems.elInput.value) return;
+    if (!elems.elInput.value.trim()){
+        showIziToast('Please, enter a valid search key', null, 3000);
+        elems.elInput.value = '';
+        return;
+    }
     galaryState.keyword = evt.target.elements.search.value;
     getExercisesGallery();
     elems.elInput.value = '';
