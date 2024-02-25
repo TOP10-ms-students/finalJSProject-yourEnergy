@@ -22,11 +22,6 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
-.card-item.noImg {
-  background-color: var(--frame-color);
-  background-image: url('../img/no-img.jpg');
-}
-
 .card-text {
   display: flex;
   flex-direction: column;
