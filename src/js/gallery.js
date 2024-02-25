@@ -4,6 +4,7 @@ import { renderGallery } from './services/gallery-service';
 import { setSpinner } from './spinner';
 import { renderPagination } from './services/paginator-service';
 import { GALLERY_LIMIT } from './variables';
+import { handleSpinnerStart } from './helper';
 
 const galleryFilterBlock = document.querySelector('.js-filter-block');
 const galleryFilter = document.querySelectorAll('.js-filter');
@@ -14,11 +15,14 @@ const params = {
   limit: GALLERY_LIMIT,
   filter,
 };
+
+let isFirstLoad = true;
+
 getExercisesGallery(params);
 
 export async function getExercisesGallery(params) {
   try {
-    setSpinner(true);
+    isFirstLoad = handleSpinnerStart(isFirstLoad);
     const resp = await fetchApi.getExercisesFilter(params);
     const { totalPages, results } = resp;
     renderGallery(results);

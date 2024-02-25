@@ -1,16 +1,10 @@
 import { renderPagination } from './services/paginator-service';
 import { setSpinner } from './spinner';
-
-const DESKTOP_WIDTH = 1440,
-  TABLET_WIDTH = 768,
-  TABLET_WORKOUTS_AMOUNT = 9,
-  MOBILE_WORKOUTS_AMOUNT = 10,
-  CLASS_NAMES = [
-    'js-fav-target',
-    'js-fav-calories',
-    'js-fav-bodyPart',
-    'js-fav-title',
-  ];
+import {
+  DESKTOP_WIDTH,
+  GALLERY_LIMIT as perPage,
+  FAV_CARD_CLASS_NAMES as classNames,
+} from './variables';
 
 let isNotFirstLoad = false;
 
@@ -30,13 +24,8 @@ export function initFavGallery(pageNumber = 1) {
     return;
   }
 
-  const PER_PAGE =
-    screenWidth < TABLET_WIDTH
-      ? TABLET_WORKOUTS_AMOUNT
-      : MOBILE_WORKOUTS_AMOUNT;
-
   const { startIndex, endIndex } = handlePagination({
-    perPage: PER_PAGE,
+    perPage,
     totalWorkouts: workouts.length,
     pageNumber,
     screenWidth,
@@ -114,7 +103,7 @@ function renderGalleryItems({
 }) {
   for (let i = startIndex; i < endIndex; i++) {
     const itemEl = template.children[0].cloneNode(true);
-    const elements = CLASS_NAMES.map(className =>
+    const elements = classNames.map(className =>
       itemEl.querySelector(`.${className}`)
     );
     const {

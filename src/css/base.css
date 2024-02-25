@@ -42,6 +42,10 @@ svg {
   visibility: hidden !important;
 }
 
+.reset-min-height {
+  min-height: auto !important;
+}
+
 .container {
   max-width: 375px;
   padding-left: 20px;

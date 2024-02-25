@@ -5,6 +5,7 @@ import { renderPagination } from './services/paginator-service';
 import { openModalExercise } from './exercise-popup';
 import { getExercisesGallery as getGroupsGallery } from './gallery';
 import { setSpinner } from './spinner';
+import { GALLERY_LIMIT } from './variables';
 
 
 // Constants
@@ -188,6 +189,9 @@ async function fetchGallaryExcercises(params) {
     try {
         const resp = await fetchApi.getExercises(params);
         const { totalPages, results } = resp;
+        if (results.length < GALLERY_LIMIT) {
+            elems.elGallery.classList.add('reset-min-height');
+        }
         renderExcercises(results, galaryState);
         renderPagination(totalPages, fetchGallaryExcercises, params);
 
