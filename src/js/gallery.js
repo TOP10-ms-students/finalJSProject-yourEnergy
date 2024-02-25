@@ -38,9 +38,14 @@ function handlerClick(evt) {
     return;
   }
 
-  [...galleryFilter]
-    .find(button => button.classList.contains('active'))
-    ?.classList.remove('active');
+  const currentFilter = [...galleryFilter].find(button =>
+    button.classList.contains('active')
+  );
+
+  if (currentFilter === evt.target.closest('.js-filter')) {
+    return;
+  }
+  currentFilter.classList.remove('active');
 
   if (evt.target.classList.contains('js-filter')) {
     const filterValue = evt.target.dataset.filter;
