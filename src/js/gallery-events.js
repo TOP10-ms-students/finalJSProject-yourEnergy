@@ -1,3 +1,5 @@
+import throttle from 'lodash.throttle';
+
 import { fetchApi } from './services/api-service';
 import { showIziToast } from './services/iziToast';
 import { renderExcercises } from './services/gallery-service';
@@ -29,6 +31,15 @@ const navigationSections = {
     bodyParts: "Body parts"
 }
 
+const throttleHandler = throttle((e) => {
+	handlerSearchFormSubmit(e)
+}, 1000);
+
+function handleThrottleSubmit(e) {
+	e.preventDefault();
+	throttleHandler(e);
+}
+
 export const galaryState = {
     excerciseFilter: '',
     filter: navigationSections.muscles,
@@ -45,13 +56,13 @@ export const galaryState = {
     setFilter(value) {
         this.filter = value;
         this.resetExcerciseFilter();
-        elems.elSearchForm.removeEventListener('submit', handlerSearchFormSubmit);
+        elems.elSearchForm.removeEventListener('submit', handleThrottleSubmit);
         elems.elSearchForm.removeEventListener('reset', handlerResetFilterClick);
     },
 
     setExcerciseFilter(value) {
         this.excerciseFilter = value;
-        elems.elSearchForm.addEventListener('submit', handlerSearchFormSubmit);
+        elems.elSearchForm.addEventListener('submit', handleThrottleSubmit);
         elems.elSearchForm.addEventListener('reset', handlerResetFilterClick);
     },
 
@@ -145,7 +156,6 @@ function handlerFilterClick(evt) {
 }
 
 function handlerSearchFormSubmit(evt) {
-    evt.preventDefault();
     if (!elems.elInput.value.trim()) {
         showIziToast('Please, enter a valid search key', null, 3000);
         elems.elInput.value = '';
@@ -166,7 +176,7 @@ function handlerResetFilterClick() {
 
 elems.elGallery.addEventListener('click', handlerGallaryClick);
 elems.elFilters.addEventListener('click', handlerFilterClick);
-elems.elSearchForm.addEventListener('submit', handlerSearchFormSubmit);
+elems.elSearchForm.addEventListener('submit', handleThrottleSubmit);
 elems.elSearchForm.addEventListener('reset', handlerResetFilterClick);
 
 
