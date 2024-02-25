@@ -2,9 +2,20 @@ import { renderPagination } from './services/paginator-service';
 import { setSpinner } from './spinner';
 import {
   DESKTOP_WIDTH,
-  GALLERY_LIMIT as perPage,
+  EX_GALLERY_LIMIT as perPage,
   FAV_CARD_CLASS_NAMES as classNames,
 } from './variables';
+import { MAX_SIZE_TITLE } from './variables';
+
+const TABLET_WIDTH = 768,
+  TABLET_WORKOUTS_AMOUNT = 9,
+  MOBILE_WORKOUTS_AMOUNT = 10,
+  CLASS_NAMES = [
+    'js-fav-target',
+    'js-fav-calories',
+    'js-fav-bodyPart',
+    'js-fav-title',
+  ];
 
 initFavGallery();
 
@@ -113,6 +124,14 @@ function renderGalleryItems({
     });
 
     itemEl.setAttribute('id', _id);
+
+    if (title.length > MAX_SIZE_TITLE) {
+      const elTooltip = itemEl.querySelector('.js-tooltip');
+      elTooltip.dataset.tooltip = title;
+
+      elTooltip.classList.add('tooltip');
+    }
+
     fragment.appendChild(itemEl);
   }
 

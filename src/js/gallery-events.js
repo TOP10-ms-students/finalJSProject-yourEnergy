@@ -146,7 +146,7 @@ function handlerFilterClick(evt) {
 
 function handlerSearchFormSubmit(evt) {
     evt.preventDefault();
-    if (!elems.elInput.value.trim()){
+    if (!elems.elInput.value.trim()) {
         showIziToast('Please, enter a valid search key', null, 3000);
         elems.elInput.value = '';
         return;
