@@ -1,4 +1,5 @@
 import { MAX_SIZE_TITLE } from '../variables.js';
+import { roundOff } from '../helper.js';
 
 const gallery = document.querySelector('.js-gallery');
 const excerciseGroupTemplate = document.querySelector('#exercise-group');
@@ -38,9 +39,7 @@ export function renderExcercises(data, galaryState) {
     }
 
     const elRating = mainCard.querySelector('.js-rating');
-    elRating.textContent = Number.isInteger(rating)
-      ? `${rating}.0`
-      : rating.toFixed(1);
+    elRating.textContent = roundOff(rating);
 
     const elBurnedCalories = mainCard.querySelector('.js-burned-calories');
     elBurnedCalories.textContent = burnedCalories;

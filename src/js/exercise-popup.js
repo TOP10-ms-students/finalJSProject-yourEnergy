@@ -5,6 +5,7 @@ import icons from '/img/icons.svg';
 import { setSpinner } from './spinner';
 import { showIziToast } from './services/iziToast';
 import { initFavGallery } from './favorites-gallery';
+import { calculatePercent, roundOff } from './helper';
 
 const modalExercise = document.querySelector('.modal-exercise');
 const overlay = document.querySelector('.overlay');
@@ -62,8 +63,7 @@ function createStarRating(rating) {
 
     for (let i = 0; i < totalStars; i += 1) {
         const gradientId = `gradient-id${i}`;
-        const offsetPercent = i + 1 <= rating ? 100 :
-            i > rating ? 0 : (rating % 1) * 100;
+        const offsetPercent = calculatePercent(i, rating);
         
         const linearGradient = `
         <linearGradient id="${gradientId}" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -122,9 +122,7 @@ function markUp({
             <div class="modal-exercise__card">
                 <h2 class="modal-exercise__name">${name}</h2>
                 <div class="modal-exercise__rating">
-                    ${Number.isInteger(rating)
-                        ? `${rating}.0`
-                        : rating.toFixed(1)}
+                    ${roundOff(rating)}
                     ${starsRating}
                 </div>
 
