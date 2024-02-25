@@ -109,7 +109,7 @@
 }
 
 .button-white:hover,
-.button-white:focus {
+.button-white:focus-visible {
   color: var(--white-color);
   border-color: var(--white-color);
   background-color: var(--primary-color);
