@@ -33,15 +33,12 @@
 /* mobile burger menu */
 .menu-btn {
     border: none;
-    background-color: transparent;
-    cursor: pointer;
-    transition: stroke var(--tran-fast);
 }
 
 .on-hover:hover,
 .on-hover:focus {
     transform: scale(1.1);
-    transition: stroke var(--tran-fast);
+    transition: transform var(--tran-icon);
 }
 
 /* mobile backdrop */
@@ -56,7 +53,7 @@
     height: 100%;
     z-index: 99;
     background-color: var(--title-secondary-color);
-    transition: opacity var(--tran-fast);
+    transition: opacity var(--tran-duration);
 }
 
 .is-hidden {
@@ -65,13 +62,15 @@
     pointer-events: none;
 }
 
+.backdrop.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity var(--tran-duration);
+}
+
 body:has(.menu-container.is-open) {
     overflow: hidden;
     height: 100%;
-}
-
-.menu-toggle {
-    background: transparent;
 }
 
 @media only screen and (min-width: 768px) {
@@ -90,15 +89,16 @@ body:has(.menu-container.is-open) {
     background-color: var(--primary-color);
     z-index: 100;
     transform: translateX(100%);
-    transition: transform var(--tran-fast);
 }
 
 .menu-container.is-open {
     transform: translateX(0);
+    transition: transform var(--tran-duration);
 }
 
 .menu-toggle {
     position: absolute;
+    background: transparent;
     border: none;
     top: 20px;
     right: 20px;
@@ -128,7 +128,6 @@ body:has(.menu-container.is-open) {
     font-style: normal;
     font-weight: 400;
     line-height: 1.3em;
-    transition: color var(--tran-fast);
 }
 
 /* UI component Header Menu 'toggle-bar'

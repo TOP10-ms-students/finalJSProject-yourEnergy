@@ -3,28 +3,22 @@ const excerciseGroupTemplate = document.querySelector('#exercise-group');
 const excerciseTemplate = document.querySelector('#exercise');
 const gradient = 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),';
 
-export function galleryTemplate(data) {
+export function renderGallery(data) {
   const fragment = document.createDocumentFragment();
-  data.forEach(({ name = '', filter = '', imgURL = '' }) => {
+
+  data.forEach(({ name, filter, imgURL }) => {
     const cardItem = excerciseGroupTemplate.children[0].cloneNode(true);
-    if (imgURL) {
-      cardItem.style.backgroundImage = `${gradient} url(${imgURL})`;
-    } else {
-      cardItem.classList.add('noImg');
-    }
+    cardItem.style.backgroundImage = `${gradient} url(${imgURL})`;
     cardItem.setAttribute('data-name', name);
-    const title = cardItem.querySelector('.card-text-title');
-    title.textContent = name;
-    const subtitle = cardItem.querySelector('.card-text-subtitle');
-    subtitle.textContent = filter;
+    cardItem.querySelector('.card-text-title').textContent = name;
+    cardItem.querySelector('.card-text-subtitle').textContent = filter;
     fragment.appendChild(cardItem);
   });
 
-  gallery.appendChild(fragment);
+  gallery.replaceChildren(fragment);
 }
 
 export function renderExcercises(data, galaryState) {
-  gallery.innerHTML = '';
   const fragment = document.createDocumentFragment();
   for (let i = 0; i < data.length; i++) {
     const { name, _id, rating, burnedCalories, target } = data[i];
@@ -42,7 +36,9 @@ export function renderExcercises(data, galaryState) {
     }
 
     const elRating = mainCard.querySelector('.js-rating');
-    elRating.textContent = rating;
+    elRating.textContent = Number.isInteger(rating)
+      ? `${rating}.0`
+      : rating.toFixed(1);
 
     const elBurnedCalories = mainCard.querySelector('.js-burned-calories');
     elBurnedCalories.textContent = burnedCalories;
@@ -59,5 +55,5 @@ export function renderExcercises(data, galaryState) {
     fragment.appendChild(mainCard);
   }
 
-  gallery.appendChild(fragment);
+  gallery.replaceChildren(fragment);
 }

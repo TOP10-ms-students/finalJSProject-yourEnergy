@@ -92,7 +92,7 @@
   background-color: var(--primary-color);
   border: 1px solid var(--white-color);
   border-radius: 30px;
-  transition: all 0.3s ease;
+  transition: all var(--tran-icon);
 }
 
 .button:hover,
@@ -193,9 +193,6 @@
   padding: 8px;
   border-radius: 10px;
   border: 1px solid var(--frame-color);
-  cursor: pointer;
-
-  transition: var(--tran-fast);
 }
 
 .menu-wrapper .social-icon-link {
@@ -211,6 +208,7 @@
   background-color: var(--primary-color);
   color: var(--white-color);
   border: 1px solid transparent;
+  transition: all var(--tran-icon);
 }
 
 .menu-wrapper .social-icon-link:hover,
@@ -219,6 +217,7 @@
 .footer .social-icon-link:focus {
   background-color: var(--white-color);
   color: var(--primary-color);
+  transition: all var(--tran-icon);
 }
 
 /* toggle-bar */
@@ -261,7 +260,6 @@
   outline: none;
   background-color: var(--primary-color);
   color: var(--white-color);
-  cursor: pointer;
   border-radius: 50%;
 
   transition: background-color 200ms ease-out, color 200ms ease-out,

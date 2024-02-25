@@ -1,25 +1,30 @@
 const backdrop = document.querySelector('.js-menu-backdrop');
-const mobileMenu = document.querySelector('.js-menu-container');
+const mobMenu = document.querySelector('.js-menu-container');
 const openMenuBtn = document.querySelector('.js-open-menu');
 const closeMenuBtn = document.querySelector('.js-close-menu');
-const mobMenuLinks = document.querySelectorAll('.js-menu-link');
-const body = document.querySelector('body');
+const mobMenuLink = document.querySelector('.js-menu-link');
 
-// toggle visibility of the menu backdrop
 function toggleMenu() {
-  const isMenuOpen =
-    openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
-  openMenuBtn.setAttribute('aria-expanded', !isMenuOpen);
-  mobileMenu.classList.toggle('is-open');
+  mobMenu.classList.toggle('is-open');
   backdrop.classList.toggle('is-hidden');
 }
 
-// event listener to toggle menu backdrop when toggle btn clicked
+function onMenuClick(evt) {
+  // in case when ul clicked //
+  if (evt.currentTarget === evt.target) {
+    return;
+  }
+  toggleMenu();
+}
+
+function handlerBackdrop({ target }) {
+  if (!target.closest('#mob-menu')) {
+    toggleMenu();
+  }
+}
+
 openMenuBtn.addEventListener('click', toggleMenu);
 closeMenuBtn.addEventListener('click', toggleMenu);
-mobMenuLinks.forEach(link => {
-  link.addEventListener('click', toggleMenu);
-});
-backdrop.addEventListener('click', ({ target, currentTarget }) => {
-  currentTarget === target && toggleMenu();
-});
+mobMenuLink.addEventListener('click', onMenuClick);
+
+backdrop.addEventListener('click', handlerBackdrop);

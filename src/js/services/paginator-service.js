@@ -1,31 +1,51 @@
 import { initFavGallery } from '../favorites-gallery';
 import { scrollToTop } from '../helper';
 
+const paginationContainer = document.querySelector('.js-pagination');
+let navigationObject;
+
+paginationContainer.addEventListener('click', onPaginationStep);
+
 export function renderPagination(totalPages, fetchGallery, params, isLocal) {
-  if (params.page >= totalPages) return;
-  const paginationContainer = document.querySelector('.js-pagination');
-  paginationContainer.innerHTML = '';
+  if (totalPages === 1) {
+    paginationContainer.innerHTML = '';
+    return;
+  }
+
+  let markup = '';
 
   for (let i = 1; i <= totalPages; i++) {
-    const pageButton = document.createElement('button');
-    pageButton.textContent = i;
-    pageButton.setAttribute('data-btn', i);
-    if (Number(pageButton.dataset.btn) === params.page)
-      pageButton.classList.add('active');
+    const isCurrentPage = i === params.page;
 
-    pageButton.addEventListener('click', evt => {
-      paginationContainer.querySelectorAll('button').forEach(button => {
-        button.classList.remove('active');
-      });
-      const btn = evt.currentTarget;
-      btn.classList.add('active');
-
-      isLocal
-        ? initFavGallery(i)
-        : fetchGallery({ ...params, page: i });
-
-      scrollToTop();
-    });
-    paginationContainer.appendChild(pageButton);
+    markup += `<button data-btn="${i}" class="${isCurrentPage ? 'active' : ''
+      }">${i}</button>`;
   }
+
+  navigationObject = {
+    method: fetchGallery,
+    isLocal,
+    params,
+  };
+
+  paginationContainer.innerHTML = markup;
+}
+
+function onPaginationStep(evt) {
+  if (evt.target === evt.currentTarget) {
+    return;
+  }
+  const btn = evt.target;
+  const page = Number(btn.textContent);
+
+  [...paginationContainer.children]
+    .find(button => button.classList.contains('active'))
+    ?.classList.remove('active');
+
+  btn.classList.add('active');
+
+  navigationObject.isLocal
+    ? initFavGallery(page)
+    : navigationObject.method({ ...navigationObject.params, page: page });
+
+  scrollToTop();
 }

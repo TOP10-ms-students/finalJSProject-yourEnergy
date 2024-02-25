@@ -1,4 +1,18 @@
-import { renderPagination } from "./services/paginator-service";
+import { renderPagination } from './services/paginator-service';
+import { setSpinner } from './spinner';
+
+const DESKTOP_WIDTH = 1440,
+  TABLET_WIDTH = 768,
+  TABLET_WORKOUTS_AMOUNT = 9,
+  MOBILE_WORKOUTS_AMOUNT = 10,
+  CLASS_NAMES = [
+    'js-fav-target',
+    'js-fav-calories',
+    'js-fav-bodyPart',
+    'js-fav-title',
+  ];
+
+let isNotFirstLoad = false;
 
 initFavGallery();
 
@@ -6,25 +20,80 @@ export function initFavGallery(pageNumber = 1) {
   const template = getTemplate();
   if (!template) return;
 
-  const workouts = JSON.parse(localStorage.getItem('favWorkouts')),
-    { favGalleryEl, emptyFavEl, fragment } = getRefs(),
-    screenWidth = window.innerWidth,
-    DESKTOP_WIDTH = 1440,
-    TABLET_WIDTH = 768;
+  const workouts = JSON.parse(localStorage.getItem('favWorkouts'));
+  const { favGalleryEl, emptyFavEl, paginationFavEl, fragment } = getRefs();
+  const screenWidth = window.innerWidth;
 
-  if (!workouts?.length) {
-    emptyFavEl.classList.remove('hidden');
-    favGalleryEl.classList.add('hidden');
+  if (
+    handleEmptyWorkouts({ workouts, emptyFavEl, paginationFavEl, favGalleryEl })
+  ) {
     return;
   }
 
-  const PER_PAGE = screenWidth < TABLET_WIDTH ? 9 : 10,
-    totalWorkouts = workouts.length,
-    totalPages = Math.ceil(totalWorkouts / PER_PAGE),
+  const PER_PAGE =
+    screenWidth < TABLET_WIDTH
+      ? TABLET_WORKOUTS_AMOUNT
+      : MOBILE_WORKOUTS_AMOUNT;
+
+  const { startIndex, endIndex } = handlePagination({
+    perPage: PER_PAGE,
+    totalWorkouts: workouts.length,
+    pageNumber,
+    screenWidth,
+  });
+
+  if (!isNotFirstLoad) {
+    isNotFirstLoad = true;
+  } else {
+    setSpinner(isNotFirstLoad);
+  }
+
+  renderGalleryItems({
+    workouts,
+    startIndex,
+    endIndex,
+    template,
+    fragment,
+    favGalleryEl,
+  });
+
+  setSpinner(false);
+}
+
+function getRefs() {
+  return {
+    favGalleryEl: document.querySelector('.js-fav-gallery'),
+    emptyFavEl: document.querySelector('.js-no-fav-workouts'),
+    paginationFavEl: document.querySelector('.js-pagination'),
+    fragment: document.createDocumentFragment(),
+  };
+}
+
+function getTemplate() {
+  return document.querySelector('#exercise-fav');
+}
+
+function handleEmptyWorkouts({
+  workouts,
+  emptyFavEl,
+  paginationFavEl,
+  favGalleryEl,
+}) {
+  if (!workouts?.length) {
+    emptyFavEl.classList.remove('hidden');
+    favGalleryEl.classList.add('hidden');
+    paginationFavEl.classList.add('hidden');
+    setSpinner(false);
+    return true;
+  }
+}
+
+function handlePagination({ perPage, totalWorkouts, pageNumber, screenWidth }) {
+  const totalPages = Math.ceil(totalWorkouts / perPage),
     params = { page: pageNumber };
 
-  let startIndex = (pageNumber - 1) * PER_PAGE,
-    endIndex = Math.min(startIndex + PER_PAGE, totalWorkouts);
+  let startIndex = (pageNumber - 1) * perPage,
+    endIndex = Math.min(startIndex + perPage, totalWorkouts);
 
   if (screenWidth < DESKTOP_WIDTH) {
     renderPagination(totalPages, null, params, true);
@@ -32,16 +101,31 @@ export function initFavGallery(pageNumber = 1) {
     startIndex = 0;
     endIndex = totalWorkouts;
   }
+  return { startIndex, endIndex };
+}
 
-  favGalleryEl.innerHTML = '';
-
+function renderGalleryItems({
+  workouts,
+  startIndex,
+  endIndex,
+  template,
+  fragment,
+  favGalleryEl,
+}) {
   for (let i = startIndex; i < endIndex; i++) {
-    const itemEl = template.children[0].cloneNode(true),
-      classNames = ['js-fav-target', 'js-fav-calories', 'js-fav-bodyPart', 'js-fav-title'],
-      elements = classNames.map(className => itemEl.querySelector(`.${className}`)),
-      { _id, name: title, bodyPart, target, burnedCalories: calories } = workouts[i];
-  
-    [target, calories, bodyPart, title ].forEach((prop, idx) => {
+    const itemEl = template.children[0].cloneNode(true);
+    const elements = CLASS_NAMES.map(className =>
+      itemEl.querySelector(`.${className}`)
+    );
+    const {
+      _id,
+      name: title,
+      bodyPart,
+      target,
+      burnedCalories: calories,
+    } = workouts[i];
+
+    [target, calories, bodyPart, title].forEach((prop, idx) => {
       elements[idx].textContent = prop;
     });
 
@@ -57,18 +141,5 @@ export function initFavGallery(pageNumber = 1) {
     fragment.appendChild(itemEl);
   }
 
-  favGalleryEl.appendChild(fragment);
-}
-
-function getRefs() {
-  return {
-    favGalleryEl: document.querySelector('.js-fav-gallery'),
-    emptyFavEl: document.querySelector('.js-no-fav-workouts'),
-    fragment: document.createDocumentFragment(),
-  };
-}
-
-function getTemplate() {
-  return document.querySelector('#exercise-fav');
-  
+  favGalleryEl.replaceChildren(fragment);
 }

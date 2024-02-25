@@ -38,6 +38,10 @@
   }
 }
 
+.favorites .sidebar-container {
+  margin-bottom: 0;
+}
+
 .photo-base-card {
   background-image: url('../img/sidebar-img/sidebar-mob@1x.jpg');
   background-position: center;
@@ -162,5 +166,93 @@
 @media (min-width: 1440px) {
   .daily-norm-card-text {
     max-height: unset;
+  }
+}
+
+
+/* Favorites Page Styles */
+.favorites .daily-norm-card-text {
+  display: none;
+}
+
+.favorites .daily-norm-card {
+  width: 335px;
+  height: 119px;
+}
+
+.favorites .photo-base-card {
+  background-image: url('../img/fav-sidebar-img/sidebar-mob@1x.jpg');
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+  width: 335px;
+  height: 119px;
+}
+
+@media screen and (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .favorites .photo-base-card {
+    background-image: url('../img/fav-sidebar-img/sidebar-mob@2x.jpg');
+  }
+}
+
+@media (min-width: 768px) {
+  .favorites .photo-base-card {
+    background-image: url('../img/fav-sidebar-img/sidebar-tabl@1x.jpg');
+  }
+}
+
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+  (min-width: 768px) and (min-resolution: 192dpi),
+  (min-width: 768px) and (min-resolution: 2dppx) {
+  .favorites .photo-base-card {
+    background-image: url('../img/fav-sidebar-img/sidebar-tabl@2x.jpg');
+  }
+}
+
+@media (min-width: 1440px) {
+  .favorites .photo-base-card {
+    background-image: url('../img/fav-sidebar-img/sidebar-desk@1x.jpg');
+  }
+}
+
+@media screen and (min-width: 1440px) and (min-device-pixel-ratio: 2),
+  (min-width: 1440px) and (min-resolution: 192dpi),
+  (min-width: 1440px) and (min-resolution: 2dppx) {
+  .favorites .photo-base-card {
+    background-image: url('../img/fav-sidebar-img/sidebar-desk@2x.jpg');
+  }
+}
+
+@media (min-width: 768px) {
+  .favorites .sidebar-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: 16px;
+  }
+
+  .favorites .quote-of-the-day {
+    grid-column: 1 / span 2;
+    width: 704px;
+  }
+
+  .favorites .photo-base-card,
+  .favorites .daily-norm-card {
+    width: 344px;
+    height: 141px;
+  } 
+}
+
+@media (min-width: 1440px) {
+  .favorites .quote-of-the-day {
+    width: 494px;
+  }
+
+  .favorites .photo-base-card,
+  .favorites .daily-norm-card {
+    width: 239px;
+    height: 141px;
   }
 }

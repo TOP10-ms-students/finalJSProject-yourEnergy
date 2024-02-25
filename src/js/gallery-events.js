@@ -4,6 +4,7 @@ import { renderExcercises } from './services/gallery-service';
 import { renderPagination } from './services/paginator-service';
 import { openModalExercise } from './exercise-popup';
 import { getExercisesGallery as getGroupsGallery } from './gallery';
+import { setSpinner } from './spinner';
 
 
 // Constants
@@ -20,9 +21,15 @@ const elems = {
     elTrash: document.querySelector('.ex-item-trash-icon'),
 }
 
+const navigationSections = {
+    muscles: "Muscles",
+    equipment: "Equipment",
+    bodyParts: "Body parts"
+}
+
 export const galaryState = {
     excerciseFilter: '',
-    filter: 'Muscles',
+    filter: navigationSections.muscles,
     keyword: '',
 
     isFilledCroupExcercises() {
@@ -53,27 +60,27 @@ export const galaryState = {
 }
 
 const defaultParams = {
-  page: 1,
-  limit: 10
+    page: 1,
+    limit: 10
 };
 
 
 // Functions
 
 function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 export const resetState = () => {
     galaryState.resetExcerciseFilter();
-    galaryState.filter = 'Muscles';
-    getGroupsGallery({ ...defaultParams, filter: 'Muscles'});
+    galaryState.filter = navigationSections.muscles;
+    getGroupsGallery({ ...defaultParams, limit: 12, filter: navigationSections.muscles });
     renderNavigation();
 
     const filters = elems.elFilters.querySelectorAll('.js-filter');
     filters.forEach(filter => {
         filter.classList.remove('active');
-        if (filter.dataset.filter === 'Muscles') {
+        if (filter.dataset.filter === navigationSections.muscles) {
             filter.classList.add('active');
         }
     });
@@ -104,7 +111,7 @@ function handlerGallaryClick(evt) {
     if (evt.target === evt.currentTarget) return;
 
     const target = evt.target;
-    
+
     if (galaryState.isFilledCroupExcercises()) {
         const galleryItem = target.closest('.card-item');
         if (!galleryItem) {
@@ -136,8 +143,10 @@ function handlerFilterClick(evt) {
 
 function handlerSearchFormSubmit(evt) {
     evt.preventDefault();
+    if (!elems.elInput.value) return;
     galaryState.keyword = evt.target.elements.search.value;
     getExercisesGallery();
+    elems.elInput.value = '';
 }
 
 function handlerResetFilterClick() {
@@ -158,11 +167,11 @@ elems.elSearchForm.addEventListener('reset', handlerResetFilterClick);
 function getExercisesGallery() {
 
     const params = { ...defaultParams };
-    if (galaryState.filter == 'Muscles') {
+    if (galaryState.filter == navigationSections.muscles) {
         params.muscles = galaryState.excerciseFilter;
-    } else if (galaryState.filter == 'Equipment') {
+    } else if (galaryState.filter == navigationSections.equipment) {
         params.equipment = galaryState.excerciseFilter;
-    } else if (galaryState.filter == 'Body parts') {
+    } else if (galaryState.filter == navigationSections.bodyParts) {
         params.bodypart = galaryState.excerciseFilter;
     }
 
@@ -170,18 +179,22 @@ function getExercisesGallery() {
         params.keyword = galaryState.keyword;
     }
 
-    fetchGallaryExcercises(params) 
-    
+    fetchGallaryExcercises(params)
+
 }
 
-function fetchGallaryExcercises(params) {
-    fetchApi
-    .getExercises(params)
-        .then(resp =>
-        {
-            const { totalPages, results } = resp;
-            renderExcercises(results, galaryState);
-            renderPagination(totalPages, fetchGallaryExcercises, params);
-        })
-    .catch(err => showIziToast(err.message));
+async function fetchGallaryExcercises(params) {
+    setSpinner(true);
+    try {
+        const resp = await fetchApi.getExercises(params);
+        const { totalPages, results } = resp;
+        renderExcercises(results, galaryState);
+        renderPagination(totalPages, fetchGallaryExcercises, params);
+
+        !totalPages && showIziToast('No matching workouts found. Try different keywords or filters.')
+    } catch (err) {
+        showIziToast(err.message);
+    } finally {
+        setSpinner(false);
+    }
 }

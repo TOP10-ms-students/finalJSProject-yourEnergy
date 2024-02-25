@@ -21,12 +21,13 @@
 
 .gallery-content {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: left;
   flex-wrap: wrap;
   margin-bottom: 32px;
   row-gap: 32px;
   column-gap: 15px;
+  align-content: flex-start;
 }
 
 @media screen and (max-width: 375px) {
@@ -50,38 +51,42 @@
   }
 }
 
-.js-pagination {
+.pagination {
   margin-bottom: 80px;
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
 @media screen and (min-width: 768px) {
-  .js-pagination {
+  .pagination {
     margin-bottom: 64px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .js-pagination {
+  .pagination {
     margin-bottom: 132px;
   }
 }
-.js-pagination > button {
+.pagination > button {
   width: 32px;
   height: 32px;
   font-size: 24px;
   color: #d4d4d4;
   border: none;
   background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.js-pagination button.active {
+.pagination button.active {
   border-radius: 50%;
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
 }
 
-.noImg {
-  pointer-events: none;
-  cursor: default;
-  opacity: 0.5;
-}
+

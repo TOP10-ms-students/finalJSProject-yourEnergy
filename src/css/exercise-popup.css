@@ -1,16 +1,13 @@
 .overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background: var(--title-secondary-color);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  overflow: hidden;
+  background: var(--title-secondary-color);
+  backdrop-filter: blur(2px);
 }
 
 .modal-exercise {
@@ -19,7 +16,8 @@
     left: 50%;
     z-index: 100;
     min-width: 375px;
-    max-height: 825px;
+    max-width: 100%;
+    max-height: 100vh;
     padding: 40px 20px;
     border-radius: 20px;
     background-color: var(--black-text-color);
@@ -30,7 +28,6 @@
     .modal-exercise {
         width: 704px;
         padding: 32px;
-        max-height: 486px;
     }
 }
 
@@ -38,6 +35,12 @@
     .modal-exercise {
         width: 708px;
     }
+}
+
+.modal-exercise__container {
+    max-height: calc(100vh - 160px);
+    overflow-y: auto;
+    margin-bottom: 10px;
 }
 
 @media screen and (min-width: 768px) {
@@ -62,6 +65,14 @@
         top: 16px;
         right: 16px;
     }
+}
+
+.modal-exercise__btn-close svg {
+    transition: transform .45s;
+}
+
+.modal-exercise__btn-close svg:hover {
+    transform: rotate(180deg);
 }
 
 .modal-exercise__img {
@@ -209,12 +220,19 @@
     }
 }
 
-.modal-exercise__btn svg {
-    fill: none;
-}
-
 @media screen and (max-width: 767px) {
     .modal-exercise__btn {
         width: 100%;
     }
+}
+
+.modal-exercise__svg {
+    fill: none;
+    stroke: var(--icon-bg-color);
+    transition: all 0.3s ease;
+}
+
+.button-with-icon:hover .modal-exercise__svg,
+.button-with-icon:focus .modal-exercise__svg {
+    stroke: var(--white-color);
 }
