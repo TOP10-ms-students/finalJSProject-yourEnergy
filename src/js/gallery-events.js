@@ -21,9 +21,15 @@ const elems = {
     elTrash: document.querySelector('.ex-item-trash-icon'),
 }
 
+const navigationSections = {
+    muscles: "Muscles",
+    equipment: "Equipment",
+    bodyParts: "Body parts"
+}
+
 export const galaryState = {
     excerciseFilter: '',
-    filter: 'Muscles',
+    filter: navigationSections.muscles,
     keyword: '',
 
     isFilledCroupExcercises() {
@@ -54,27 +60,27 @@ export const galaryState = {
 }
 
 const defaultParams = {
-  page: 1,
-  limit: 10
+    page: 1,
+    limit: 10
 };
 
 
 // Functions
 
 function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 export const resetState = () => {
     galaryState.resetExcerciseFilter();
-    galaryState.filter = 'Muscles';
-    getGroupsGallery({ ...defaultParams, limit: 12, filter: 'Muscles'});
+    galaryState.filter = navigationSections.muscles;
+    getGroupsGallery({ ...defaultParams, limit: 12, filter: navigationSections.muscles });
     renderNavigation();
 
     const filters = elems.elFilters.querySelectorAll('.js-filter');
     filters.forEach(filter => {
         filter.classList.remove('active');
-        if (filter.dataset.filter === 'Muscles') {
+        if (filter.dataset.filter === navigationSections.muscles) {
             filter.classList.add('active');
         }
     });
@@ -105,7 +111,7 @@ function handlerGallaryClick(evt) {
     if (evt.target === evt.currentTarget) return;
 
     const target = evt.target;
-    
+
     if (galaryState.isFilledCroupExcercises()) {
         const galleryItem = target.closest('.card-item');
         if (!galleryItem) {
@@ -159,14 +165,13 @@ elems.elSearchForm.addEventListener('reset', handlerResetFilterClick);
 
 // Render Excercises Gallery
 function getExercisesGallery() {
-    elems.elGallery.innerHTML = '';
 
     const params = { ...defaultParams };
-    if (galaryState.filter == 'Muscles') {
+    if (galaryState.filter == navigationSections.muscles) {
         params.muscles = galaryState.excerciseFilter;
-    } else if (galaryState.filter == 'Equipment') {
+    } else if (galaryState.filter == navigationSections.equipment) {
         params.equipment = galaryState.excerciseFilter;
-    } else if (galaryState.filter == 'Body parts') {
+    } else if (galaryState.filter == navigationSections.bodyParts) {
         params.bodypart = galaryState.excerciseFilter;
     }
 
@@ -174,8 +179,8 @@ function getExercisesGallery() {
         params.keyword = galaryState.keyword;
     }
 
-    fetchGallaryExcercises(params) 
-    
+    fetchGallaryExcercises(params)
+
 }
 
 async function fetchGallaryExcercises(params) {
