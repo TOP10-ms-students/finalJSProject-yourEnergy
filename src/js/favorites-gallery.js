@@ -46,6 +46,14 @@ export function initFavGallery(pageNumber = 1) {
     });
 
     itemEl.setAttribute('id', _id);
+
+    if (title.length > 33) {
+      const elTooltip = itemEl.querySelector('.js-tooltip');
+      elTooltip.dataset.tooltip = title;
+
+      elTooltip.classList.add('tooltip');
+    }
+
     fragment.appendChild(itemEl);
   }
 
