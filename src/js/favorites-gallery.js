@@ -2,7 +2,7 @@ import { renderPagination } from './services/paginator-service';
 import { setSpinner } from './spinner';
 import {
   DESKTOP_WIDTH,
-  EX_GALLERY_LIMIT as perPage,
+  FAV_GALLERY_LIMIT as perPage,
   FAV_CARD_CLASS_NAMES as classNames,
 } from './variables';
 import { MAX_SIZE_TITLE } from './variables';
