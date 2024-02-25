@@ -38,7 +38,9 @@ export function renderExcercises(data, galaryState) {
     }
 
     const elRating = mainCard.querySelector('.js-rating');
-    elRating.textContent = rating.toFixed(1);
+    elRating.textContent = Number.isInteger(rating)
+      ? `${rating}.0`
+      : rating.toFixed(1);
 
     const elBurnedCalories = mainCard.querySelector('.js-burned-calories');
     elBurnedCalories.textContent = burnedCalories;
