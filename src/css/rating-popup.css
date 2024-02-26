@@ -1,0 +1,117 @@
+.modal-rating {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    min-width: 335px;
+    padding: 40px 20px;
+    border-radius: 20px;
+    background-color: var(--black-text-color);
+    transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: 768px) {
+    .modal-rating {
+        width: 430px;
+        padding: 40px;
+    }
+}
+
+.modal-rating__btn-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    padding: 0;
+    stroke: var(--white-color);
+    background-color: transparent;
+    border: none;
+}
+
+@media screen and (min-width: 768px) {
+    .modal-rating__btn-close {
+        top: 16px;
+        right: 16px;
+    }
+}
+
+.modal-rating__btn-close svg {
+    transition: transform .45s;
+}
+
+.modal-rating__btn-close svg:hover {
+    transform: rotate(180deg);
+}
+
+.modal-rating__rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--white-color);
+}
+
+@media screen and (min-width: 768px) {
+    .modal-rating__rating {
+        margin-bottom: 32px;
+    }
+}
+
+.modal-rating__rating polygon {
+    fill: var(--rating-color);
+}
+
+.modal-rating__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-rating__email {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    border-radius: 30px;
+    border: 1px solid var(--white-color);
+    color: var(--white-color);
+    background-color: transparent;
+}
+
+@media screen and (min-width: 768px) {
+    .modal-rating__email {
+        margin-bottom: 16px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+.modal-rating__comment {
+    height: 94px;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    border: 1px solid var(--white-color);
+    border-radius: 15px;
+    color: var(--white-color);
+    background-color: transparent;
+}
+
+@media screen and (min-width: 768px) {
+    .modal-rating__comment {
+        margin-bottom: 32px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+.modal-rating__button {
+    width: 100%;
+}

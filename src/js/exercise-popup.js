@@ -6,9 +6,11 @@ import { setSpinner } from './spinner';
 import { showIziToast } from './services/iziToast';
 import { initFavGallery } from './favorites-gallery';
 import { calculateFillStar } from './helper';
+import { openModalRating } from './rating-popup';
 
-const modalExercise = document.querySelector('.modal-exercise');
+const modalExercise = document.querySelector('.js-modal-exercise');
 const overlay = document.querySelector('.overlay');
+const modalRating = document.querySelector('.js-modal-rating');
 const fullStarColor = '#eea10c';
 const emptyStarColor = '#f4f4f433';
 const totalStars = 5;
@@ -28,12 +30,12 @@ export async function openModalExercise(id) {
         createMarkUpModal(markup, dataExercise);
         showModalExercise();
     
-        const closeModalButton = document.querySelector('.modal-exercise__btn-close');
+        const closeModalButton = document.querySelector('.js-modal-exercise__btn-close');
         const buttonAddRemoveFavorites = document.querySelector('.js-favorite__btn');
         const buttonRating = document.querySelector('.js-rating__btn');
         closeModalButton.addEventListener('click', closeModalExercise);
         buttonAddRemoveFavorites.addEventListener('click', toggleButton);
-        buttonRating.addEventListener('click', showNotification);
+        buttonRating.addEventListener('click', openModalRating);
     } catch (err) {
         showIziToast(err.message);
     } finally {
@@ -111,7 +113,7 @@ function markUp({
 
     return `
     <div class="modal-exercise__container">
-            <button aria-label="Close modal button" class="modal-exercise__btn-close">
+            <button aria-label="Close modal button" class="modal-exercise__btn-close js-modal-exercise__btn-close">
                 <svg width="24" height="24" >
                     <use href="${icons}#icon-close"></use>
                 </svg>
@@ -161,7 +163,7 @@ function markUp({
         </div>
         <div class="modal-exercise__btn-container">
             <button aria-label="Remove or add favorite exercise" class="button button-with-icon button-white modal-exercise__btn js-favorite__btn"></button>
-            <button aria-label="Give a rating" class="button modal-exercise__btn js-rating__btn">Give a rating</button>
+            <button aria-label="Give a rating" class="button modal-exercise__btn js-rating__btn" data-id="${_id}">Give a rating</button>
         </div>`
 };
 
@@ -180,17 +182,27 @@ function toggleButton() {
 };
 
 function clickOnOverlay(e) {
-    e.target === overlay && closeModalExercise();
+    if (modalRating.classList.contains('hidden')
+        && e.target === overlay) {
+        closeModalExercise();
+    } 
+    if (modalExercise.classList.contains('hidden')
+        && e.target === overlay) {
+        modalRating.classList.add('hidden');
+        modalExercise.classList.remove('hidden');
+    }
 };
 
 function clickOnEscape({ key }) {
-    (key === "Escape"
-        && !modalExercise.classList.contains('hidden'))
-        && closeModalExercise();
-};
-
-function showNotification() {
-    showIziToast('Under development');
+    if (modalRating.classList.contains('hidden')
+        && key === "Escape") {
+        closeModalExercise();
+    }
+    if (modalExercise.classList.contains('hidden')
+        && key === "Escape") {
+        modalRating.classList.add('hidden');
+        modalExercise.classList.remove('hidden');
+    }
 };
 
 function showModalExercise() {
