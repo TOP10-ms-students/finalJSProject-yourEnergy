@@ -214,7 +214,7 @@ function showModalExercise() {
 function closeModalExercise() {
     overlay.classList.add('hidden');
     modalExercise.classList.add('hidden');
-    document.body.style.overflow = 'scroll';
+    document.body.style.overflow = 'auto';
     overlay.removeEventListener('click', clickOnOverlay);
     document.removeEventListener('keydown', clickOnEscape);
 };
