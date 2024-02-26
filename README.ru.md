@@ -11,7 +11,7 @@
         <img
           width="80"
           class="dev-modal-img"
-          src="(./assets/Oleksiy_Myronenko.webp)"
+          src="./assets/Oleksiy_Myronenko.webp"
           alt="Oleksiy Myronenko"
         />
       </li>
@@ -19,7 +19,7 @@
         <p>Наталія Ходорова</p>
         <img
           width="80"
-          src="(./assets/Nataliia_Khodorova.webp)"
+          src="./assets/Nataliia_Khodorova.webp"
           alt="Nataliia Khodorova"
         />
       </li>
@@ -27,7 +27,7 @@
         <p>Максим Зиза</p>
         <img
           width="80"
-          src="(./assets/Maksym_Zyza.webp)"
+          src="./assets/Maksym_Zyza.webp"
           alt="Maksym Zyza"
         />
       </li>
@@ -35,7 +35,7 @@
         <p>Максим Лесковець</p>
         <img
           width="80"
-          src="(./assets/Maksym_Leskovets.webp)"
+          src="./assets/Maksym_Leskovets.webp"
           alt="Maksym Leskovets"
         />
       </li>
@@ -43,7 +43,7 @@
         <p>Максим Норіцин</p>
         <img
           width="80"
-          src="(./assets/Maksym_Noritsyn.webp)"
+          src="./assets/Maksym_Noritsyn.webp"
           alt="Maksym Noritsyn"
         />
       </li>
@@ -59,7 +59,7 @@
         <p>Дмитро Яговкін</p>
         <img
           width="80"
-          src="(./assets/Dmytro_Yagovkin.webp)"
+          src="./assets/Dmytro_Yagovkin.webp"
           alt="Dmytro Yahovkin"
         />
       </li>
@@ -67,7 +67,7 @@
         <p>Дмитро Жук</p>
         <img
           width="80"
-          src="(./assets/dmytro_zhuk.webp)"
+          src="./assets/dmytro_zhuk.webp"
           alt="Dmytro Zhuk"
         />
       </li>
@@ -75,7 +75,7 @@
         <p>Олена Горобець</p>
         <img
           width="80"
-          src="(./assets/Olena_Horobets.webp)"
+          src="./assets/Olena_Horobets.webp"
           alt="Olena Horobets"
         />
       </li>
@@ -83,7 +83,7 @@
         <p>Денис Лєнський</p>
         <img
           width="80"
-          src="(./assets/Denys_Lienskyi.webp)"
+          src="./assets/Denys_Lienskyi.webp"
           alt="Denys Lienskyi"
         />
       </li>
