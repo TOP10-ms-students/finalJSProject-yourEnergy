@@ -30,7 +30,7 @@ export async function openModalExercise(id) {
         createMarkUpModal(markup, dataExercise);
         showModalExercise();
     
-        const closeModalButton = document.querySelector('.modal-exercise__btn-close');
+        const closeModalButton = document.querySelector('.js-modal-exercise__btn-close');
         const buttonAddRemoveFavorites = document.querySelector('.js-favorite__btn');
         const buttonRating = document.querySelector('.js-rating__btn');
         closeModalButton.addEventListener('click', closeModalExercise);
@@ -113,7 +113,7 @@ function markUp({
 
     return `
     <div class="modal-exercise__container">
-            <button aria-label="Close modal button" class="modal-exercise__btn-close">
+            <button aria-label="Close modal button" class="modal-exercise__btn-close js-modal-exercise__btn-close">
                 <svg width="24" height="24" >
                     <use href="${icons}#icon-close"></use>
                 </svg>

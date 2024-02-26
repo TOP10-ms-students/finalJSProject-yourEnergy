@@ -9,7 +9,7 @@ export function openModalRating() {
     modalRating.innerHTML = markUp();
     showModalRating();
 
-    const closeModalRatingButton = document.querySelector('.modal-rating__btn-close'); 
+    const closeModalRatingButton = document.querySelector('.js-modal-rating__btn-close'); 
     closeModalRatingButton.addEventListener('click', closeModalRating);
 };
 
@@ -26,7 +26,7 @@ function closeModalRating() {
 function markUp() {
     return `
     <div class="modal-rating__container">
-        <button aria-label="Close modal button" class="modal-rating__btn-close">
+        <button aria-label="Close modal button" class="modal-rating__btn-close js-modal-rating__btn-close">
             <svg width="28" height="28">
                 <use href="${icons}#icon-close"></use>
             </svg>
