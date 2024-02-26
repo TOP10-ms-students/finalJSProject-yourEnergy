@@ -6,9 +6,11 @@ import { setSpinner } from './spinner';
 import { showIziToast } from './services/iziToast';
 import { initFavGallery } from './favorites-gallery';
 import { calculateFillStar } from './helper';
+import { openModalRating } from './rating-popup';
 
 const modalExercise = document.querySelector('.modal-exercise');
 const overlay = document.querySelector('.overlay');
+const modalRating = document.querySelector('.modal-rating');
 const fullStarColor = '#eea10c';
 const emptyStarColor = '#f4f4f433';
 const totalStars = 5;
@@ -33,7 +35,7 @@ export async function openModalExercise(id) {
         const buttonRating = document.querySelector('.js-rating__btn');
         closeModalButton.addEventListener('click', closeModalExercise);
         buttonAddRemoveFavorites.addEventListener('click', toggleButton);
-        buttonRating.addEventListener('click', showNotification);
+        buttonRating.addEventListener('click', openModalRating);
     } catch (err) {
         showIziToast(err.message);
     } finally {
@@ -161,7 +163,7 @@ function markUp({
         </div>
         <div class="modal-exercise__btn-container">
             <button aria-label="Remove or add favorite exercise" class="button button-with-icon button-white modal-exercise__btn js-favorite__btn"></button>
-            <button aria-label="Give a rating" class="button modal-exercise__btn js-rating__btn">Give a rating</button>
+            <button aria-label="Give a rating" class="button modal-exercise__btn js-rating__btn" data-id="${_id}">Give a rating</button>
         </div>`
 };
 
@@ -180,17 +182,27 @@ function toggleButton() {
 };
 
 function clickOnOverlay(e) {
-    e.target === overlay && closeModalExercise();
+    if (modalRating.className === 'modal-rating hidden'
+        && e.target === overlay) {
+        closeModalExercise();
+    } 
+    if (modalExercise.className === 'modal-exercise hidden'
+        && e.target === overlay) {
+        modalRating.classList.add('hidden');
+        modalExercise.classList.remove('hidden');
+    }
 };
 
 function clickOnEscape({ key }) {
-    (key === "Escape"
-        && !modalExercise.classList.contains('hidden'))
-        && closeModalExercise();
-};
-
-function showNotification() {
-    showIziToast('Under development');
+    if (modalRating.className === 'modal-rating hidden'
+        && key === "Escape") {
+        closeModalExercise();
+    }
+    if (modalExercise.className === 'modal-exercise hidden'
+        && key === "Escape") {
+        modalRating.classList.add('hidden');
+        modalExercise.classList.remove('hidden');
+    }
 };
 
 function showModalExercise() {

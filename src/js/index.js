@@ -6,3 +6,4 @@ import './services/subscribe-action';
 import './gallery-events';
 import './scroll-top';
 import './exercise-popup';
+import './rating-popup';
