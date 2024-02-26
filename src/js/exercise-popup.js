@@ -8,9 +8,9 @@ import { initFavGallery } from './favorites-gallery';
 import { calculateFillStar } from './helper';
 import { openModalRating } from './rating-popup';
 
-const modalExercise = document.querySelector('.modal-exercise');
+const modalExercise = document.querySelector('.js-modal-exercise');
 const overlay = document.querySelector('.overlay');
-const modalRating = document.querySelector('.modal-rating');
+const modalRating = document.querySelector('.js-modal-rating');
 const fullStarColor = '#eea10c';
 const emptyStarColor = '#f4f4f433';
 const totalStars = 5;
@@ -182,11 +182,11 @@ function toggleButton() {
 };
 
 function clickOnOverlay(e) {
-    if (modalRating.className === 'modal-rating hidden'
+    if (modalRating.classList.contains('hidden')
         && e.target === overlay) {
         closeModalExercise();
     } 
-    if (modalExercise.className === 'modal-exercise hidden'
+    if (modalExercise.classList.contains('hidden')
         && e.target === overlay) {
         modalRating.classList.add('hidden');
         modalExercise.classList.remove('hidden');
@@ -194,11 +194,11 @@ function clickOnOverlay(e) {
 };
 
 function clickOnEscape({ key }) {
-    if (modalRating.className === 'modal-rating hidden'
+    if (modalRating.classList.contains('hidden')
         && key === "Escape") {
         closeModalExercise();
     }
-    if (modalExercise.className === 'modal-exercise hidden'
+    if (modalExercise.classList.contains('hidden')
         && key === "Escape") {
         modalRating.classList.add('hidden');
         modalExercise.classList.remove('hidden');

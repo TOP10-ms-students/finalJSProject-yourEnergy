@@ -1,7 +1,7 @@
 import icons from '/img/icons.svg';
 
-const modalExercise = document.querySelector('.modal-exercise');
-const modalRating = document.querySelector('.modal-rating');
+const modalExercise = document.querySelector('.js-modal-exercise');
+const modalRating = document.querySelector('.js-modal-rating');
 
 export function openModalRating() {
     const buttonRating = document.querySelector('.js-rating__btn');
