@@ -62,6 +62,16 @@
     fill: var(--rating-color);
 }
 
+.modal-rating__rating polygon:hover {
+    cursor: pointer;
+    fill: var(--accent-color);
+    transition: all var(--tran-icon);
+}
+
+.modal-rating__rating polygon.active {
+    fill: var(--accent-color);
+}
+
 .modal-rating__form {
     display: flex;
     flex-direction: column;
