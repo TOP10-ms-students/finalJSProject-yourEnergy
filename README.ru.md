@@ -19,7 +19,7 @@
         <p>Наталія Ходорова</p>
         <img
           width="80"
-          src="./assets/Nataliia_Khodorova.webp"
+          src="./assets/Khodorova Nataliia.webp"
           alt="Nataliia Khodorova"
         />
       </li>
@@ -27,7 +27,7 @@
         <p>Максим Зиза</p>
         <img
           width="80"
-          src="./assets/Maksym_Zyza.webp"
+          src="./assets/Maksym-Zyza.webp"
           alt="Maksym Zyza"
         />
       </li>
@@ -35,7 +35,7 @@
         <p>Максим Лесковець</p>
         <img
           width="80"
-          src="./assets/Maksym_Leskovets.webp"
+          src="./assets/Maksym Leskovets.webp"
           alt="Maksym Leskovets"
         />
       </li>
@@ -59,7 +59,7 @@
         <p>Дмитро Яговкін</p>
         <img
           width="80"
-          src="./assets/Dmytro_Yagovkin.webp"
+          src="./assets/Yagovkin Dmytro.webp"
           alt="Dmytro Yahovkin"
         />
       </li>
@@ -83,7 +83,7 @@
         <p>Денис Лєнський</p>
         <img
           width="80"
-          src="./assets/Denys_Lienskyi.webp"
+          src="./assets/Denys Lienskyi.webp"
           alt="Denys Lienskyi"
         />
       </li>
