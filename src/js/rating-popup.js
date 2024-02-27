@@ -9,8 +9,10 @@ export function openModalRating() {
     modalRating.innerHTML = markUp();
     showModalRating();
 
-    const closeModalRatingButton = document.querySelector('.js-modal-rating__btn-close'); 
+    const closeModalRatingButton = document.querySelector('.js-modal-rating__btn-close');
+    const starsIcons = document.querySelector('.js-stars-svg');
     closeModalRatingButton.addEventListener('click', closeModalRating);
+    starsIcons.addEventListener('click', changeStarsRating)
 };
 
 function showModalRating() {
@@ -21,6 +23,16 @@ function showModalRating() {
 function closeModalRating() {
     modalExercise.classList.remove('hidden');
     modalRating.classList.add('hidden');
+};
+
+function changeStarsRating(e) {
+    const starsIcons = document.querySelector('.js-stars-svg');
+    let value = e.target.dataset.value;
+    value && (starsIcons.parentNode.dataset.value = value);
+    starsIcons.querySelectorAll('polygon').forEach(star => {
+    let on = starsIcons.parentNode.dataset.value >= star.dataset.value;
+    star.classList.toggle('active', on);
+    });
 };
 
 function markUp() {
@@ -34,7 +46,7 @@ function markUp() {
 
         <div class="modal-rating__rating">
         0.0
-            <svg width="110" height="20">
+            <svg width="110" height="20" class="js-stars-svg">
                 <polygon data-value="1" transform="translate(0,0)" points="10,1 4,19.8 19,7.8 1,7.8 16,19.8"></polygon>
                 <polygon data-value="2" transform="translate(22,0)" points="10,1 4,19.8 19,7.8 1,7.8 16,19.8"></polygon>
                 <polygon data-value="3" transform="translate(44,0)" points="10,1 4,19.8 19,7.8 1,7.8 16,19.8"></polygon>
